@@ -1,0 +1,11 @@
+# Lit Review Planning
+
+**Understanding the spatiotemporal organisation of GI bioelectrical activity at the microscale**
+
+| Article                                                          | Key findings/arguments                                                                                                          | Supporting evidence/methods                                                                           | Strengths limitations                                                                                   | Significan implications   | Significance for own work                  |
+ | :--------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------ | :------------------------ | :----------------------------------------- |
+ | [Identifying MGG-Signatures of Specific Electrical Gastrointestinal Abnormalities](https://twist.com/a/108233/ch/294004/t/1423997) |  |  |  |  | Good example of lit review and incorporation of research intent |
+ | [Gastrointestinal Electrical Activity: Terminology](https://www.sciencedirect.com/science/article/abs/pii/S0016508575801570) | | | | | Includes key terms (slow waves, pacesetter), good to refer back to for definitions |
+ | [A theoretical study of the initiation, maintenance and termination of gastric slow wave re-entry](https://twist.com/a/108233/ch/294004/t/1382049) | | | | | Relevant material on spatiotemporal mapping of electrical activity. Still need to read methods. |
+ | [Quantification of a gastrointestinal sodium channelopathy](https://twist.com/a/108233/ch/294004/t/1382049) | | | | | Seems to be of little relevance - clarify chemistry and equations with Peng. |
+ | [A Simplified Biophysical Cell Model For Gastric Slow Wave Entrainment Simulation](https://twist.com/a/108233/ch/294004/t/1382049) | | | | | (I believe) contains the crux of the mathematical modelling equations used in the CellML simulations. |
