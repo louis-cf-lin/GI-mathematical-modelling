@@ -1,0 +1,118 @@
+ CMISS Version 2.0  ippara File Version 1
+ Heading:
+ 
+ Max# auxiliary parameters          (NAM)[1]:         1
+ Max# basis functions               (NBM)[1]:         6
+ Max# var. types for a  dep. var.   (NCM)[1]:         1
+ Max# data points                   (NDM)[1]:       540
+ Max# elements                      (NEM)[1]:       340
+ Max# elements in a region       (NE_R_M)[1]:       340
+ Max# adjacent elements in Xi      (NEIM)[1]:         1
+ Max# global face segments          (NFM)[1]:      1064
+ Max# faces in a region          (NF_R_M)[1]:      1064
+ Max# local Voronoi faces         (NFVCM)[1]:         1
+ Max# Gauss points per element      (NGM)[1]:        18
+ Max# dependent variables           (NHM)[1]:         1
+ Max# local Xi coordinates          (NIM)[1]:         3
+ Max# global reference coordinates  (NJM)[1]:         6
+ Max# derivatives per variable      (NKM)[1]:         4
+ Max# global line segments          (NLM)[1]:      1176
+ Max# lines in a region          (NL_R_M)[1]:      1176
+ Max# material parameters           (NMM)[1]:         9
+ Max# element nodes                 (NNM)[1]:         8
+ Max# degrees of freedom            (NOM)[1]:         1
+ Max# global nodes                  (NPM)[1]:       432
+ Max# global nodes in a region   (NP_R_M)[1]:       432
+ Max# global grid points            (NQM)[1]:     74560
+ Max# signal sets                  (NSSM)[1]:         1
+ Max# grid degrees of freedom      (NYQM)[1]:     74560
+ Max# regions                       (NRM)[1]:         1
+ Max# element dofs per variable     (NSM)[1]:        32
+ Max# face dofs per variable       (NSFM)[1]:        16
+ Max# eigenvalues                   (NTM)[1]:         1
+ Max# time samples                 (NTSM)[1]:         1
+ Max# derivatives up to 2nd order   (NUM)[1]:        11
+ Max# Voronoi boundary nodes      (NVCBM)[1]:         1
+ Max# Voronoi cells                (NVCM)[1]:         1
+ Max# versions of a variable        (NVM)[1]:         1
+ Max# workstations                  (NWM)[1]:         1
+ Max# problem types                 (NXM)[1]:         2
+ Max# mesh dofs                     (NYM)[1]:         1
+ Max# mesh dofs in a region      (NY_R_M)[1]:         1
+ Max# dimension of GD           (NZ_GD_M)[1]:         1
+ Max# dimension of GK           (NZ_GK_M)[1]:         1
+ Max# dimension of GKK         (NZ_GKK_M)[1]:   7636195
+ Max# dimension of GM           (NZ_GM_M)[1]:   7636195
+ Max# dimension of GMM         (NZ_GMM_M)[1]:         1
+ Max# dimension of GQ           (NZ_GQ_M)[1]:         1
+ Max# dimension of ISC_GD      (NISC_GDM)[1]:         1
+ Max# dimension of ISR_GD      (NISR_GDM)[1]:         1
+ Max# dimension of ISC_GK      (NISC_GKM)[1]:         1
+ Max# dimension of ISR_GK      (NISR_GKM)[1]:         1
+ Max# dimension of ISC_GKK    (NISC_GKKM)[1]:   7636195
+ Max# dimension of ISR_GKK    (NISR_GKKM)[1]:     74561
+ Max# dimension of ISC_GM      (NISC_GMM)[1]:         1
+ Max# dimension of ISR_GM      (NISR_GMM)[1]:         1
+ Max# dimension of ISC_GMM    (NISC_GMMM)[1]:         1
+ Max# dimension of ISR_GMM    (NISR_GMMM)[1]:         1
+ Max# dimension of ISC_GQ      (NISC_GQM)[1]:         1
+ Max# dimension of ISR_GQ      (NISR_GQM)[1]:         1
+ Max# size of Minos arrays    (NZ_MINOSM)[1]:         1
+ Max# basis function families      (NBFM)[1]:         6
+ Max# nonlin. optim.n constraints  (NCOM)[1]:         1
+ Max# data points in one element   (NDEM)[1]:         1
+ Max# dipoles in a region      (NDIPOLEM)[1]:         1
+ Max# time points for a dipole (NDIPTIMM)[1]:     60001
+ Max# elements along a line        (NELM)[1]:         4
+ Max# elements a node can be in    (NEPM)[1]:         8
+ Max# segments                  (NGRSEGM)[1]:         1
+ Max# variables per grid point     (NIQM)[1]:         3
+ Max# cell state variables        (NIQSM)[1]:        32
+ Max# variables for fibre extens(NIFEXTM)[1]:         1
+ Max# variables per mesh dof       (NIYM)[1]:        10
+ Max# variables / mesh dof(fix) (NIYFIXM)[1]:         5
+ Max# vars. at each gauss point   (NIYGM)[1]:         1
+ Max# vars. at face gauss points (NIYGFM)[1]:         1
+ Max# linear optimis.n constraints (NLCM)[1]:         1
+ Max# auxiliary grid parameters   (NMAQM)[1]:        16
+ Max# cell material parameters     (NMQM)[1]:         9
+ Max# optimisation variables       (NOPM)[1]:         1
+ Max size fractal tree order array (NORM)[1]:         1
+ Max# soln dofs for mesh dof       (NOYM)[1]:         1
+ Max# domain nodes for BE problems (NPDM)[1]:         1
+ Max# grid points per element      (NQEM)[1]:     15200
+ Max# non-zeros in grid matrix row (NQGM)[1]:        27
+ Max# cell integer variables       (NQIM)[1]:         2
+ Max# cell real variables          (NQRM)[1]:       127
+ Max# spatial var cell int vars  (NQISVM)[1]:         1
+ Max# spatial var cell real vars (NQRSVM)[1]:        50
+ Max# number of grid schemes      (NQSCM)[1]:         6
+ Max# cell variants                (NQVM)[1]:         2
+ Max# rows and columns (sb 2)      (NRCM)[1]:         2
+ Max# optimisation residuals       (NREM)[1]:         1
+ Max# time points          (NTIMEPOINTSM)[1]:         2
+ Max# time variables         (NTIMEVARSM)[1]:         1
+ Max# mesh dofs for soln dof       (NYOM)[1]:         1
+ Max# rows in a problem          (NYROWM)[1]:         1
+ Max image cell array dimension (NIMAGEM)[1]:         1
+ Size of transfer matrix  (NY_TRANSFER_M)[1]:         1
+ Max# mesh dofs map to 1 mesh dof  (NYYM)[1]:         1
+ USE_BEM       (0 or 1)[1]: 0
+ USE_CELL      (0 or 1)[1]: 1
+ USE_DATA      (0 or 1)[1]: 1
+ USE_DIPOLE    (0 or 1)[1]: 1
+ USE_GAUSS_PT_MATERIALS  (0 or 1)[0]: 0
+ USE_GRAPHICS  (0 or 1)[1]: 0
+ USE_GRID      (0 or 1)[1]: 1
+ USE_LUNG      (0 or 1)[1]: 0
+ USE_MAGNETIC  (0 or 1)[0]: 0
+ USE_MAPS      (0 or 1)[0]: 0
+ USE_MINOS     (0 or 1)[1]: 0
+ USE_NLSTRIPE  (0 or 1)[1]: 0
+ USE_NONLIN    (0 or 1)[1]: 0
+ USE_NPSOL     (0 or 1)[1]: 0
+ USE_SPARSE    (0 or 1)[1]: 1
+ USE_TRANSFER  (0 or 1)[1]: 0
+ USE_TRIANGLE  (0 or 1)[1]: 0
+ USE_VORONOI   (0 or 1)[1]: 0
+ USE_TIME      (0 or 1)[1]: 0

@@ -1,0 +1,184 @@
+ CMISS Version 2.1  ipelfb File Version 1
+ Heading:
+ 
+ The number of elements is [   45]: 45
+ 
+ Element number [    1]: 1
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 1 2 8 9
+ 
+ Element number [    2]: 2
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 2 3 9 10
+ 
+ Element number [    3]: 3
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 3 4 10 11
+ 
+ Element number [    4]: 4
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 4 5 11 12
+ 
+ Element number [    5]: 5
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 5 6 12 13
+ 
+ Element number [    6]: 6
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 7 8 15 16
+ 
+ Element number [    7]: 7
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 8 9 16 17
+ 
+ Element number [    8]: 8
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 9 10 17 18
+ 
+ Element number [    9]: 9
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 10 11 18 19
+ 
+ Element number [   10]: 10
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 11 12 19 20
+ 
+ Element number [   11]: 11
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 12 13 20 21
+ 
+ Element number [   12]: 12
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 13 14 21 22
+ 
+ Element number [   13]: 13
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 15 16 23 24
+ 
+ Element number [   14]: 14
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 16 17 24 25
+ 
+ Element number [   15]: 15
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 17 18 25 26
+ 
+ Element number [   16]: 16
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 18 19 26 27
+ 
+ Element number [   17]: 17
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 19 20 27 28
+ 
+ Element number [   18]: 18
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 20 21 28 29
+ 
+ Element number [   19]: 19
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 21 22 29 30
+ 
+ Element number [   20]: 20
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 23 24 31 32
+ 
+ Element number [   21]: 21
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 24 25 32 33
+ 
+ Element number [   22]: 22
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 25 26 33 34
+ 
+ Element number [   23]: 23
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 26 27 34 35
+ 
+ Element number [   24]: 24
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 27 28 35 36
+ 
+ Element number [   25]: 25
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 28 29 36 37
+ 
+ Element number [   26]: 26
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 29 30 37 38
+ 
+ Element number [   27]: 27
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 31 32 39 40
+ 
+ Element number [   28]: 28
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 32 33 40 41
+ 
+ Element number [   29]: 29
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 33 34 41 42
+ 
+ Element number [   30]: 30
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 34 35 42 43
+ 
+ Element number [   31]: 31
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 35 36 43 44
+ 
+ Element number [   32]: 32
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 36 37 44 45
+ 
+ Element number [   33]: 33
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 37 38 45 46
+ 
+ Element number [   34]: 34
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 39 40 47 48
+ 
+ Element number [   35]: 35
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 40 41 48 49
+ 
+ Element number [   36]: 36
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 41 42 49 50
+ 
+ Element number [   37]: 37
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 42 43 50 51
+ 
+ Element number [   38]: 38
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 43 44 51 52
+ 
+ Element number [   39]: 39
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 44 45 52 53
+ 
+ Element number [   40]: 40
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 45 46 53 54
+ 
+ Element number [   41]: 41
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 48 49 55 56
+ 
+ Element number [   42]: 42
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 49 50 56 57
+ 
+ Element number [   43]: 43
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 50 51 57 58
+ 
+ Element number [   44]: 44
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 51 52 58 59
+ 
+ Element number [   45]: 45
+ The basis function type for the fibre angle is [1]: 1
+ Enter the 4 numbers for basis 1 [prev]: 52 53 59 60

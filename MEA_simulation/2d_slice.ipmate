@@ -1,0 +1,58 @@
+ CMISS Version 2.1  ipmate File Version 2
+ Heading:
+ 
+ Are any material parameters time-varying [N]? N
+ 
+ Int. conductivity-fibre (mS/mm) is [1]:
+   (1) Constant spatially
+   (2) Piecewise constant (defined by elements)
+   (3) Piecewise linear   (defined by nodes)
+   (4) Defined by grid points (CQ)
+   (5) Defined elsewhere by Gauss pt array (YG)
+ 1
+ The value is [0.3000E+00]: 3.60
+ 
+ Int. conductivity-sheet (mS/mm) is [1]:
+   (1) Constant spatially
+   (2) Piecewise constant (defined by elements)
+   (3) Piecewise linear   (defined by nodes)
+   (4) Defined by grid points (CQ)
+   (5) Defined elsewhere by Gauss pt array (YG)
+ 1
+ The value is [0.31012E-01]: 2.2
+ 
+ Int. conductivity-cross (mS/mm) is [1]:
+   (1) Constant spatially
+   (2) Piecewise constant (defined by elements)
+   (3) Piecewise linear   (defined by nodes)
+   (4) Defined by grid points (CQ)
+   (5) Defined elsewhere by Gauss pt array (YG)
+ 1
+ The value is [0.6305E-01]: 2.2
+ 
+ Ext. conductivity-fibre (mS/mm) is [1]:
+   (1) Constant spatially
+   (2) Piecewise constant (defined by elements)
+   (3) Piecewise linear   (defined by nodes)
+   (4) Defined by grid points (CQ)
+   (5) Defined elsewhere by Gauss pt array (YG)
+ 1
+ The value is [0.2000E+00]: 3.60
+ 
+ Ext. conductivity-sheet (mS/mm) is [1]:
+   (1) Constant spatially
+   (2) Piecewise constant (defined by elements)
+   (3) Piecewise linear   (defined by nodes)
+   (4) Defined by grid points (CQ)
+   (5) Defined elsewhere by Gauss pt array (YG)
+ 1
+ The value is [0.1351E+00]: 2.2
+ 
+ Ext. conductivity-cross (mS/mm) is [1]:
+   (1) Constant spatially
+   (2) Piecewise constant (defined by elements)
+   (3) Piecewise linear   (defined by nodes)
+   (4) Defined by grid points (CQ)
+   (5) Defined elsewhere by Gauss pt array (YG)
+ 1
+ The value is [0.1757E+00]: 2.2

@@ -1,0 +1,71 @@
+ CMISS Version 2.1  ipequa File Version 2
+ Heading:
+ 
+ Specify whether [1]:
+   (1) Static analysis
+   (2) Time integration
+   (3) Modal analysis
+   (4) Quasi-static analysis
+   (5) Wavefront path analysis
+   (6) Buckling analysis
+    2
+ Specify equation [1]:
+   (1) Linear elasticity
+   (2) Finite elasticity
+   (3) Advection-diffusion
+   (4) Wave equation
+   (5) Navier-Stokes equations
+   (6) Bio-heat transfer
+  *(7) Maxwells equations
+   (8) Huygens activation
+   (9) Cellular based modelling
+  (10) Oxygen transport
+  (11) Pulmonary transport
+  (12)
+   9
+ Specify cellular model type [1]:
+   (1) Electrical
+   (2) Mechanical
+   (3) Metabolism
+   (4) Signalling Pathways
+   (5) Drug Interaction
+   (6)
+   (7) Coupled
+    1
+ Specify electrical model [1]:
+   (1) Cubic - no recovery
+   (2) FitzHugh-Nagumo
+   (3) van Capelle-Durrer
+   (4) Beeler-Reuter
+   (5) Jafri-Rice-Winslow
+   (6) Luo-Rudy
+   (7) diFrancesco-Noble
+   (8) Noble-98
+   (9) Hodgkin-Huxley
+  (10) User defined
+    10
+ Enter (1) monodomain, or (2) bidomain [1]: 1
+ Specify user defined model type [1]:
+   (1) Model 1
+   (2) Model 2
+   (3) Model 3
+   (4) Model 4
+   (5) Model 5
+   (6) cellML
+    6
+ Specify whether solution is by [4]:
+   (1)
+   (2)
+   (3)
+   (4) Collocation
+   (5)
+   (6) Grid-based Finite Element
+   (7) Grid-based Finite Volume
+    6
+ 
+ Is the basis function type for dependent variable 1
+ different in each element [N]? N
+ The basis type number is [1]: 1
+ The max # of versions of variable 1 is [1]: 1
+ 
+ Do you want the global matrices stored as sparse matrices [Y]? Y

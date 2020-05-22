@@ -1,0 +1,9 @@
+ CMISS Version 2.1  ipinit File Version 3
+ Heading:
+ 
+ Are any bdry conditions time-varying [N]? N
+ 
+ Specify the type of intracellular b.c. [1]:
+   (1) Zero transmembrane flux
+   (2) Zero intracellular flux
+    1

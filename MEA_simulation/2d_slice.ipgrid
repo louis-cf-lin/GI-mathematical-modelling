@@ -1,0 +1,13 @@
+ CMISS Version 2.1  ipgrid File Version 1
+ Heading:
+ 
+ The number of grid schemes is [1]: 1
+ Enter the interpolating basis function for scheme 1 [1]: 1
+ Enter the number of xi coordinates for scheme 1 [1]: 2
+ Enter the number of collocation points in xi 1 direction [1]: 2
+ Enter the number of collocation points in xi 2 direction [1]: 2
+ Enter the number of grid levels [1]: 1
+ Use lattice based grid points [N]? N
+ Enter element #s/name [EXIT]: ELEM_all
+ Enter the grid scheme number for element(s) [1]: 1
+ Enter element #s/name [EXIT]: 0

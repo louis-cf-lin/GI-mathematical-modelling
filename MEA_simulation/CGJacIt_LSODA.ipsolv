@@ -1,0 +1,79 @@
+ CMISS Version 1.21 ipsolv File Version 3
+ Heading:
+ 
+ Specify whether time integration algorithm is [1]:
+   (1) Linear
+  *(2) Quadratic
+  *(3) Cubic
+    1
+ Specify whether [1]:
+   (1) Fixed time step
+   (2) Automatic stepping
+    1
+ Specify the time integration parameter [2/3]: 1.0
+ Specify the initial time (msec) [0]: 0
+ Specify the  final time (msec) [10]: 6000000
+ Specify the time increment (initial if automatic stepping) [1.0]: 2.0
+ Enter #time step intervals for history file o/p (0 for no o/p)[1]: 0
+ Specify type of linear solution procedure [1]:
+   (1)  LU Decomposition
+   (2)  Single Value Decomposition
+   (3)  Least Squares
+   (4)  Cholesky Decomposition
+   (5)  Jacobi Iteration
+   (6)  Succesive Over Relaxation
+   (7)  Incomplete LU Decomposition(0)
+   (8)  Incomplete LU Decomposition(1)
+   (9)  Conjugate Gradient
+   (10) Biconjugate Gradient Stabilised
+   (11) Generalised Minimum Residual
+   (12) Black Box Multigrid (BOXMG)
+   (13) Preconditioned CG from BOXMG
+   (14) Algebraic Multigrid (AMG1R6)
+    9
+ Do you want the solution matrix stored as a sparse matrix [Y]? Y
+ The maximum number of iterations is [      0]: 20000
+ Enter the solver tolerance [1.0d-6]: 1.0d-6
+ The number of orthogonalisations before restarting is [10]: 100
+ Specify type of preconditioning [2]:
+   (1) None
+   (2) Point Jacobi
+   (3) Jacobi Iteration
+   (4) Symmetric Succesive Over Relaxation
+   (5) Incomplete LU Decomposition(0)
+   (6) Incomplete LU Decomposition(1)
+   (7) Row scale
+    2
+ The number of preconditioner iterations per loop [2]: 2
+ Specify option for linear solution [0]:
+   (0) No output
+   (1) Timing and error check
+   (2) & Solver output
+  *(3) & Global solution matrices
+  *(4) & Global stiffness matrices
+  *(5) & Element matrices
+    0
+ Specify timing output for time integration [0]:
+   (0) No output
+   (1) Simple
+   (2) Verbose
+    0
+ Enter the timing output frequency [1]: 5
+ Specify type of integration procedure [1]:
+   (1) Euler
+   (2) Improved Euler
+   (3) Runge-Kutta (4th order)
+   (4)
+   (5) Adams-Moulton (variable order, adaptive time step)
+   (6) LSODA (adaptive step, stiff switching)
+    6
+ Enter the maximum LSODA step size [0.100]: 0.01
+ Enter the maximum number of LSODA iterations [100]: 100
+ Specify type of error control [1]:
+   (1) Pure absolute
+   (2) Relative to Y
+   (3) Mixed relative/absolute
+    1
+ Enter the absolute error component [0.005]: 0.005
+ Enter the relative error component [0.005]: 0.005
+ Use DTAR (Dynamic Tracking of Active Region) [N]? N

@@ -1,0 +1,34 @@
+ CMISS Version 2.1  ipexpo File Version 1
+ Heading:
+ 
+ 
+ Specify the export type [1]:
+   (1) Signal
+   (2) ZCROSSING
+    1
+ 
+ Specify the signal export type [1]:
+   (1) UNEMAP
+   (2) CMGUI
+   (3) Data file
+    1
+ 
+ Do you wish to set the frequency to map between time steps & real time [N]? N
+ 
+ Specify the rig type [1]:
+   (1) Sock
+   (2) Patch
+   (3) Torso
+   (4) Mixed
+   (5) Unused
+    2
+ Enter the rig name [CMISS]: CMISS
+ 
+ Enter the number UNEMAP regions [1]: 1
+ Enter the regions: 1
+ 
+ Enter the region name [CMISSregion1]: CMISSregion1
+ 
+ Enter the start electrode number for region 1 [1]: 1
+ 
+ Enter the stop electrode number for region 1 [1]: 13

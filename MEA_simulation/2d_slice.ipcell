@@ -1,0 +1,307 @@
+ CMISS Version 2.1  ipcell File Version 1
+ Heading:
+ 
+ Enter the number of model variants [1]: 1
+ Enter the URI of the cellML file for model variant 1: "imtiaz_2002d_noTstart_COR.cellml"
+ 
+ ODE Variable Ca_c:
+   Membrane potential [N]? N
+   Initial value [0.2886E+00]: 0.28860E+00
+   Spatially varying [N]? Y
+ 
+ ODE Variable Ca_s:
+   Membrane potential [N]? N
+   Initial value [0.2001E+01]: 0.20014E+01
+   Spatially varying [N]? Y
+ 
+ ODE Variable IP_3:
+   Membrane potential [N]? N
+   Initial value [0.3791E+00]: 0.37910E+00
+   Spatially varying [N]? Y
+ 
+ ODE Variable V_m:
+   Membrane potential [N]? Y
+   Initial value [-0.7052E+02]: -0.70516E+02
+   Spatially varying [N]? Y
+ 
+ ODE Variable d_Na:
+   Membrane potential [N]? N
+   Initial value [0.0000E+00]: 0.00000E+00
+   Spatially varying [N]? Y
+ 
+ ODE Variable f_Na:
+   Membrane potential [N]? N
+   Initial value [0.9997E+00]: 0.99970E+00
+   Spatially varying [N]? Y
+ 
+ Save function variable G_Ca [N]? N
+ 
+ Save function variable I_BK [N]? N
+ 
+ Save function variable I_Ca [N]? N
+ 
+ Save function variable I_Na [N]? N
+ 
+ Save function variable V_2 [N]? N
+ 
+ Save function variable V_3 [N]? N
+ 
+ Save function variable V_in [N]? N
+ 
+ Save function variable d_BK [N]? N
+ 
+ Save function variable d_inf_Na [N]? N
+ 
+ Save function variable f_inf_Na [N]? N
+ 
+ Constant Variable C_m:
+   Specific membrane capacitance (Cm) [N]? Y
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.2600E+02]: 0.26000E+02
+   Spatially varying [N]? N
+ 
+ Constant Variable Cor:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.1000E+01]: 0.10000E+01
+   Spatially varying [N]? Y
+ 
+ Constant Variable E_Ca:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [-0.2000E+02]: -0.20000E+02
+   Spatially varying [N]? N
+ 
+ Constant Variable E_K:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [-0.7200E+02]: -0.72000E+02
+   Spatially varying [N]? N
+ 
+ Constant Variable E_Na:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.8000E+02]: 0.80000E+02
+   Spatially varying [N]? N
+ 
+ Constant Variable G_MCa:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.4000E+01]: 0.40000E+01
+   Spatially varying [N]? N
+ 
+ Constant Variable G_Na:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.2800E+02]: 0.28000E+02
+   Spatially varying [N]? N
+ 
+ Constant Variable G_max_BK:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.1200E+01]: 0.12000E+01
+   Spatially varying [N]? N
+ 
+ Constant Variable I_stim:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.0000E+00]: 0.00000E+00
+   Spatially varying [N]? N
+ 
+ Constant Variable K:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.6435E-03]: 0.64350E-03
+   Spatially varying [N]? N
+ 
+ Constant Variable P_MV:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.3250E-01]: 0.32500E-01
+   Spatially varying [N]? N
+ 
+ Constant Variable V_0:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.2145E-03]: 0.21450E-03
+   Spatially varying [N]? N
+ 
+ Constant Variable V_1:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.2209E-03]: 0.22094E-03
+   Spatially varying [N]? N
+ 
+ Constant Variable V_M2:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.4900E-02]: 0.49000E-02
+   Spatially varying [N]? N
+ 
+ Constant Variable V_M3:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.3224E+00]: 0.32240E+00
+   Spatially varying [N]? N
+ 
+ Constant Variable V_M4:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.4875E-03]: 0.48750E-03
+   Spatially varying [N]? N
+ 
+ Constant Variable beta:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.9750E-03]: 0.97500E-03
+   Spatially varying [N]? N
+ 
+ Constant Variable eta:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.3890E-01]: 0.38900E-01
+   Spatially varying [N]? N
+ 
+ Constant Variable k_2:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.1000E+01]: 0.10000E+01
+   Spatially varying [N]? N
+ 
+ Constant Variable k_4:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.5000E+00]: 0.50000E+00
+   Spatially varying [N]? N
+ 
+ Constant Variable k_Ca:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.9400E+00]: 0.94000E+00
+   Spatially varying [N]? N
+ 
+ Constant Variable k_a:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.9000E+00]: 0.90000E+00
+   Spatially varying [N]? N
+ 
+ Constant Variable k_f:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.5850E-04]: 0.58500E-04
+   Spatially varying [N]? N
+ 
+ Constant Variable k_p:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.6500E+00]: 0.65000E+00
+   Spatially varying [N]? N
+ 
+ Constant Variable k_r:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.2000E+01]: 0.20000E+01
+   Spatially varying [N]? N
+ 
+ Constant Variable k_v:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [-0.6800E+02]: -0.68000E+02
+   Spatially varying [N]? N
+ 
+ Constant Variable m:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.4000E+01]: 0.40000E+01
+   Spatially varying [N]? N
+ 
+ Constant Variable n:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.2000E+01]: 0.20000E+01
+   Spatially varying [N]? N
+ 
+ Constant Variable o:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.4000E+01]: 0.40000E+01
+   Spatially varying [N]? N
+ 
+ Constant Variable q:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.4000E+01]: 0.40000E+01
+   Spatially varying [N]? N
+ 
+ Constant Variable r:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.8000E+01]: 0.80000E+01
+   Spatially varying [N]? N
+ 
+ Constant Variable tau_d_Na:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.1026E+02]: 0.10260E+02
+   Spatially varying [N]? N
+ 
+ Constant Variable tau_f_Na:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.1128E+03]: 0.11282E+03
+   Spatially varying [N]? N
+ 
+ Constant Variable u:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.4000E+01]: 0.40000E+01
+   Spatially varying [N]? N
+ 
+ Constant Variable w:
+   Specific membrane capacitance (Cm) [N]? N
+   Surface to volume ratio (Am) [N]? N
+   Total electrical stimulus current [N]? N
+   Initial value [0.4000E+01]: 0.40000E+01
+   Spatially varying [N]? N
+ 
+ Surface-to-volume ratio, Am (1/mm) [200]: 0.20000E+03
+ Surface-to-volume ratio spatially varying [N]? N
+ 
+ Debug code [N]? N
+ 
+ Save temporary files [N]? N

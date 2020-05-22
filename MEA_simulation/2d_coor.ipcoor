@@ -1,0 +1,23 @@
+ CMISS Version 2.1  ipcoor File Version 1
+ Heading:
+ 
+ The global coordinates for region 1 are [1]:
+   (1) rectangular cartesian (x,y,z)
+   (2) cylindrical polar (r,theta,z)
+   (3) spherical polar (r,theta,phi)
+   (4) prolate spheroidal (lambda,mu,theta)
+   (5) oblate  spheroidal (lambda,mu,theta)
+    1
+ Enter the number of global coordinates [2]: 2
+ Do you want to specify another coord. system for dependent variables [N]? N
+ The geometry is [1]:
+   (1) unsymmetric
+   (2) cylindrically symmetric about x (or r for cyl.polar)
+   (3) cylindrically symmetric about y (or z for cyl.polar)
+   (4) spherically   symmetric
+   (5) mirror symmetry in x
+   (6) mirror symmetry in y
+   (7) mirror symmetry in x and y
+    1
+ Enter x,y,z origin of coords relative to region 0 [0,0,0]:0.00000E+00  0.00000E+00  0.00000E+00
+ Are there any non-standard mappings [N]? N
