@@ -1,2 +1,5 @@
-ls
+pwd
+matlab
+dipole_calculate
+
 /bin/bash

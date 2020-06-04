@@ -10,6 +10,9 @@
 - [Week 6](#week-6)
 - [Week 7](#week-7)
 - [Week 8](#week-8)
+- [Week 9](#week-9)
+- [Week 10](#week-10)
+- [Week 11](#week-11)
 
 ## Week 1
 
@@ -291,6 +294,8 @@ Meeting notes:
 
 Goal for next week: a figure, some output.
 
+## Week 9
+
 ### Thursday 21 May
 
 Learnt about *batch* files. Switched to PuTTY instead of Windows OpenSSH Client as there's more technical support for writing PuTTY batch files. Wrote one to automate logging in with password.
@@ -311,3 +316,21 @@ Goal for next week: run the CellML simulation by converting it to MATLAB then  v
 CellML (imtiaz_2002d_noTstart_COR) -> Tools -> CellML export to user defined -> OpenCOR -> Formats -> python/matlab -> save as .m -> run file in matlab.
 
 **Problem resolved!** Tiong has fixed the issue and now the prompt is `[clin750@]` in OpenSSH.
+
+## Week 10
+
+### Thursday 28 May
+
+There is a section symbol § - may be useful to use.
+
+## Week 11
+
+### Thursday 4 April
+
+The `/bin/bash` at the end of the command file is necessary to keep the window open.
+
+Switched to WinSCP for GUI and scripting functionality.
+
+- What is $Cor\cdot{()}$?
+- $k_r$ and $k_a$ are both cytosolic Ca2+ threshold for V_3 but have different values?
+- Can we assume Hill coefficient hold true and cannot be changed? 
