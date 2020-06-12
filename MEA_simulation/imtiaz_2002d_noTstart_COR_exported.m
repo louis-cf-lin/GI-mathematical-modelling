@@ -1,13 +1,22 @@
 
 function [VOI, STATES, ALGEBRAIC, CONSTANTS] = imtiaz_2002d_noTstart_COR_exported()
     % This is the "main function".  In Matlab, things work best if you rename this function to match the filename.
-    I_s_val = [0, 0.1, 0.2, 0.3];
-    tiledlayout(2,2)
-    for i = 1:length(I_s_val)
-        [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES] = solveModel(I_s_val(i));
+    beta_val = [0.000062, 0.000975];
+    eta_val = [0.00015, 0.0389];
+    IP3_val = [0.4778];
+    t = tiledlayout(2,2);
+    for k = 1:length(IP3_val)
+        for j = 1:length(eta_val)
+            for i = 1:length(beta_val)
+                [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, LEGEND_VOI] = solveModel(beta_val(i), eta_val(j), IP3_val(k));
+            end
+        end
     end
+    
     l = legend(LEGEND_STATES);
-    set(l,'Interpreter','none');
+    set(l, 'Interpreter', 'Latex');
+    xlabel(t, LEGEND_VOI);
+    title(t, 'TBA');
 end
 
 function [algebraicVariableCount] = getAlgebraicVariableCount()
@@ -17,14 +26,13 @@ function [algebraicVariableCount] = getAlgebraicVariableCount()
 end
 % There are a total of 6 entries in each of the rate and state variable arrays.
 % There are a total of 35 entries in the constant variable array.
-%
 
-function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES] = solveModel(I_s_val)
+function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, LEGEND_VOI] = solveModel(beta_val, eta_val, IP3_val)
     % Create ALGEBRAIC of correct size
     global algebraicVariableCount;  
     algebraicVariableCount = getAlgebraicVariableCount();
     % Initialise constants and state variables
-    [INIT_STATES, CONSTANTS] = initConsts(I_s_val);
+    [INIT_STATES, CONSTANTS] = initConsts(beta_val, eta_val, IP3_val);
 
     % Set timespan to solve over
     tspan = [0, 60000];
@@ -44,80 +52,79 @@ function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES] = solveModel(I_s_val
 %     figure();
     nexttile
     plot(VOI, STATES);
-    xlabel(LEGEND_VOI);
 end
 
 function [LEGEND_STATES, LEGEND_ALGEBRAIC, LEGEND_VOI, LEGEND_CONSTANTS] = createLegends()
     LEGEND_STATES = ''; LEGEND_ALGEBRAIC = ''; LEGEND_VOI = ''; LEGEND_CONSTANTS = '';
-    LEGEND_VOI = 'time in component Time (time units)';
-    LEGEND_STATES(:,1) = strpad('V_m in component Membrane (voltage_units)');
-    LEGEND_CONSTANTS(:,1) = strpad('C_m in component Membrane (capacitance_units)');
-    LEGEND_ALGEBRAIC(:,1) = strpad('I_Na in component i_Na (current_units)');
-    LEGEND_ALGEBRAIC(:,10) = strpad('I_Ca in component i_Ca (current_units)');
-    LEGEND_ALGEBRAIC(:,7) = strpad('I_BK in component i_BK (current_units)');
-    LEGEND_CONSTANTS(:,2) = strpad('I_stim in component Membrane (current_units)');
-    LEGEND_CONSTANTS(:,3) = strpad('Cor in component Membrane (dimensionless)');
-    LEGEND_ALGEBRAIC(:,2) = strpad('d_inf_Na in component d_Na (dimensionless)');
-    LEGEND_CONSTANTS(:,4) = strpad('tau_d_Na in component d_Na (time_units)');
-    LEGEND_STATES(:,2) = strpad('d_Na in component d_Na (dimensionless)');
-    LEGEND_ALGEBRAIC(:,3) = strpad('f_inf_Na in component f_Na (dimensionless)');
-    LEGEND_CONSTANTS(:,5) = strpad('tau_f_Na in component f_Na (time_units)');
-    LEGEND_STATES(:,3) = strpad('f_Na in component f_Na (dimensionless)');
-    LEGEND_CONSTANTS(:,6) = strpad('E_Na in component i_Na (voltage_units)');
-    LEGEND_CONSTANTS(:,7) = strpad('G_Na in component i_Na (conductance_units)');
-    LEGEND_STATES(:,4) = strpad('Ca_c in component intracellular_Ca (millimolar)');
-    LEGEND_ALGEBRAIC(:,5) = strpad('d_BK in component d_BK (dimensionless)');
-    LEGEND_CONSTANTS(:,8) = strpad('E_K in component i_BK (voltage_units)');
-    LEGEND_CONSTANTS(:,9) = strpad('G_max_BK in component i_BK (conductance_units)');
-    LEGEND_CONSTANTS(:,10) = strpad('E_Ca in component i_Ca (voltage_units)');
-    LEGEND_CONSTANTS(:,11) = strpad('G_MCa in component i_Ca (conductance_units)');
-    LEGEND_CONSTANTS(:,12) = strpad('q in component i_Ca (dimensionless)');
-    LEGEND_CONSTANTS(:,13) = strpad('k_Ca in component i_Ca (millimolar)');
-    LEGEND_ALGEBRAIC(:,9) = strpad('G_Ca in component i_Ca (conductance_units)');
-    LEGEND_STATES(:,5) = strpad('Ca_s in component intracellular_Ca (millimolar)');
-    LEGEND_STATES(:,6) = strpad('IP_3 in component intracellular_Ca (millimolar)');
-    LEGEND_CONSTANTS(:,14) = strpad('V_0 in component intracellular_Ca (millimolar_per_time_units)');
-    LEGEND_CONSTANTS(:,15) = strpad('V_1 in component intracellular_Ca (per_time_units)');
-    LEGEND_CONSTANTS(:,16) = strpad('V_M2 in component intracellular_Ca (millimolar_per_time_units)');
-    LEGEND_CONSTANTS(:,17) = strpad('n in component intracellular_Ca (dimensionless)');
-    LEGEND_CONSTANTS(:,18) = strpad('k_2 in component intracellular_Ca (millimolar)');
-    LEGEND_CONSTANTS(:,19) = strpad('V_M3 in component intracellular_Ca (millimolar_per_time_units)');
-    LEGEND_CONSTANTS(:,20) = strpad('w in component intracellular_Ca (dimensionless)');
-    LEGEND_CONSTANTS(:,21) = strpad('k_a in component intracellular_Ca (millimolar)');
-    LEGEND_CONSTANTS(:,22) = strpad('m in component intracellular_Ca (dimensionless)');
-    LEGEND_CONSTANTS(:,23) = strpad('k_r in component intracellular_Ca (millimolar)');
-    LEGEND_CONSTANTS(:,24) = strpad('o in component intracellular_Ca (dimensionless)');
-    LEGEND_CONSTANTS(:,25) = strpad('k_p in component intracellular_Ca (millimolar)');
-    LEGEND_ALGEBRAIC(:,4) = strpad('V_in in component intracellular_Ca (millimolar_per_time_units)');
-    LEGEND_ALGEBRAIC(:,6) = strpad('V_2 in component intracellular_Ca (millimolar_per_time_units)');
-    LEGEND_ALGEBRAIC(:,8) = strpad('V_3 in component intracellular_Ca (millimolar_per_time_units)');
-    LEGEND_CONSTANTS(:,26) = strpad('k_f in component intracellular_Ca (per_time_units)');
-    LEGEND_CONSTANTS(:,27) = strpad('K in component intracellular_Ca (per_time_units)');
-    LEGEND_CONSTANTS(:,28) = strpad('beta in component intracellular_Ca (millimolar_per_time_units)');
-    LEGEND_CONSTANTS(:,29) = strpad('eta in component intracellular_Ca (per_time_units)');
-    LEGEND_CONSTANTS(:,30) = strpad('V_M4 in component intracellular_Ca (millimolar_per_time_units)');
-    LEGEND_CONSTANTS(:,31) = strpad('k_4 in component intracellular_Ca (millimolar)');
-    LEGEND_CONSTANTS(:,32) = strpad('u in component intracellular_Ca (dimensionless)');
-    LEGEND_CONSTANTS(:,33) = strpad('P_MV in component intracellular_Ca (millimolar_per_time_units)');
-    LEGEND_CONSTANTS(:,34) = strpad('k_v in component intracellular_Ca (voltage_units)');
-    LEGEND_CONSTANTS(:,35) = strpad('r in component intracellular_Ca (dimensionless)');
-    LEGEND_RATES(:,1) = strpad('d/dt V_m in component Membrane (voltage_units)');
-    LEGEND_RATES(:,2) = strpad('d/dt d_Na in component d_Na (dimensionless)');
-    LEGEND_RATES(:,3) = strpad('d/dt f_Na in component f_Na (dimensionless)');
-    LEGEND_RATES(:,6) = strpad('d/dt IP_3 in component intracellular_Ca (millimolar)');
-    LEGEND_RATES(:,5) = strpad('d/dt Ca_s in component intracellular_Ca (millimolar)');
-    LEGEND_RATES(:,4) = strpad('d/dt Ca_c in component intracellular_Ca (millimolar)');
+    LEGEND_VOI = 'time (ms)';
+    LEGEND_STATES(:,1) = strpad('$V_{m} (V)$');
+    LEGEND_CONSTANTS(:,1) = strpad('$C_{m} (F)$');
+    LEGEND_ALGEBRAIC(:,1) = strpad('$I_{Na} (A)$');
+    LEGEND_ALGEBRAIC(:,10) = strpad('$I_{Ca} (A)$');
+    LEGEND_ALGEBRAIC(:,7) = strpad('$I_{BK} (A)$');
+    LEGEND_CONSTANTS(:,2) = strpad('$I_{stim} (A)$');
+    LEGEND_CONSTANTS(:,3) = strpad('$Cor (-)$');
+    LEGEND_ALGEBRAIC(:,2) = strpad('$d_{inf_{Na}} (-)$');
+    LEGEND_CONSTANTS(:,4) = strpad('$tau_{d_{Na}} (A)$');
+    LEGEND_STATES(:,2) = strpad('$d_{Na} (-)$');
+    LEGEND_ALGEBRAIC(:,3) = strpad('$f_{inf_{Na}} (-)$');
+    LEGEND_CONSTANTS(:,5) = strpad('$tau_{f_{Na}} (s)$');
+    LEGEND_STATES(:,3) = strpad('$f_{Na} (-)$');
+    LEGEND_CONSTANTS(:,6) = strpad('$E_{Na} (V)$');
+    LEGEND_CONSTANTS(:,7) = strpad('$G_{Na} (F)$');
+    LEGEND_STATES(:,4) = strpad('$Ca_{c} (mM)$');
+    LEGEND_ALGEBRAIC(:,5) = strpad('$d_{BK} (-)$');
+    LEGEND_CONSTANTS(:,8) = strpad('$E_{K} (V)$');
+    LEGEND_CONSTANTS(:,9) = strpad('$G_{max_{BK}} (F)$');
+    LEGEND_CONSTANTS(:,10) = strpad('$E_{Ca} (V)$');
+    LEGEND_CONSTANTS(:,11) = strpad('$G_{MCa} (F)$');
+    LEGEND_CONSTANTS(:,12) = strpad('$q (-)$');
+    LEGEND_CONSTANTS(:,13) = strpad('$k_{Ca} (mM)$');
+    LEGEND_ALGEBRAIC(:,9) = strpad('$G_{Ca} (F)$');
+    LEGEND_STATES(:,5) = strpad('$Ca_{s} (mM)$');
+    LEGEND_STATES(:,6) = strpad('$IP_{3} (mM)$');
+    LEGEND_CONSTANTS(:,14) = strpad('$V_{0} (mM / s)$');
+    LEGEND_CONSTANTS(:,15) = strpad('$V_{1} (/ s)$');
+    LEGEND_CONSTANTS(:,16) = strpad('$V_{M2} (mM / s)$');
+    LEGEND_CONSTANTS(:,17) = strpad('$n (-)$');
+    LEGEND_CONSTANTS(:,18) = strpad('$k_{2} (mM)$');
+    LEGEND_CONSTANTS(:,19) = strpad('$V_{M3} (mM / s)$');
+    LEGEND_CONSTANTS(:,20) = strpad('$w (-)$');
+    LEGEND_CONSTANTS(:,21) = strpad('$k_{a} (mM)$');
+    LEGEND_CONSTANTS(:,22) = strpad('$m (-)$');
+    LEGEND_CONSTANTS(:,23) = strpad('$k_{r} (mM)$');
+    LEGEND_CONSTANTS(:,24) = strpad('$o (-)$');
+    LEGEND_CONSTANTS(:,25) = strpad('$k_{p} (mM)$');
+    LEGEND_ALGEBRAIC(:,4) = strpad('$V_{in} (mM / s)$');
+    LEGEND_ALGEBRAIC(:,6) = strpad('$V_{2} (mM / s)$');
+    LEGEND_ALGEBRAIC(:,8) = strpad('$V_{3} (mM / s)$');
+    LEGEND_CONSTANTS(:,26) = strpad('$k_{f} (/ s)$');
+    LEGEND_CONSTANTS(:,27) = strpad('$K (/ s)$');
+    LEGEND_CONSTANTS(:,28) = strpad('$beta (mM / s)$');
+    LEGEND_CONSTANTS(:,29) = strpad('$eta (\frac{1}{s})$');
+    LEGEND_CONSTANTS(:,30) = strpad('$V_{M4} (mM / s)$');
+    LEGEND_CONSTANTS(:,31) = strpad('$k_{4} (mM)$');
+    LEGEND_CONSTANTS(:,32) = strpad('$u (-)$');
+    LEGEND_CONSTANTS(:,33) = strpad('$P_{MV} (mM / s)$');
+    LEGEND_CONSTANTS(:,34) = strpad('$k_{v} (V)$');
+    LEGEND_CONSTANTS(:,35) = strpad('$r (-)$');
+    LEGEND_RATES(:,1) = strpad('$\frac{d}{dt} (V)$');
+    LEGEND_RATES(:,2) = strpad('$\frac{dd_{Na}}{dt} (-)$');
+    LEGEND_RATES(:,3) = strpad('$\frac{df_{Na}}{dt}(-)$');
+    LEGEND_RATES(:,6) = strpad('$\frac{dIP_{3}}{dt} (mM)$');
+    LEGEND_RATES(:,5) = strpad('$\frac{{dCa_{s}}{dt} (mM)$');
+    LEGEND_RATES(:,4) = strpad('$\frac{dCa_{c}}{dt} (mM)$');
     LEGEND_STATES  = LEGEND_STATES';
     LEGEND_ALGEBRAIC = LEGEND_ALGEBRAIC';
     LEGEND_RATES = LEGEND_RATES';
     LEGEND_CONSTANTS = LEGEND_CONSTANTS';
 end
 
-function [STATES, CONSTANTS] = initConsts(I_s_val)
+function [STATES, CONSTANTS] = initConsts(beta_val, eta_val, IP3_val)
     VOI = 0; CONSTANTS = []; STATES = []; ALGEBRAIC = [];
     STATES(:,1) = -70.0328; % V_m: membrane voltage  
     CONSTANTS(:,1) = 25; % C_m: membrane capacitance
-    CONSTANTS(:,2) = I_s_val; % I_s: stimulus current
+    CONSTANTS(:,2) = 0; % I_s: stimulus current
     CONSTANTS(:,3) = 1; % Cor?
     CONSTANTS(:,4) = 10; % tau_d_Na: Na+ gating time constant
     STATES(:,2) = 0; % d_Na: sodium conductance gate
@@ -133,7 +140,7 @@ function [STATES, CONSTANTS] = initConsts(I_s_val)
     CONSTANTS(:,12) = 4; % q: Hill coefficient
     CONSTANTS(:,13) = 1.4; % k_Ca: Half saturation constant for I_Ca
     STATES(:,5) = 2.46238; % Ca_s: Ca2+ intracellular store
-    STATES(:,6) = 0.4778; % IP_3: inositol trisphosphate
+    STATES(:,6) = IP3_val; % IP_3: inositol trisphosphate
     CONSTANTS(:,14) = 0.0002145; % V_0: Ca2+ influx into cytosol
     CONSTANTS(:,15) = 0.00022094; % V_1: Ca2+ influx into cytosol due to IP_3
     CONSTANTS(:,16) = 0.0049; % V_M2: max Ca2+ pump into store
@@ -148,8 +155,8 @@ function [STATES, CONSTANTS] = initConsts(I_s_val)
     CONSTANTS(:,25) = 0.65; % k_p: IP_3 threshold for V_3
     CONSTANTS(:,26) = 0.0000585; % k_f: rate constant
     CONSTANTS(:,27) = 0.0006435; % K: rate constant
-    CONSTANTS(:,28) = 0.000975; % beta: IP_3 synthesis constant
-    CONSTANTS(:,29) = 0.0389; % eta: linera IP_3 synthesis
+    CONSTANTS(:,28) = beta_val; % beta: IP_3 synthesis constant
+    CONSTANTS(:,29) = eta_val; % eta: linera IP_3 synthesis
     CONSTANTS(:,30) = 0.0004875; % V_M4: max IP_3 nonlinear degradation
     CONSTANTS(:,31) = 0.5; % k_4: half saturation constant
     CONSTANTS(:,32) = 4; % u: Hill coefficient

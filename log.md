@@ -13,6 +13,7 @@
 - [Week 9](#week-9)
 - [Week 10](#week-10)
 - [Week 11](#week-11)
+- [Week 12](#week-12)
 
 ## Week 1
 
@@ -331,6 +332,40 @@ The `/bin/bash` at the end of the command file is necessary to keep the window o
 
 Switched to WinSCP for GUI and scripting functionality.
 
+### Friday 5 April
+
 - What is $Cor\cdot{()}$?
-- $k_r$ and $k_a$ are both cytosolic Ca2+ threshold for V_3 but have different values?
-- Can we assume Hill coefficient hold true and cannot be changed? 
+
+> Cor is a scaling parameter - easy way of changing the frequency of the model (beyond just using existing parameters); from 3cpm to 26cpm.
+
+- $k_r$ and $k_a$ are both cytosolic Ca2+ threshold for $V_3$ but have different values?
+
+> Different constants.
+
+- Can we assume Hill coefficients hold true and cannot be changed?
+
+> Pseudo-empirical values that can be changed.
+
+**Meeting notes:**
+- Vary: $\beta$, $\eta$, $IP_3$ - parameters that affect frequency
+- Start with 5 or 6 parameters, justify choice with literature review
+- Quantify effects of changing parametes $\pm20\%$
+- When in 2D model, have to assign a gradient
+- Diffusing voltage, COR model provides a solution at one point in the cell; the 2D model uses a 'voltage governing equation' to form a diffusion gradient across points
+- In a healthy human stomach, activities occur at 3cpm. The same activity in intestines happen at 12-30 cpm depending on area of intestine and species.
+
+## Week 12
+
+### Friday 12 June
+
+- Which output are we most interested in? $V_m$?
+
+> $Ca_c$ is important as well, it supports movement in the muscle. It is highly correlated and proportional with $V_m$, so we can infer one to the other, but it does provide another dimension for perturbation. Regardless, $V_m$ is still most important.
+
+- Are the parameter values in the paper valid? (using those values for $\eta$ and $\beta$ give weird results)
+
+> Ignore the values in paper and just change around those in the existing file.
+
+- We can easily change frequency just by changing $Cor$, so how should we control much we rely on this pseudo-constant?
+
+> Strictly speaking, no. Since altering the parameters alone will not get us anywhere close to 26cpm, we use $Cor$ to do that in the 1D case. Then for 2D, we modify $\eta$, $\beta$, etc. to assign a gradient across the array of electrodes for various parameter values.
