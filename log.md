@@ -369,3 +369,7 @@ Switched to WinSCP for GUI and scripting functionality.
 - We can easily change frequency just by changing $Cor$, so how should we control much we rely on this pseudo-constant?
 
 > Strictly speaking, no. Since altering the parameters alone will not get us anywhere close to 26cpm, we use $Cor$ to do that in the 1D case. Then for 2D, we modify $\eta$, $\beta$, etc. to assign a gradient across the array of electrodes for various parameter values.
+
+**Meeting notes:**
+
+There is an old paper that proposes a more complex cell model that accounts for the effect of acetylcholine. Use the new parameter as an additional coefficient to current.
