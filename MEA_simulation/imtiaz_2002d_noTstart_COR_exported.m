@@ -1,5 +1,7 @@
 
 function [VOI, STATES, ALGEBRAIC, CONSTANTS] = imtiaz_2002d_noTstart_COR_exported()
+    addpath 'C:\Users\lollo\Documents\GI-mathematical-modelling\ACh model';
+    [~, ~, ach_model, ~] = corrias_buist_2007_exported;
     % This is the "main function".  In Matlab, things work best if you rename this function to match the filename.
     beta_val = [0.000062, 0.000975];
     eta_val = [0.00015, 0.0389];
@@ -8,7 +10,7 @@ function [VOI, STATES, ALGEBRAIC, CONSTANTS] = imtiaz_2002d_noTstart_COR_exporte
     for k = 1:length(IP3_val)
         for j = 1:length(eta_val)
             for i = 1:length(beta_val)
-                [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, LEGEND_VOI] = solveModel(beta_val(i), eta_val(j), IP3_val(k));
+                [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, LEGEND_VOI] = solveModel(beta_val(i), eta_val(j), IP3_val(k), ach_model(:,33));
             end
         end
     end
@@ -27,7 +29,7 @@ end
 % There are a total of 6 entries in each of the rate and state variable arrays.
 % There are a total of 35 entries in the constant variable array.
 
-function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, LEGEND_VOI] = solveModel(beta_val, eta_val, IP3_val)
+function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, LEGEND_VOI] = solveModel(beta_val, eta_val, IP3_val, h_Ca)
     % Create ALGEBRAIC of correct size
     global algebraicVariableCount;  
     algebraicVariableCount = getAlgebraicVariableCount();
@@ -45,7 +47,7 @@ function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, LEGEND_VOI] = solveM
 
     % Compute algebraic variables
     [RATES, ALGEBRAIC] = computeRates(VOI, STATES, CONSTANTS);
-    ALGEBRAIC = computeAlgebraic(ALGEBRAIC, CONSTANTS, STATES, VOI);
+    ALGEBRAIC = computeAlgebraic(ALGEBRAIC, CONSTANTS, STATES, VOI, h_Ca);
 
     % Plot state variables against variable of integration
     [LEGEND_STATES, LEGEND_ALGEBRAIC, LEGEND_VOI, LEGEND_CONSTANTS] = createLegends();
@@ -125,7 +127,7 @@ function [STATES, CONSTANTS] = initConsts(beta_val, eta_val, IP3_val)
     STATES(:,1) = -70.0328; % V_m: membrane voltage  
     CONSTANTS(:,1) = 25; % C_m: membrane capacitance
     CONSTANTS(:,2) = 0; % I_s: stimulus current
-    CONSTANTS(:,3) = 1; % Cor?
+    CONSTANTS(:,3) = 1; % Cor
     CONSTANTS(:,4) = 10; % tau_d_Na: Na+ gating time constant
     STATES(:,2) = 0; % d_Na: sodium conductance gate
     CONSTANTS(:,5) = 110; % tau_f_Na: Na+ gating time constant
@@ -200,7 +202,7 @@ function [RATES, ALGEBRAIC] = computeRates(VOI, STATES, CONSTANTS)
 end
 
 % Calculate algebraic variables
-function ALGEBRAIC = computeAlgebraic(ALGEBRAIC, CONSTANTS, STATES, VOI)
+function ALGEBRAIC = computeAlgebraic(ALGEBRAIC, CONSTANTS, STATES, VOI, h_Ca)
     statesSize = size(STATES);
     statesColumnCount = statesSize(2);
     if ( statesColumnCount == 1)
@@ -217,7 +219,7 @@ function ALGEBRAIC = computeAlgebraic(ALGEBRAIC, CONSTANTS, STATES, VOI)
     ALGEBRAIC(:,4) = CONSTANTS(:,14)+ CONSTANTS(:,15).*STATES(:,6);
     ALGEBRAIC(:,1) =  CONSTANTS(:,7).*STATES(:,3).*STATES(:,2).*(STATES(:,1) - CONSTANTS(:,6));
     ALGEBRAIC(:,9) = ( CONSTANTS(:,11).*power(STATES(:,4), CONSTANTS(:,12)))./(power(CONSTANTS(:,13), CONSTANTS(:,12))+power(STATES(:,4), CONSTANTS(:,12)));
-    ALGEBRAIC(:,10) =  ALGEBRAIC(:,9).*(STATES(:,1) - CONSTANTS(:,10));
+    ALGEBRAIC(:,10) =  (ALGEBRAIC(:,9).*(STATES(:,1) - CONSTANTS(:,10))); % I_Ca
     ALGEBRAIC(:,5) = 1.00000./(1.00000+exp(STATES(:,1)./ - 17.0000 -  2.00000.*log(STATES(:,4)./0.00100000)));
     ALGEBRAIC(:,7) =  CONSTANTS(:,9).*ALGEBRAIC(:,5).*(STATES(:,1) - CONSTANTS(:,8));
 end

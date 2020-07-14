@@ -14,6 +14,7 @@
 - [Week 10](#week-10)
 - [Week 11](#week-11)
 - [Week 12](#week-12)
+- [Holidays](#holidays)
 
 ## Week 1
 
@@ -373,3 +374,29 @@ Switched to WinSCP for GUI and scripting functionality.
 **Meeting notes:**
 
 There is an old paper that proposes a more complex cell model that accounts for the effect of acetylcholine. Use the new parameter as an additional coefficient to current.
+
+## Holidays
+
+### Friday 10 July
+
+**Meeting notes:**
+
+- Peng has had discussions with neuroscientists that deal extensively with acetylcholine
+- Non-selective cationic channels (NSCC)
+- ACh modulates the amount of current that can flow through ion conductance channels
+- Changing the ion conductances affect the results a lot (plots in OpenCOR)
+- $I_{BK}$, $I_{Ca}$, $I_{Na}$ - three ion conductances to target and change
+- Charged ions flowing in and out of cell
+- Reducing these values simulate partial inhibition
+- Can reduce/increase incrementally, either individually or in combination - see how it affects activities
+
+- Can still change frequency parameter (so 4 parameters in total)
+- Limits the scope but must justify
+
+- Cell model in OpenCOR for electrodes and tissue model in CMISS to stitch everything together
+- Match cell model frequency and amplification with experimental data, then just throw everything into tissue model
+- Note that the domain of the tissue model may need to be reduced to get a good 2D match
+
+- Previous $h_{Ca}$ variable in Corras & Buist 2007 effectively does the same thing as modifying the ion conductance values themselves so leave for now (may add later)
+
+**Goal for next week:** have a good range of parameters and plot the results.
