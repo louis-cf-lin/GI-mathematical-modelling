@@ -1,6 +1,7 @@
 
 function [VOI, STATES, ALGEBRAIC, CONSTANTS] = imtiaz_2002d_noTstart_COR_exported()
-    addpath 'C:\Users\lollo\Documents\GI-mathematical-modelling\ACh model';
+%     addpath 'C:\Users\lollo\Documents\GI-mathematical-modelling\ACh model';
+    addpath 'C:\Users\Louii\Documents\GI-mathematical-modelling\ACh model'
     [~, ~, ach_model, ~] = corrias_buist_2007_exported;
     % This is the "main function".  In Matlab, things work best if you rename this function to match the filename.
     beta_val = [0.000062, 0.000975];
