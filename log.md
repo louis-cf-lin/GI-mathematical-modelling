@@ -379,6 +379,10 @@ There is an old paper that proposes a more complex cell model that accounts for 
 
 ### Friday 10 July
 
+Tried integrating ACh model into existing cell modelling. Converted `corrias_buist_2007.cellml` to MATLAB and piped generated $h_{Ca}$ values to main `imtiaz_2002d_noTstart_COR_exported.m`. Ran into problems with dimensions not matching, despite using identical time periods and time steps.
+
+(Run it to find difference in dimensions)
+
 **Meeting notes:**
 
 - Peng has had discussions with neuroscientists that deal extensively with acetylcholine
@@ -400,3 +404,17 @@ There is an old paper that proposes a more complex cell model that accounts for 
 - Previous $h_{Ca}$ variable in Corras & Buist 2007 effectively does the same thing as modifying the ion conductance values themselves so leave for now (may add later)
 
 **Goal for next week:** have a good range of parameters and plot the results.
+
+### Wednesday 15 July
+
+Meetings notes from Peng:
+
+First big task: calibrating CellML model over a range of parameters and generate calibration curves and voltage output. Compare and contrast with experimental data - does it match? Which parameters are best?
+
+Keep $Cor$ constant for all analyses; 6 is a good value. $Cor$ is difficult to justify so best to find a good value for it (e.g. 6) and keep it constant across the entire domain.
+
+For the baseline model, keep $Cor$ at a constant value, then adjust $\eta$ and $\beta$ to get frequencies above and below experimental data. For drug-effect simulation, can also change ion condutance $I_{BK}$, $I_{Ca}$, and $I_{Na}$.
+
+After finding suitable parameters for the cell model, feed those values into the tissue model and run in CMISS. To pipe the values in, use the files in `mfiles`.
+
+`dipole_calculate.m` creates plots of the tissue model results.
