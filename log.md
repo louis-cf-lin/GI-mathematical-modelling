@@ -14,7 +14,9 @@
 - [Week 10](#week-10)
 - [Week 11](#week-11)
 - [Week 12](#week-12)
-- [Holidays](#holidays)
+- [Holidays Week 1](#holidays-week-1)
+- [Holidays Week 2](#holidays-week-2)
+- [Holidays Week 3](#holidays-week-3)
 
 ## Week 1
 
@@ -375,9 +377,7 @@ Switched to WinSCP for GUI and scripting functionality.
 
 There is an old paper that proposes a more complex cell model that accounts for the effect of acetylcholine. Use the new parameter as an additional coefficient to current.
 
-## Holidays
-
-### Friday 10 July
+## Holidays Week 1
 
 Tried integrating ACh model into existing cell modelling. Converted `corrias_buist_2007.cellml` to MATLAB and piped generated $h_{Ca}$ values to main `imtiaz_2002d_noTstart_COR_exported.m`. Ran into problems with dimensions not matching, despite using identical time periods and time steps.
 
@@ -405,7 +405,7 @@ Tried integrating ACh model into existing cell modelling. Converted `corrias_bui
 
 **Goal for next week:** have a good range of parameters and plot the results.
 
-### Wednesday 15 July
+## Holidays Week 2
 
 Meetings notes from Peng:
 
@@ -418,3 +418,68 @@ For the baseline model, keep $Cor$ at a constant value, then adjust $\eta$ and $
 After finding suitable parameters for the cell model, feed those values into the tissue model and run in CMISS. To pipe the values in, use the files in `mfiles`.
 
 `dipole_calculate.m` creates plots of the tissue model results.
+
+## Holidays Week 3
+
+The baseline frequency vary widely across the three experiments. Ach-AT has frequency as low as 12 (at 2) and up to 20 (at 6), but mostly in the range of 18 - 20cpm. In Ach-Hex, frequency ranges from 14 to 17.9, but most are near 17cpm. Beth-AT is most consistent, with a slight right-tailed but mostly uniform distribution from 18 to 21cpm.
+
+With default $\eta$=0.0389 and $\beta$=0.000975:
+
+- $Cor$ = 6: 27cpm.
+- $Cor$ = 5: 23cpm.
+- $Cor$ = 4: 18cpm.
+- $Cor$ = 3: 14 cpm.
+- $Cor$ = 3: 9 cpm.
+
+$Cor$=4 seems to be the most appropriate value with default parameters.
+
+Do we just count the number of peaks in a 60000ms period to get frequency in cpm?
+
+> Run until steady state
+
+What does each row of data mean? Do they represent one electrode each?
+
+What unit/measurement is amplitude? Is velocity relevant? What is percentage?
+> Amplitude is of voltage, but relative to extracellular voltage, making it a difficult characteristic to match. A percentage/relative difference or change might be more feasible but may still not match well. Velocity is wave propagation velocity and simulated in CMISS. It's provides another characteristic that can be matched in the tissue model. Percentage is the proportion of time activities are occuring in the same general direction.
+
+
+With $Cor$=4 and $\eta$=0.0389:
+
+- $\beta$ = 0.0004: 16cpm.
+- $\beta$ = 0.0005 to 0.0007: 17cpm.
+- $\beta$ = 0.0008 to 0.0009: 18cpm.
+- $\beta$ = 0.000975: 18cpm (default).
+- $\beta$ = 0.001 to 0.0012: 19cpm.
+- $\beta$ = 0.0013 to 0.0014: 20cpm.
+- $\beta$ = 0.0015: 21cpm.
+
+*Note: intervals between values may belong to either the upper or lower domain. E.g. 0.000975 gives 18cpm, which is in the lower domain bracket despite being closer to the upper interval.*
+
+With $Cor$=4 and $\beta$=0.000975:
+
+- $\eta$ = 0.01: 1cpm.
+- $\eta$ = 0.02: 1cpm.
+- $\eta$ = 0.0389: 18cpm (default).
+- $\eta$ = 0.04: 17cpm.
+- $\eta$ = 0.05: 6cpm.
+- $\eta$ = 0.06: 3cpm.
+
+Further analysis:
+
+- $\eta$ = 0.03: 31cpm.
+- $\eta$ = 0.033: 27cpm.
+- $\eta$ = 0.036: 22cpm.
+- $\eta$ = 0.0389: 18cpm.
+- $\eta$ = 0.04: 17cpm.
+- $\eta$ = 0.045: 11cpm.
+- $\eta$ = 0.05: 6cpm.
+
+Frequency looks like a right-skewed curve when plotted against $\eta$.
+
+**Meeting notes:**
+
+- It is easier to use the range of $\eta$ in which frequency is an upstroke due to the positive gradient. We don't want to be increasing $\eta$ and suddenly the behaviour changes unexpectedly (i.e. freq. decreases). $\beta$ is approximately linear so will be easier to adjust within a larger range.
+- **Important note**: neither $\eta$ nor $\beta$ represent physiological properties. The values of these parameters have been derived to fit empirical data. There is no need to justify a quantitative physiological trait.
+- Can look into other characteristics of trace, e.g. upstroke, width.
+
+We don't have other characteristics of experimental data so how do we match e.g. upstroke, width etc.?

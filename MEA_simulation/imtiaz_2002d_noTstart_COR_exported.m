@@ -1,17 +1,9 @@
-
-function [VOI, STATES, ALGEBRAIC, CONSTANTS] = imtiaz_2002d_noTstart_COR_exported()
-%     addpath 'C:\Users\lollo\Documents\GI-mathematical-modelling\ACh model';
-    addpath 'C:\Users\Louii\Documents\GI-mathematical-modelling\ACh model'
-    [~, ~, ach_model, ~] = corrias_buist_2007_exported;
+function [VOI, STATES, ALGEBRAIC, CONSTANTS, peaks] = imtiaz_2002d_noTstart_COR_exported(beta_val, eta_val, IP3_val, t)
     % This is the "main function".  In Matlab, things work best if you rename this function to match the filename.
-    beta_val = [0.000062, 0.000975];
-    eta_val = [0.00015, 0.0389];
-    IP3_val = [0.4778];
-    t = tiledlayout(2,2);
     for k = 1:length(IP3_val)
         for j = 1:length(eta_val)
             for i = 1:length(beta_val)
-                [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, LEGEND_VOI] = solveModel(beta_val(i), eta_val(j), IP3_val(k), ach_model(:,33));
+                [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, LEGEND_VOI, peaks] = solveModel(beta_val(i), eta_val(j), IP3_val(k));
             end
         end
     end
@@ -30,7 +22,7 @@ end
 % There are a total of 6 entries in each of the rate and state variable arrays.
 % There are a total of 35 entries in the constant variable array.
 
-function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, LEGEND_VOI] = solveModel(beta_val, eta_val, IP3_val, h_Ca)
+function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, LEGEND_VOI, peaks] = solveModel(beta_val, eta_val, IP3_val)
     % Create ALGEBRAIC of correct size
     global algebraicVariableCount;  
     algebraicVariableCount = getAlgebraicVariableCount();
@@ -48,13 +40,16 @@ function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, LEGEND_VOI] = solveM
 
     % Compute algebraic variables
     [RATES, ALGEBRAIC] = computeRates(VOI, STATES, CONSTANTS);
-    ALGEBRAIC = computeAlgebraic(ALGEBRAIC, CONSTANTS, STATES, VOI, h_Ca);
+    ALGEBRAIC = computeAlgebraic(ALGEBRAIC, CONSTANTS, STATES, VOI);
 
     % Plot state variables against variable of integration
     [LEGEND_STATES, LEGEND_ALGEBRAIC, LEGEND_VOI, LEGEND_CONSTANTS] = createLegends();
-%     figure();
+    
+    peaks = numel(findpeaks(STATES(:,1)));
+    fprintf('beta = %f, eta = %f, IP3 = %f: %i peaks \n', beta_val, eta_val, IP3_val, peaks);
+
     nexttile
-    plot(VOI, STATES);
+    plot(VOI, STATES(:,1)); % only plotting voltage
 end
 
 function [LEGEND_STATES, LEGEND_ALGEBRAIC, LEGEND_VOI, LEGEND_CONSTANTS] = createLegends()
@@ -128,7 +123,7 @@ function [STATES, CONSTANTS] = initConsts(beta_val, eta_val, IP3_val)
     STATES(:,1) = -70.0328; % V_m: membrane voltage  
     CONSTANTS(:,1) = 25; % C_m: membrane capacitance
     CONSTANTS(:,2) = 0; % I_s: stimulus current
-    CONSTANTS(:,3) = 1; % Cor
+    CONSTANTS(:,3) = 4; % Cor
     CONSTANTS(:,4) = 10; % tau_d_Na: Na+ gating time constant
     STATES(:,2) = 0; % d_Na: sodium conductance gate
     CONSTANTS(:,5) = 110; % tau_f_Na: Na+ gating time constant
@@ -166,7 +161,7 @@ function [STATES, CONSTANTS] = initConsts(beta_val, eta_val, IP3_val)
     CONSTANTS(:,33) = 0.0325; % P_MV: max IP_3 synthesis
     CONSTANTS(:,34) = -68; % k_v: half saturation constant
     CONSTANTS(:,35) = 8; % r: Hill coefficient
-    if (isempty(STATES)), warning('Initial values for states not set');, end
+    if (isempty(STATES)), warning('Initial values for states not set'); end
 end
 
 function [RATES, ALGEBRAIC] = computeRates(VOI, STATES, CONSTANTS)
@@ -203,7 +198,7 @@ function [RATES, ALGEBRAIC] = computeRates(VOI, STATES, CONSTANTS)
 end
 
 % Calculate algebraic variables
-function ALGEBRAIC = computeAlgebraic(ALGEBRAIC, CONSTANTS, STATES, VOI, h_Ca)
+function ALGEBRAIC = computeAlgebraic(ALGEBRAIC, CONSTANTS, STATES, VOI)
     statesSize = size(STATES);
     statesColumnCount = statesSize(2);
     if ( statesColumnCount == 1)
