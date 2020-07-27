@@ -1,5 +1,6 @@
 pwd
-matlab
-dipole_calculate
+cd MEA_simulation
+pwd
+matlab -r "dipole_calculate"
 
 /bin/bash

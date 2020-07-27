@@ -291,7 +291,8 @@ cm file.com
 
 ### Friday 15 May
 
-Meeting notes:
+**Meeting notes:**
+
 - Not many updates for simulation-side from Peng
 - Will look into why `cm` command not working
 - Don't run too many screen sessions
@@ -304,15 +305,18 @@ Goal for next week: a figure, some output.
 
 Learnt about *batch* files. Switched to PuTTY instead of Windows OpenSSH Client as there's more technical support for writing PuTTY batch files. Wrote one to automate logging in with password.
 
-You can check prompty using `echo $PS1` or change prompt using the `PS1=""` command ([more info](https://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html)).
+You can check prompt using `echo $PS1` or change prompt using the `PS1=""` command ([more info](https://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html)).
 
 ### Friday 22 May
 
 Possible solutions:
 
 - Get `cm` path from Peng (`which cm`)
+
 > /hpc/cmiss/bin/x86_64-linux/cm
+
 - Find out why `$HOME` is `people\llin` and not `people\clin750` or something else
+
 > Possibly; Peng will get Tiong to check
 
 Goal for next week: run the CellML simulation by converting it to MATLAB then  varying a range of parameters:
@@ -350,6 +354,7 @@ Switched to WinSCP for GUI and scripting functionality.
 > Pseudo-empirical values that can be changed.
 
 **Meeting notes:**
+
 - Vary: $\beta$, $\eta$, $IP_3$ - parameters that affect frequency
 - Start with 5 or 6 parameters, justify choice with literature review
 - Quantify effects of changing parametes $\pm20\%$
@@ -483,3 +488,10 @@ Frequency looks like a right-skewed curve when plotted against $\eta$.
 - Can look into other characteristics of trace, e.g. upstroke, width.
 
 We don't have other characteristics of experimental data so how do we match e.g. upstroke, width etc.?
+
+## Week 1
+
+GitHub repository, VPN, and SSH setup on tablet.
+
+Edited batch command file: successfully automated `dipole_calculate.m`.
+
