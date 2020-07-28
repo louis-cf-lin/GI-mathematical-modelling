@@ -1,36 +1,28 @@
 function [VOI, STATES, ALGEBRAIC, CONSTANTS, peaks] = imtiaz_2002d_noTstart_COR_exported(beta_val, eta_val, IP3_val, t)
-    % This is the "main function".  In Matlab, things work best if you rename this function to match the filename.
-    for k = 1:length(IP3_val)
-        for j = 1:length(eta_val)
-            for i = 1:length(beta_val)
-                [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, LEGEND_VOI, peaks] = solveModel(beta_val(i), eta_val(j), IP3_val(k));
-            end
-        end
+
+    % create plot
+    if t
+        [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta_val, eta_val, IP3_val, true);
+        %l = legend(LEGEND_STATES);
+        %set(l, 'Interpreter', 'Latex');
+        xlabel(X_TITLE);
+        ylabel('$V_{m}$ (V)', 'Interpreter', 'Latex');
+        title(['$\beta$=',num2str(beta_val),', $\eta$=',num2str(eta_val),', $IP3$=',num2str(IP3_val)], 'Interpreter', 'Latex');
+    else
+        [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta_val, eta_val, IP3_val, false);
     end
-    
-    l = legend(LEGEND_STATES);
-    set(l, 'Interpreter', 'Latex');
-    xlabel(t, LEGEND_VOI);
-    title(t, 'TBA');
 end
 
-function [algebraicVariableCount] = getAlgebraicVariableCount()
-    % Used later when setting a global variable with the number of algebraic variables.
-    % Note: This is not the "main method".
+
+function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta_val, eta_val, IP3_val, t)
+    % Set ALGEBRAIC 
+    global algebraicVariableCount
     algebraicVariableCount = 10;
-end
-% There are a total of 6 entries in each of the rate and state variable arrays.
-% There are a total of 35 entries in the constant variable array.
-
-function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, LEGEND_VOI, peaks] = solveModel(beta_val, eta_val, IP3_val)
-    % Create ALGEBRAIC of correct size
-    global algebraicVariableCount;  
-    algebraicVariableCount = getAlgebraicVariableCount();
     % Initialise constants and state variables
     [INIT_STATES, CONSTANTS] = initConsts(beta_val, eta_val, IP3_val);
 
     % Set timespan to solve over
-    tspan = [0, 60000];
+    tspan = [600000, 660000]; % 60s period after 10 min
 
     % Set numerical accuracy options for ODE solver
     options = odeset('RelTol', 1e-06, 'AbsTol', 1e-06, 'MaxStep', 1);
@@ -43,18 +35,22 @@ function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, LEGEND_VOI, peaks] =
     ALGEBRAIC = computeAlgebraic(ALGEBRAIC, CONSTANTS, STATES, VOI);
 
     % Plot state variables against variable of integration
-    [LEGEND_STATES, LEGEND_ALGEBRAIC, LEGEND_VOI, LEGEND_CONSTANTS] = createLegends();
+    [LEGEND_STATES, LEGEND_ALGEBRAIC, X_TITLE, LEGEND_CONSTANTS] = createLegends();
     
     peaks = numel(findpeaks(STATES(:,1)));
     fprintf('beta = %f, eta = %f, IP3 = %f: %i peaks \n', beta_val, eta_val, IP3_val, peaks);
 
-    nexttile
-    plot(VOI, STATES(:,1)); % only plotting voltage
+    if t
+        nexttile
+        plot(VOI, STATES(:,1)); % only plotting voltage
+    end
 end
 
-function [LEGEND_STATES, LEGEND_ALGEBRAIC, LEGEND_VOI, LEGEND_CONSTANTS] = createLegends()
-    LEGEND_STATES = ''; LEGEND_ALGEBRAIC = ''; LEGEND_VOI = ''; LEGEND_CONSTANTS = '';
-    LEGEND_VOI = 'time (ms)';
+function [LEGEND_STATES, LEGEND_ALGEBRAIC, X_TITLE, LEGEND_CONSTANTS] = createLegends()
+    LEGEND_STATES = ''; 
+    LEGEND_ALGEBRAIC = ''; 
+    LEGEND_CONSTANTS = '';
+    X_TITLE = 'time (ms)';
     LEGEND_STATES(:,1) = strpad('$V_{m} (V)$');
     LEGEND_CONSTANTS(:,1) = strpad('$C_{m} (F)$');
     LEGEND_ALGEBRAIC(:,1) = strpad('$I_{Na} (A)$');
@@ -64,13 +60,13 @@ function [LEGEND_STATES, LEGEND_ALGEBRAIC, LEGEND_VOI, LEGEND_CONSTANTS] = creat
     LEGEND_CONSTANTS(:,3) = strpad('$Cor (-)$');
     LEGEND_ALGEBRAIC(:,2) = strpad('$d_{inf_{Na}} (-)$');
     LEGEND_CONSTANTS(:,4) = strpad('$tau_{d_{Na}} (A)$');
-    LEGEND_STATES(:,2) = strpad('$d_{Na} (-)$');
+    %LEGEND_STATES(:,2) = strpad('$d_{Na} (-)$');
     LEGEND_ALGEBRAIC(:,3) = strpad('$f_{inf_{Na}} (-)$');
     LEGEND_CONSTANTS(:,5) = strpad('$tau_{f_{Na}} (s)$');
-    LEGEND_STATES(:,3) = strpad('$f_{Na} (-)$');
+    %LEGEND_STATES(:,3) = strpad('$f_{Na} (-)$');
     LEGEND_CONSTANTS(:,6) = strpad('$E_{Na} (V)$');
     LEGEND_CONSTANTS(:,7) = strpad('$G_{Na} (F)$');
-    LEGEND_STATES(:,4) = strpad('$Ca_{c} (mM)$');
+    %LEGEND_STATES(:,4) = strpad('$Ca_{c} (mM)$');
     LEGEND_ALGEBRAIC(:,5) = strpad('$d_{BK} (-)$');
     LEGEND_CONSTANTS(:,8) = strpad('$E_{K} (V)$');
     LEGEND_CONSTANTS(:,9) = strpad('$G_{max_{BK}} (F)$');
@@ -79,8 +75,8 @@ function [LEGEND_STATES, LEGEND_ALGEBRAIC, LEGEND_VOI, LEGEND_CONSTANTS] = creat
     LEGEND_CONSTANTS(:,12) = strpad('$q (-)$');
     LEGEND_CONSTANTS(:,13) = strpad('$k_{Ca} (mM)$');
     LEGEND_ALGEBRAIC(:,9) = strpad('$G_{Ca} (F)$');
-    LEGEND_STATES(:,5) = strpad('$Ca_{s} (mM)$');
-    LEGEND_STATES(:,6) = strpad('$IP_{3} (mM)$');
+    %LEGEND_STATES(:,5) = strpad('$Ca_{s} (mM)$');
+    %LEGEND_STATES(:,6) = strpad('$IP_{3} (mM)$');
     LEGEND_CONSTANTS(:,14) = strpad('$V_{0} (mM / s)$');
     LEGEND_CONSTANTS(:,15) = strpad('$V_{1} (/ s)$');
     LEGEND_CONSTANTS(:,16) = strpad('$V_{M2} (mM / s)$');
@@ -119,7 +115,10 @@ function [LEGEND_STATES, LEGEND_ALGEBRAIC, LEGEND_VOI, LEGEND_CONSTANTS] = creat
 end
 
 function [STATES, CONSTANTS] = initConsts(beta_val, eta_val, IP3_val)
-    VOI = 0; CONSTANTS = []; STATES = []; ALGEBRAIC = [];
+    VOI = 0; 
+    CONSTANTS = []; 
+    STATES = []; 
+    ALGEBRAIC = [];
     STATES(:,1) = -70.0328; % V_m: membrane voltage  
     CONSTANTS(:,1) = 25; % C_m: membrane capacitance
     CONSTANTS(:,2) = 0; % I_s: stimulus current
@@ -165,7 +164,9 @@ function [STATES, CONSTANTS] = initConsts(beta_val, eta_val, IP3_val)
 end
 
 function [RATES, ALGEBRAIC] = computeRates(VOI, STATES, CONSTANTS)
-    global algebraicVariableCount;
+    
+    % set earlier
+    global algebraicVariableCount
     statesSize = size(STATES);
     statesColumnCount = statesSize(2);
     if ( statesColumnCount == 1)

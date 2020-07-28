@@ -17,6 +17,7 @@
 - [Holidays Week 1](#holidays-week-1)
 - [Holidays Week 2](#holidays-week-2)
 - [Holidays Week 3](#holidays-week-3)
+- [Week 1](#week-1-1)
 
 ## Week 1
 
@@ -491,7 +492,34 @@ We don't have other characteristics of experimental data so how do we match e.g.
 
 ## Week 1
 
+### Monday
+
 GitHub repository, VPN, and SSH setup on tablet.
 
 Edited batch command file: successfully automated `dipole_calculate.m`.
+
+### Tuesday
+
+Streamlined the code for readibility and easier parameterisation. Can now output multiple plots of voltage over time for different parameter values. Plots below are of 20 uniformly distributed parameter values.
+
+**Changing $\beta$:**
+![alt text](./Figures/beta%20vs%20freq.png)
+
+![alt text](./Figures/beta%20vs%20voltage.png)
+
+Roughly linear relationship between $\beta$ and frequency.
+
+**Changing $\eta$:**
+![alt text](./Figures/eta%20vs%20freq.png)
+
+![alt text](./Figures/eta%20vs%20voltage.png)
+
+Observe a cliff-type relationship between $\eta$ and frequency with a right-skewed tail.
+
+**Changing $IP3$:**
+![alt text](./Figures/IP3%20vs%20freq.png)
+
+![alt text](./Figures/IP3%20vs%20voltage.png)
+
+Frequency does not change as $IP3$ is varied.
 
