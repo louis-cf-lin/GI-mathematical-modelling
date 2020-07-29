@@ -1,9 +1,12 @@
+clc
+clear
+
 beta_val = [0.000975];
 %beta_val = linspace(0,0.002,20);
-eta_val = [0.0389];
-%eta_val = linspace(0.02,0.05,20);
-%IP3_val = [0.4778];
-IP3_val = linspace(0,1,20);
+%eta_val = [0.0389];
+eta_val = linspace(0.02,0.05,20);
+IP3_val = [0.4778];
+%IP3_val = linspace(0,1,20);
 show_plot = true;
 
 freq = [];
@@ -25,12 +28,12 @@ figure(2)
 % xlabel('$\beta$', 'Interpreter', 'Latex')
 % ylabel('Freq. (cpm)')
 
-% plot(eta_val, freq)
-% title('$\eta$ vs. Freq with $\beta$=0.000975 and $IP3$=0.4778', 'Interpreter', 'Latex')
-% xlabel('$\eta$', 'Interpreter', 'Latex')
-% ylabel('Freq. (cpm)')
-
-plot(IP3_val, freq)
-title('$IP3$ vs. Freq with $\beta$=0.000975 and $\eta$=0.0389', 'Interpreter', 'Latex')
-xlabel('$IP3$', 'Interpreter', 'Latex')
+plot(eta_val, freq)
+title('$\eta$ vs. Freq with $\beta$=0.000975 and $IP3$=0.4778', 'Interpreter', 'Latex')
+xlabel('$\eta$', 'Interpreter', 'Latex')
 ylabel('Freq. (cpm)')
+
+% plot(IP3_val, freq)
+% title('$IP3$ vs. Freq with $\beta$=0.000975 and $\eta$=0.0389', 'Interpreter', 'Latex')
+% xlabel('$IP3$', 'Interpreter', 'Latex')
+% ylabel('Freq. (cpm)')

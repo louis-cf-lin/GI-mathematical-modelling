@@ -1,7 +1,7 @@
-function [VOI, STATES, ALGEBRAIC, CONSTANTS, peaks] = imtiaz_2002d_noTstart_COR_exported(beta_val, eta_val, IP3_val, t)
+function [VOI, STATES, ALGEBRAIC, CONSTANTS, peaks] = imtiaz_2002d_noTstart_COR_exported(beta_val, eta_val, IP3_val, showplot)
 
     % create plot
-    if t
+    if showplot
         [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta_val, eta_val, IP3_val, true);
         %l = legend(LEGEND_STATES);
         %set(l, 'Interpreter', 'Latex');
@@ -14,7 +14,7 @@ function [VOI, STATES, ALGEBRAIC, CONSTANTS, peaks] = imtiaz_2002d_noTstart_COR_
 end
 
 
-function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta_val, eta_val, IP3_val, t)
+function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta_val, eta_val, IP3_val, showplot)
     % Set ALGEBRAIC 
     global algebraicVariableCount
     algebraicVariableCount = 10;
@@ -40,7 +40,7 @@ function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = so
     peaks = numel(findpeaks(STATES(:,1)));
     fprintf('beta = %f, eta = %f, IP3 = %f: %i peaks \n', beta_val, eta_val, IP3_val, peaks);
 
-    if t
+    if showplot
         nexttile
         plot(VOI, STATES(:,1)); % only plotting voltage
     end
