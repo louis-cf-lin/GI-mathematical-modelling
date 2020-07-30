@@ -500,7 +500,7 @@ Edited batch command file: successfully automated `dipole_calculate.m`.
 
 ### Tuesday
 
-Streamlined the code for readibility and easier parameterisation. Can now output multiple plots of voltage over time for different parameter values. Plots below are of 20 uniformly distributed parameter values.
+Streamlined the code for readibility and easier parameterisation. Can now output multiple plots of voltage over time for different parameter values. Plots below are of 20 uniformly distributed parameter values for one variable while keeping the other two constant at default value. Frequencies are taken at steady state (i.e. after 10 minutes (600,000s)) of simulation for a period of 60 seconds (600,000s to 660,000s).
 
 **Changing $\beta$:**
 ![alt text](./Figures/beta%20vs%20freq.png)
@@ -523,3 +523,27 @@ Observe a cliff-type relationship between $\eta$ and frequency with a right-skew
 
 Frequency does not change as $IP3$ is varied.
 
+### Thursday
+
+Meeting agenda:
+
+- Find range of $\eta$ with positive gradient
+- Investigate why $IP3$ does not affect frequency
+- Find other characteristics that could be useful (upstroke? width?)
+  - How to assess these without experimental data?
+- Share GitHub repo
+- Midyear report
+- Future meeting times
+- Expectations
+
+**Meetings notes from Peng:**
+
+- $IP3$ is a variable and not a parameter, i.e. it has a value but remains constant. So it is reassuring to see that the model is stable regardless of the value itself
+- Upstroke is the elapsed time between resting state (e.g. voltage) and max amplitude. However, it can be difficult to determine the starting point in time as the resting voltage could increase gradually before the sudden uptick. Therefore, it is common to measure upstroke as the time between half amplitude and max amplitude, as both resting state and max amplitude are known. Can also measure from 1/3 amplitude.
+- Width suffers a similar problem to upstroke, so take the timespan between when two values occur (e.g. half amplitude, 1/3 amplitude).
+- We are not using upstroke and width to parameterise the model. It is used as the predictive component of the model - i.e. using the model to infer the effects of drugs. We can then plot frequency vs. upstroke, or frequency vs. width for both normal behaviour and under the effects of drug.
+- We would expect the relationship between freq and upstroke or width to be negative, i.e. the higher the frequency, the shorter the upstroke and width. However, this may not be the case when drugs are applied; expecting arrhythmic activity.
+- Mid-year report/presentation is not marked. It's just a check point for progress. Basic structure could be: background, aims, method, prelimary results, next steps, references. A lot of the background/aim would be recycled content from lit review.
+- Any day between 8AM to 2PM (except Thursday 11-12)
+- Expected faster progression onto the 2D model. The work on the 1D model so far has been good, and is one of the core parts of this project. But the interesting portion is the 2D model and doing some perturbation analysis and other work.
+- One more thing that should be done with the 1D model is analysing the effects of ion conductance. Specifically, reducing the conductance variables and plotting its effect against several characteristics.
