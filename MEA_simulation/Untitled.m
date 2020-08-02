@@ -4,14 +4,17 @@ clear
 beta_val = [0.000975];
 %beta_val = linspace(0,0.002,20);
 %eta_val = [0.0389];
-eta_val = linspace(0.02,0.05,20);
+eta_val = linspace(0.02,0.023,100);
 IP3_val = [0.4778];
 %IP3_val = linspace(0,1,20);
-show_plot = true;
+show_plot = false;
 
 freq = [];
 
-figure(1)
+if show_plot
+    figure(1)
+end
+
 for k = 1:length(IP3_val)
     for j = 1:length(eta_val)
         for i = 1:length(beta_val)
