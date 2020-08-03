@@ -38,7 +38,7 @@ function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = so
     [LEGEND_STATES, LEGEND_ALGEBRAIC, X_TITLE, LEGEND_CONSTANTS] = createLegends();
     
     peaks = numel(findpeaks(STATES(:,1)));
-    fprintf('beta = %f, eta = %f, IP3 = %f: %i peaks \n', beta_val, eta_val, IP3_val, peaks);
+    fprintf('beta = %f, eta = %f, IP3 = %f: %i cpm \n', beta_val, eta_val, IP3_val, peaks);
 
     if showplot
         nexttile

@@ -547,3 +547,20 @@ Meeting agenda:
 - Any day between 8AM to 2PM (except Thursday 11-12)
 - Expected faster progression onto the 2D model. The work on the 1D model so far has been good, and is one of the core parts of this project. But the interesting portion is the 2D model and doing some perturbation analysis and other work.
 - One more thing that should be done with the 1D model is analysing the effects of ion conductance. Specifically, reducing the conductance variables and plotting its effect against several characteristics.
+
+### Friday
+
+Fine resolution zooming to find range for $\eta$:
+
+![alt text](./Figures/eta%20zoom%201.png)
+![alt text](./Figures/eta%20zoom%202.png)
+
+## Week 2
+
+### Monday
+
+**Meeting notes:**
+
+- Storing results before visualisation
+- Reinitialise from steady state
+- Change conductance variables
