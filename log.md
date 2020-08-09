@@ -564,3 +564,5 @@ Fine resolution zooming to find range for $\eta$:
 - Storing results before visualisation
 - Reinitialise from steady state
 - Change conductance variables
+
+Check mV in plots?
