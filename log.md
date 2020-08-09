@@ -18,6 +18,7 @@
 - [Holidays Week 2](#holidays-week-2)
 - [Holidays Week 3](#holidays-week-3)
 - [Week 1](#week-1-1)
+- [Week 2](#week-2-1)
 
 ## Week 1
 
@@ -565,4 +566,21 @@ Fine resolution zooming to find range for $\eta$:
 - Reinitialise from steady state
 - Change conductance variables
 
-Check mV in plots?
+### Sunday
+
+Started and completed mid-year presentation.
+
+Kartikey spotted voltage unit in V, but should probably be mV. Lit review paper has mV but model is written with V.
+
+Idea: use `fminsearch` to find best parameter.
+
+Code now prints average run time per iteration to get an idea of how long to run simulation.
+
+Left simulation for 100 values of eta and beta each to run overnight.
+
+### Week 3
+
+### Monday
+
+![alt text](./Figures/beta%20vs%20eta%20mesh.png)
+$\eta$ on left axis, $\beta$ on right axis. Surface shows frequency. Average time per iteration: 1.4s.

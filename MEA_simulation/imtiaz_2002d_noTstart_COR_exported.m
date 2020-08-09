@@ -6,7 +6,7 @@ function [VOI, STATES, ALGEBRAIC, CONSTANTS, peaks] = imtiaz_2002d_noTstart_COR_
         %l = legend(LEGEND_STATES);
         %set(l, 'Interpreter', 'Latex');
         xlabel(X_TITLE);
-        ylabel('$V_{m}$ (V)', 'Interpreter', 'Latex');
+        ylabel('$V_{m}$ (mV)', 'Interpreter', 'Latex');
         title(['$\beta$=',num2str(beta_val),', $\eta$=',num2str(eta_val),', $IP3$=',num2str(IP3_val)], 'Interpreter', 'Latex');
     else
         [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta_val, eta_val, IP3_val, false);
