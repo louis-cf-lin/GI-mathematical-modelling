@@ -610,5 +610,3 @@ Default values:
 - Research how to properly calibrate a model. An idea was to keep $\eta$ constant and vary $\beta$ to match becaues $\eta$ has a non-linear relationship with frequency - not well behaved
 - Find correct $\eta$ and $\beta$ first, then change $I$ variables to simulate drug effects
 
-
-Hi Peng, should we meet on Friday to go over the 2D model simulation with the set eta and beta values? I'm free any time on Friday.
