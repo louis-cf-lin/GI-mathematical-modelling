@@ -584,3 +584,31 @@ Left simulation for 100 values of eta and beta each to run overnight.
 
 ![alt text](./Figures/beta%20vs%20eta%20mesh.png)
 $\eta$ on left axis, $\beta$ on right axis. Surface shows frequency. Average time per iteration: 1.4s.
+
+Results saved as `surface_vars.m` -- overwrote the original file now it has weird symbols. In future, need to do `save('surface_vars.mat')` instead.
+
+Default values:
+
+- $G_{Na}$ = 8
+- $G_{BK}$ = 1.2
+- $G_{Ca}$ = 4
+
+![alt text](./Figures/G-Na%20vs%20freq.png)
+![alt text](./Figures/G-BK%20vs%20freq.png)
+![alt text](./Figures/G-Ca%20vs%20freq.png)
+
+**Meeting notes**
+
+- Regarding presentation:
+  - Include number of data points, features, run-time; shows significant amount of work relating to data science
+  - A bit more focus on MEA with pictures and/or diagrams
+- MEA data in microV (difference is due to the equipment used in Hong Kong)
+- OpenCOR units should have milli prefix defined (check again)
+- Differences also arise due to measuring the relative difference between inside and outside cell vs. close to cell outside and far away from cell outside
+
+- $G_{Na}$ behaviour is expected ... need explanation, $I_{Na}$ has a shorter voltage thing ... probably ask Peng for a re explanation (and ask for IP3 as well, or do research on it first then ask)
+- Research how to properly calibrate a model. An idea was to keep $\eta$ constant and vary $\beta$ to match becaues $\eta$ has a non-linear relationship with frequency - not well behaved
+- Find correct $\eta$ and $\beta$ first, then change $I$ variables to simulate drug effects
+
+
+Hi Peng, should we meet on Friday to go over the 2D model simulation with the set eta and beta values? I'm free any time on Friday.

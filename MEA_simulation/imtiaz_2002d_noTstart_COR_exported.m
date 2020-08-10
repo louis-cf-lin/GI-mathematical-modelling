@@ -1,25 +1,25 @@
-function [VOI, STATES, ALGEBRAIC, CONSTANTS, peaks] = imtiaz_2002d_noTstart_COR_exported(beta_val, eta_val, IP3_val, showplot)
+function [VOI, STATES, ALGEBRAIC, CONSTANTS, peaks] = imtiaz_2002d_noTstart_COR_exported(beta, eta, G_Na, G_BK, G_Ca, showplot)
 
     % create plot
     if showplot
-        [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta_val, eta_val, IP3_val, true);
+        [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta, eta, G_Na, G_BK, G_Ca, true);
         %l = legend(LEGEND_STATES);
         %set(l, 'Interpreter', 'Latex');
         xlabel(X_TITLE);
         ylabel('$V_{m}$ (mV)', 'Interpreter', 'Latex');
-        title(['$\beta$=',num2str(beta_val),', $\eta$=',num2str(eta_val),', $IP3$=',num2str(IP3_val)], 'Interpreter', 'Latex');
+        title(['($\beta$=',num2str(beta),', $\eta$=',num2str(eta),')'], 'Interpreter', 'Latex');
     else
-        [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta_val, eta_val, IP3_val, false);
+        [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta, eta, G_Na, G_BK, G_Ca, false);
     end
 end
 
 
-function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta_val, eta_val, IP3_val, showplot)
+function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta, eta, G_Na, G_BK, G_Ca, showplot)
     % Set ALGEBRAIC 
     global algebraicVariableCount
     algebraicVariableCount = 10;
     % Initialise constants and state variables
-    [INIT_STATES, CONSTANTS] = initConsts(beta_val, eta_val, IP3_val);
+    [INIT_STATES, CONSTANTS] = initConsts(beta, eta, G_Na, G_BK, G_Ca);
 
     % Set timespan to solve over
     tspan = [600000, 660000]; % 60s period after 10 min
@@ -38,7 +38,7 @@ function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = so
     [LEGEND_STATES, LEGEND_ALGEBRAIC, X_TITLE, LEGEND_CONSTANTS] = createLegends();
     
     peaks = numel(findpeaks(STATES(:,1)));
-    fprintf('beta = %f, eta = %f, IP3 = %f: %i cpm \n', beta_val, eta_val, IP3_val, peaks);
+    fprintf('beta = %f, eta = %f, G_Na = %f, G_BK = %f, G_Ca = %f: %i cpm \n', beta, eta, G_Na, G_BK, G_Ca, peaks);
 
     if showplot
         nexttile
@@ -114,7 +114,7 @@ function [LEGEND_STATES, LEGEND_ALGEBRAIC, X_TITLE, LEGEND_CONSTANTS] = createLe
     LEGEND_CONSTANTS = LEGEND_CONSTANTS';
 end
 
-function [STATES, CONSTANTS] = initConsts(beta_val, eta_val, IP3_val)
+function [STATES, CONSTANTS] = initConsts(beta, eta, G_Na, G_BK, G_Ca)
     VOI = 0; 
     CONSTANTS = []; 
     STATES = []; 
@@ -128,16 +128,16 @@ function [STATES, CONSTANTS] = initConsts(beta_val, eta_val, IP3_val)
     CONSTANTS(:,5) = 110; % tau_f_Na: Na+ gating time constant
     STATES(:,3) = 0.9998; % f_Na: sodium conductance gate
     CONSTANTS(:,6) = 80; % E_Na: Na+ reverse potential
-    CONSTANTS(:,7) = 8; % G_Na: max Na+ conductance
+    CONSTANTS(:,7) = G_Na; % G_Na: max Na+ conductance
     STATES(:,4) = 0.38498; % Ca_c: Ca2+ cytosol
     CONSTANTS(:,8) = -72; % E_K: K+ reverse potential
-    CONSTANTS(:,9) = 1.2; % G_BK: K+ max conductance
+    CONSTANTS(:,9) = G_BK; % G_BK: K+ max conductance
     CONSTANTS(:,10) = -20; % E_Ca: Ca2+ reverse potential
-    CONSTANTS(:,11) = 4; % G_MCa: Ca2+ max conductance
+    CONSTANTS(:,11) = G_Ca; % G_Ca: Ca2+ max conductance
     CONSTANTS(:,12) = 4; % q: Hill coefficient
     CONSTANTS(:,13) = 1.4; % k_Ca: Half saturation constant for I_Ca
     STATES(:,5) = 2.46238; % Ca_s: Ca2+ intracellular store
-    STATES(:,6) = IP3_val; % IP_3: inositol trisphosphate
+    STATES(:,6) = 0.4778; % IP_3: inositol trisphosphate
     CONSTANTS(:,14) = 0.0002145; % V_0: Ca2+ influx into cytosol
     CONSTANTS(:,15) = 0.00022094; % V_1: Ca2+ influx into cytosol due to IP_3
     CONSTANTS(:,16) = 0.0049; % V_M2: max Ca2+ pump into store
@@ -152,8 +152,8 @@ function [STATES, CONSTANTS] = initConsts(beta_val, eta_val, IP3_val)
     CONSTANTS(:,25) = 0.65; % k_p: IP_3 threshold for V_3
     CONSTANTS(:,26) = 0.0000585; % k_f: rate constant
     CONSTANTS(:,27) = 0.0006435; % K: rate constant
-    CONSTANTS(:,28) = beta_val; % beta: IP_3 synthesis constant
-    CONSTANTS(:,29) = eta_val; % eta: linera IP_3 synthesis
+    CONSTANTS(:,28) = beta; % beta: IP_3 synthesis constant
+    CONSTANTS(:,29) = eta; % eta: linera IP_3 synthesis
     CONSTANTS(:,30) = 0.0004875; % V_M4: max IP_3 nonlinear degradation
     CONSTANTS(:,31) = 0.5; % k_4: half saturation constant
     CONSTANTS(:,32) = 4; % u: Hill coefficient
@@ -189,12 +189,12 @@ function [RATES, ALGEBRAIC] = computeRates(VOI, STATES, CONSTANTS)
     RATES(:,5) =  CONSTANTS(:,3).*((ALGEBRAIC(:,6) - ALGEBRAIC(:,8)) -  CONSTANTS(:,26).*STATES(:,5));
     ALGEBRAIC(:,4) = CONSTANTS(:,14)+ CONSTANTS(:,15).*STATES(:,6);
     RATES(:,4) =  CONSTANTS(:,3).*(((ALGEBRAIC(:,4) - ALGEBRAIC(:,6))+ALGEBRAIC(:,8)+ CONSTANTS(:,26).*STATES(:,5)) -  CONSTANTS(:,27).*STATES(:,4));
-    ALGEBRAIC(:,1) =  CONSTANTS(:,7).*STATES(:,3).*STATES(:,2).*(STATES(:,1) - CONSTANTS(:,6));
+    ALGEBRAIC(:,1) =  CONSTANTS(:,7).*STATES(:,3).*STATES(:,2).*(STATES(:,1) - CONSTANTS(:,6)); % (2) I_Na
     ALGEBRAIC(:,9) = ( CONSTANTS(:,11).*power(STATES(:,4), CONSTANTS(:,12)))./(power(CONSTANTS(:,13), CONSTANTS(:,12))+power(STATES(:,4), CONSTANTS(:,12)));
-    ALGEBRAIC(:,10) =  ALGEBRAIC(:,9).*(STATES(:,1) - CONSTANTS(:,10));
+    ALGEBRAIC(:,10) =  ALGEBRAIC(:,9).*(STATES(:,1) - CONSTANTS(:,10)); % (9) I_Ca
     ALGEBRAIC(:,5) = 1.00000./(1.00000+exp(STATES(:,1)./ - 17.0000 -  2.00000.*log(STATES(:,4)./0.00100000)));
-    ALGEBRAIC(:,7) =  CONSTANTS(:,9).*ALGEBRAIC(:,5).*(STATES(:,1) - CONSTANTS(:,8));
-    RATES(:,1) = (  - CONSTANTS(:,3).*((ALGEBRAIC(:,1)+ALGEBRAIC(:,10)+ALGEBRAIC(:,7)) - CONSTANTS(:,2)))./CONSTANTS(:,1); % [1]
+    ALGEBRAIC(:,7) =  CONSTANTS(:,9).*ALGEBRAIC(:,5).*(STATES(:,1) - CONSTANTS(:,8)); % (7) I_BK
+    RATES(:,1) = (  - CONSTANTS(:,3).*((ALGEBRAIC(:,1)+ALGEBRAIC(:,10)+ALGEBRAIC(:,7)) - CONSTANTS(:,2)))./CONSTANTS(:,1);
    RATES = RATES';
 end
 
