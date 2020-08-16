@@ -19,6 +19,8 @@
 - [Holidays Week 3](#holidays-week-3)
 - [Week 1](#week-1-1)
 - [Week 2](#week-2-1)
+- [Week 3](#week-3-1)
+- [Week 4](#week-4-1)
 
 ## Week 1
 
@@ -435,8 +437,8 @@ With default $\eta$=0.0389 and $\beta$=0.000975:
 - $Cor$ = 6: 27cpm.
 - $Cor$ = 5: 23cpm.
 - $Cor$ = 4: 18cpm.
-- $Cor$ = 3: 14 cpm.
-- $Cor$ = 3: 9 cpm.
+- $Cor$ = 3: 14cpm.
+- $Cor$ = 2: 9cpm.
 
 $Cor$=4 seems to be the most appropriate value with default parameters.
 
@@ -578,7 +580,7 @@ Code now prints average run time per iteration to get an idea of how long to run
 
 Left simulation for 100 values of eta and beta each to run overnight.
 
-### Week 3
+## Week 3
 
 ### Monday
 
@@ -610,3 +612,83 @@ Default values:
 - Research how to properly calibrate a model. An idea was to keep $\eta$ constant and vary $\beta$ to match becaues $\eta$ has a non-linear relationship with frequency - not well behaved
 - Find correct $\eta$ and $\beta$ first, then change $I$ variables to simulate drug effects
 
+### Wednesday
+
+Started working on mid-year report.
+
+### Thursday
+
+Continued working on mid-year report.
+
+Some thoughts:
+
+- Final report should clarify between **code variables**, **model variables**, **model parameters**, and **model constants** - define these at the start
+- Summarise experimental data and add to appendix
+- Surface plot needs axes
+- Figure formatting/layout
+
+### Friday
+
+Mid-year report completed.
+
+### Sunday
+
+`main_script.m` renamed to `explore_model.m`, now only handles exploring $\eta$ and $\beta$. Created new script `calibrate_model` for calibrating $\eta$ and $\beta$. Model script takes new variable `tspan` which is the period of time to simulate.
+
+---
+
+Average of all baseline frequencies is 18.
+
+---
+
+**fminsearch results**
+
+![alt text](./Figures/fminsearch.png)
+![alt text](./Outputs/fminsearch.png)
+
+**fminunc results**
+
+![alt text](./Figures/fminunc.png)
+![alt text](./Outputs/fminunc.png)
+
+`fminunc` (which requires Optimisation Toolbox) is much faster than `fminsearch`. Results are the same: use default parameters and $Cor$ = 4. In hindsight, could have just used this from the beginning, but was necessary to understand the problem and imported code.
+
+Some suggestions as to why fminunc has much fewer iterations: https://www.mathworks.com/matlabcentral/answers/90374-fminsearch-finds-local-minimum-when-fminunc-does-not
+
+Some other alternatives are `ga` (Global Optimisation Toolbox) and `fmincon`. But `ga` is not the best here because we know the objective surface/landscape? (look up what it's called), so we are not making use of domain knowledge. `fmincon` requires formulating the problem as a system of constraints, which is not worth the time and effort.
+
+**Calibrated values: $\beta$=0.000975, $\eta$=0.0389.**
+
+---
+
+**Characteristics**
+
+Using the `pulsewidth`, `risetime`, and `falltime` functions from Signal Processing Toolbox, different characteristics can be found. For the final report, **add a long plot of many pulses then compile all together** (like a comic book). This shows that the characteristics are averaged.
+
+![alt text](./Figures/width.png)
+![alt text](./Figures/upstroke.png)
+![alt text](./Figures/downstroke.png)
+
+![alt text](./Outputs/characteristics.png)
+
+Note: all characteristics are in seconds.
+
+Can't do overshoot and undershoot because simulation doesn't do either.
+
+---
+
+Idea - in the final report, define the following terms:
+
+- Model parameter
+- Model variable
+- Model constant
+- Calibration
+- Perturbation analysis
+
+---
+
+To do next: perturbation analysis on current conductances to see effects on characteristics, i.e. frequency, upstroke, downstroke, width.
+
+## Week 4
+
+### Monday

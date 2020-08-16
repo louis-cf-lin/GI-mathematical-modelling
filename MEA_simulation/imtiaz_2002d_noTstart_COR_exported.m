@@ -1,28 +1,25 @@
-function [VOI, STATES, ALGEBRAIC, CONSTANTS, peaks] = imtiaz_2002d_noTstart_COR_exported(beta, eta, G_Na, G_BK, G_Ca, showplot)
+function [VOI, STATES, ALGEBRAIC, CONSTANTS, peaks] = imtiaz_2002d_noTstart_COR_exported(beta, eta, G_Na, G_BK, G_Ca, tspan, showplot)
 
     % create plot
     if showplot
-        [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta, eta, G_Na, G_BK, G_Ca, true);
+        [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta, eta, G_Na, G_BK, G_Ca, tspan, true);
         %l = legend(LEGEND_STATES);
         %set(l, 'Interpreter', 'Latex');
         xlabel(X_TITLE);
         ylabel('$V_{m}$ (mV)', 'Interpreter', 'Latex');
         title(['($\beta$=',num2str(beta),', $\eta$=',num2str(eta),')'], 'Interpreter', 'Latex');
     else
-        [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta, eta, G_Na, G_BK, G_Ca, false);
+        [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta, eta, G_Na, G_BK, G_Ca, tspan, false);
     end
 end
 
 
-function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta, eta, G_Na, G_BK, G_Ca, showplot)
+function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta, eta, G_Na, G_BK, G_Ca, tspan, showplot)
     % Set ALGEBRAIC 
     global algebraicVariableCount
     algebraicVariableCount = 10;
     % Initialise constants and state variables
     [INIT_STATES, CONSTANTS] = initConsts(beta, eta, G_Na, G_BK, G_Ca);
-
-    % Set timespan to solve over
-    tspan = [600000, 660000]; % 60s period after 10 min
 
     % Set numerical accuracy options for ODE solver
     options = odeset('RelTol', 1e-06, 'AbsTol', 1e-06, 'MaxStep', 1);
