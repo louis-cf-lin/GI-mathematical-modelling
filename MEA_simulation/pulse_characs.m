@@ -1,12 +1,7 @@
 clc
 clear
 
-% G_Na = linspace(0, 16, 10);
-% G_BK = linspace(0, 2.4, 10);
-% G_Ca = linspace(0, 12, 50);
-
-tspan = [600000, 660000]; % 5s period after 10 min
-
+tspan = [600000, 660000]; % 60s period after 10 min
 
 [VOI,STATES,~,~,peaks] = imtiaz_2002d_noTstart_COR_exported(0.000975, 0.0389, 8, 1.2, 4, tspan, false);
 

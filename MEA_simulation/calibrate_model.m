@@ -1,3 +1,6 @@
+clc
+clear
+
 function calibrate_model
     fminsearch_call
     %fminunc_call

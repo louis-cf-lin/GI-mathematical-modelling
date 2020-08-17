@@ -633,7 +633,7 @@ Mid-year report completed.
 
 ### Sunday
 
-`main_script.m` renamed to `explore_model.m`, now only handles exploring $\eta$ and $\beta$. Created new script `calibrate_model` for calibrating $\eta$ and $\beta$. Model script takes new variable `tspan` which is the period of time to simulate.
+`main_script.m` renamed to `explore_model.m`, now only handles exploring $\eta$ and $\beta$. Created new script `calibrate_model.m` for calibrating $\eta$ and $\beta$. Model script takes new variable `tspan` which is the period of time to simulate.
 
 ---
 
@@ -692,3 +692,9 @@ To do next: perturbation analysis on current conductances to see effects on char
 ## Week 4
 
 ### Monday
+
+**Meeting notes**
+
+- Non-integer frequency data are from intervals, i.e. incomplete waves
+- We can justify the perturbation analysis by saying that by slightly altering some parameters, we cover the full range of experimental data, i.e. variations due to natural effects, in case experimental data is a little off
+- With simulated data, we can calculate *exactly* what the frequency is -- find a MATLAB function that can count non-integer frequencies
