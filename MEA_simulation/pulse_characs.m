@@ -1,13 +1,10 @@
 clc
 clear
 
-tspan = [600000, 660000]; % 60s period after 10 min
-
-[VOI,STATES,~,~,peaks] = imtiaz_2002d_noTstart_COR_exported(0.000975, 0.0389, 8, 1.2, 4, tspan, false);
+[VOI,STATES,~,~,peaks] = imtiaz_2002d_noTstart_COR_exported(0.00099, 0.039264, 8, 1.2, 4, [600000, 660000], false);
 
 width_start = 3000;
 width_end = 5000;
-% width_end = size(STATES, 1)
 
 figure(1)
 pulsewidth(STATES(width_start:width_end,1), VOI(width_start:width_end)./1000);
@@ -18,7 +15,7 @@ ylabel('Voltage (mV)');
 fprintf('Mean width: %fs \n', mean(width));
 
 upstroke_start = 3400;
-upstroke_end = 3600;
+upstroke_end = 3800;
 upstroke_percentage = [25 75];
 
 figure(2)

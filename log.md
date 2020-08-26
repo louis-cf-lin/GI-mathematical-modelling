@@ -21,6 +21,7 @@
 - [Week 2](#week-2-1)
 - [Week 3](#week-3-1)
 - [Week 4](#week-4-1)
+- [Week 5](#week-5-1)
 
 ## Week 1
 
@@ -506,23 +507,23 @@ Edited batch command file: successfully automated `dipole_calculate.m`.
 Streamlined the code for readibility and easier parameterisation. Can now output multiple plots of voltage over time for different parameter values. Plots below are of 20 uniformly distributed parameter values for one variable while keeping the other two constant at default value. Frequencies are taken at steady state (i.e. after 10 minutes (600,000s)) of simulation for a period of 60 seconds (600,000s to 660,000s).
 
 **Changing $\beta$:**
-![alt text](./Figures/beta%20vs%20freq.png)
+![alt text](./Figures/beta-vs-freq.png)
 
-![alt text](./Figures/beta%20vs%20voltage.png)
+![alt text](./Figures/beta-vs-voltage.png)
 
 Roughly linear relationship between $\beta$ and frequency.
 
 **Changing $\eta$:**
-![alt text](./Figures/eta%20vs%20freq.png)
+![alt text](./Figures/eta-vs-freq.png)
 
-![alt text](./Figures/eta%20vs%20voltage.png)
+![alt text](./Figures/eta-vs-voltage.png)
 
 Observe a cliff-type relationship between $\eta$ and frequency with a right-skewed tail.
 
 **Changing $IP3$:**
-![alt text](./Figures/IP3%20vs%20freq.png)
+![alt text](./Figures/ip3-vs-freq.png)
 
-![alt text](./Figures/IP3%20vs%20voltage.png)
+![alt text](./Figures/ip3-vs-voltage.png)
 
 Frequency does not change as $IP3$ is varied.
 
@@ -555,8 +556,8 @@ Meeting agenda:
 
 Fine resolution zooming to find range for $\eta$:
 
-![alt text](./Figures/eta%20zoom%201.png)
-![alt text](./Figures/eta%20zoom%202.png)
+![alt text](./Figures/eta-zoom-1.png)
+![alt text](./Figures/eta-zoom-2.png)
 
 ## Week 2
 
@@ -587,7 +588,7 @@ Left simulation for 100 values of eta and beta each to run overnight.
 ![alt text](./Figures/beta%20vs%20eta%20mesh.png)
 $\eta$ on left axis, $\beta$ on right axis. Surface shows frequency. Average time per iteration: 1.4s.
 
-Results saved as `surface_vars.m` -- overwrote the original file now it has weird symbols. In future, need to do `save('surface_vars.mat')` instead.
+Results saved as `surface_vars.m` -- overwrote the original file now it has weird symbols. In future, to save workspace, need to do `save('surface_vars.mat')` instead.
 
 Default values:
 
@@ -595,9 +596,9 @@ Default values:
 - $G_{BK}$ = 1.2
 - $G_{Ca}$ = 4
 
-![alt text](./Figures/G-Na%20vs%20freq.png)
-![alt text](./Figures/G-BK%20vs%20freq.png)
-![alt text](./Figures/G-Ca%20vs%20freq.png)
+![alt text](./Figures/gna-vs-freq.png)
+![alt text](./Figures/gbk-vs-freq.png)
+![alt text](./Figures/gca-vs-freq.png)
 
 **Meeting notes**
 
@@ -637,7 +638,7 @@ Mid-year report completed.
 
 ---
 
-Average of all baseline frequencies is 18.
+Average of all baseline frequencies is 18. (Deprecated)
 
 ---
 
@@ -669,7 +670,7 @@ Using the `pulsewidth`, `risetime`, and `falltime` functions from Signal Process
 ![alt text](./Figures/upstroke.png)
 ![alt text](./Figures/downstroke.png)
 
-![alt text](./Outputs/characteristics.png)
+![alt text](./Outputs/pulse-characs.png)
 
 Note: all characteristics are in seconds.
 
@@ -698,3 +699,152 @@ To do next: perturbation analysis on current conductances to see effects on char
 - Non-integer frequency data are from intervals, i.e. incomplete waves
 - We can justify the perturbation analysis by saying that by slightly altering some parameters, we cover the full range of experimental data, i.e. variations due to natural effects, in case experimental data is a little off
 - With simulated data, we can calculate *exactly* what the frequency is -- find a MATLAB function that can count non-integer frequencies
+
+### Sunday
+
+Added `last_peak` to the model script. It now prints the time of the last peak; this allows for calculating non-integer frequencies.
+
+New calibration is as follows:
+
+- Updated average from experimental data is 17.525. This is excluding 2-Ach-At and 05_0201_ach-hex
+- Simulate for 90s after 10 minutes, this allows more accurate calculation of frequency
+- Take frequency to be $\frac{peaks - 1}{(last\_peak-600000)/60000}$. This is the number of peaks per minute, i.e. cpm
+- The -1 is to account for the repeated counting of the first and last peak
+- Recalibrate the model
+
+Updated results with `fminsearch`
+
+![alt text](./Figures/fminsearch-2.png)
+![alt text](./Outputs/fminsearch-updated-1.png)
+![alt text](./Outputs/fminsearch-updated-2.png)
+
+This looks like a better optimistaion programme. And now we have new model parameters.
+
+Updated results with `fminunc`
+
+![alt text](./Figures/fminunc-2.png)
+![alt text](./Outputs/fminunc-updated-1.png)
+![alt text](./Outputs/fminunc-updated-2.png)
+
+This is also a much better looking output.
+
+There appears to be some differences in the results. This is expected because this problem has infinite optima. The difference in objective values is so minimal it's negligible. `fminunc` did yield a slightly better objective value, however, both are below the convergence tolerance threshold. One thing to note is run time. `fminunc` took 62.9% longer to run than `fminsearch`, with essentially the same result.
+
+`ga` again took way too long.
+
+Updated parameters (use `fminunc` because of better objective value):
+
+---
+
+$\beta=0.00099$
+
+$\eta=0.039264$
+
+---
+
+Updated pulse characteristics:
+
+![alt text](./Figures/width-updated.png)
+![alt text](./Figures/upstroke-updated.png)
+![alt text](./Figures/downstroke-updated.png)
+
+![alt text](./Outputs/pulse-characs-updated.png)
+
+These are the pulse characteristics of the baseline model.
+
+---
+
+**Effects of current conductances**
+
+New code: `current_conductances.m`. Outputs:
+
+![alt text](./Figures/gna-characs.png)
+
+Frequency slightly increases linearly with $G_{Na}$. Note that this has been done earlier. In the report, make sure this is not talked about/shown twice. Other characteristics seem to make sense. The width decreases, increases, then decreases again. This corresponds with upstroke and downstroke because those two show inverse trends, whilst frequency remains roughly constant.
+
+![alt text](./Figures/gbk-characs.png)
+
+$G_{BK}$ has been altered from 0.5 to 2.4 because when it is 0, there are no pulses (flatline), so the width is NA.
+
+![alt text](./Figures/gca-characs.png)
+
+---
+
+Ran the following code  
+
+```
+
+cm example_2d.com
+
+```
+
+## Week 5
+
+### Monday
+
+**Meeting notes:**
+
+- More literature review on effects of $G$
+- Run the 2D model to steady state. Then feed the results as inputs into the model again. Repeat this for each timestep desired
+- The 2D model needs to fed with the hyperparameters: $Cor$, $\beta$, and $\eta$
+- Then vary the parameters across nodes, e.g. $G_{Na}$ and observe frequency
+- Idea: collab with Kart to see which data points he has kept or discarded
+- CMGUI?
+
+### Thursday
+
+From memory: `generate_list.m` reads the values in from `init.m` and uses `2d_slice_temp.ipmatc` as a template and writes to `2d_slice.ipmatc`.
+
+**CMISS notes:**
+
+- `example_2d.com`
+  - We want to change parameters across the array
+  - `fem define cell;r;2d_slice` reads in from `2d_slice.ipmatc`
+
+- `2d_slice.ipcell`
+  - Don't vary $Cor$ spatially
+  - Change $Cor$ initial value to 4 (constant across all solution points)
+
+  - `fem define mate;r;mfiles/2d_slice_temp2 cell` change `r` to `p` (read to prompt)
+
+
+- Collocation name = solution name
+
+- Enter key will go to next line (with default) at prompt
+
+- Piecewise linear by node for varying parameters; this does linear interpolation between node points. Will then prompt for all 60 nodes.
+- Probably not more than 100 solution points per element
+
+- Linear basis type number can just be 1
+
+- After running the simulation, `2d_slice_temp2` is produced with the parameters that were used, but this is a text file so can just use `generate_list`
+
+MUST CHANGE PROMPT BACK TO READ (p to r)
+
+Very small frequency gradient (don't change it too much)
+
+- `output` folder
+  - Every `.exelem` file is a timestep
+  - Timesteps are in ms and defined by `dt` (in `example_2d.com` I think)
+  - `dt` should be less than 100 as it takes around 100ms for waves to propagate across the whole array
+  - Recommended range is 1 to 20ms
+  - `.exelem` per time step
+    - element is the node and values are solutions at each corner (or multiple if interpolation)
+    - numbering system according to diagram (logical and sequential)
+  - `grid.exelem`
+    - values are the node numbers (this has the weird numbering system)
+
+- `stomach.iphist`
+  - everything arranged by time
+  - (niqs,  solution point number): 6 values these are the 6 ode solutions for each state variable
+  - if file getting too large, can just print 1 value (i.e. membrane potential $V_m$) by changing from `1..6` to just `1` but there are two instances to change (look for `if ($HISTORY)`)
+
+- everything in output folder are auto generated from script
+
+---
+
+In the final report, define:
+
+- element
+- node
+- solution points

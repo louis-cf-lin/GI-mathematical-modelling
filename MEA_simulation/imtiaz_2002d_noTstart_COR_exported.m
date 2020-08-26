@@ -1,20 +1,20 @@
-function [VOI, STATES, ALGEBRAIC, CONSTANTS, peaks] = imtiaz_2002d_noTstart_COR_exported(beta, eta, G_Na, G_BK, G_Ca, tspan, showplot)
+function [VOI, STATES, ALGEBRAIC, CONSTANTS, freq] = imtiaz_2002d_noTstart_COR_exported(beta, eta, G_Na, G_BK, G_Ca, tspan, showplot)
 
     % create plot
     if showplot
-        [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta, eta, G_Na, G_BK, G_Ca, tspan, true);
+        [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, freq] = solveModel(beta, eta, G_Na, G_BK, G_Ca, tspan, true);
         %l = legend(LEGEND_STATES);
         %set(l, 'Interpreter', 'Latex');
         xlabel(X_TITLE);
         ylabel('$V_{m}$ (mV)', 'Interpreter', 'Latex');
         title(['($\beta$=',num2str(beta),', $\eta$=',num2str(eta),')'], 'Interpreter', 'Latex');
     else
-        [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta, eta, G_Na, G_BK, G_Ca, tspan, false);
+        [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, freq] = solveModel(beta, eta, G_Na, G_BK, G_Ca, tspan, false);
     end
 end
 
 
-function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = solveModel(beta, eta, G_Na, G_BK, G_Ca, tspan, showplot)
+function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, freq] = solveModel(beta, eta, G_Na, G_BK, G_Ca, tspan, showplot)
     % Set ALGEBRAIC 
     global algebraicVariableCount
     algebraicVariableCount = 10;
@@ -34,8 +34,16 @@ function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, peaks] = so
     % Plot state variables against variable of integration
     [LEGEND_STATES, LEGEND_ALGEBRAIC, X_TITLE, LEGEND_CONSTANTS] = createLegends();
     
-    peaks = numel(findpeaks(STATES(:,1)));
-    fprintf('beta = %f, eta = %f, G_Na = %f, G_BK = %f, G_Ca = %f: %i cpm \n', beta, eta, G_Na, G_BK, G_Ca, peaks);
+    [pks, locs] = findpeaks(STATES(:,1));
+    peaks = numel(pks);
+    if peaks == 0
+        freq = 0;
+    else
+        last_peak = VOI(locs(end));
+        freq = (peaks - 1)/((last_peak-600000)/60000);
+    end
+    
+    fprintf('beta = %f, eta = %f, G_Na = %f, G_BK = %f, G_Ca = %f: %f cpm \n', beta, eta, G_Na, G_BK, G_Ca, freq);
 
     if showplot
         nexttile

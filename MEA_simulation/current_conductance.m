@@ -1,46 +1,55 @@
 clc
 clear
 
-G_Na = linspace(0, 16, 10);
-G_BK = linspace(0, 2.4, 10);
-G_Ca = linspace(0, 12, 50);
+param_names = ["$G_{Na}$", "$G_{BK}$", "$G_{Ca}$"];
+param_index = 2;
+param_length = 10;
+param_ranges = [[0,16];[0.5,2.4];[0,8]];
+
+params = ones(3,param_length);
+params(1,:) = params(1,:) * 8; %G_Na
+params(2,:) = params(2,:) * 1.2; %G_BK
+params(3,:) = params(3,:) * 4; %G_Ca
+params(param_index,:) = linspace(param_ranges(param_index,1), param_ranges(param_index,2), param_length);
+
+charac_names = ["Freq (cpm)", "Width (s)", "Upstroke (s)", "Downstroke (s)"];
 
 tspan = [600000, 660000]; % 60s period after 10 min
 show_plot = false;
 
-surface = zeros(length(eta), length(beta));
-freq = zeros(1, length(eta) * length(beta));
+surface = zeros(param_length, param_length);
+charac = zeros(4, param_length);
 
 if show_plot
-    figure(1)
+    figure()
 end
 
 tic
 
-counter = 1;
-for i = 1:length(G_Na)
-    for j = 1:length(G_BK)
-        for k = 1:length(G_Ca)
-            [VOI,STATES,~,~,peaks] = imtiaz_2002d_noTstart_COR_exported(0.000975, 0.0389, G_Na(i), G_BK(j), G_Ca(k), tspan, show_plot);
-            freq(counter) = peaks;
-            surface(i,j) = peaks;
-            counter = counter + 1;
-        end
-    end
+for i = 1:param_length
+    [VOI,STATES,~,~,freq] = imtiaz_2002d_noTstart_COR_exported(0.00099, 0.039264, params(1,i), params(2,i), params(3,i), tspan, show_plot);
+    charac(1,i) = freq;
+    width = pulsewidth(STATES(:,1),  VOI./1000);
+    charac(2,i) = mean(width);
+    upstroke = risetime(STATES(:,1), VOI./1000);
+    charac(3,i) = mean(upstroke);
+    downstroke = falltime(STATES(:,1), VOI./1000);
+    charac(4,i) = mean(downstroke);
+    %surface(i,j) = freq;
 end
 
-fprintf('Average time per iteration: %f s', toc/(length(G_Na) * length(G_BK) * length(G_Ca)));
+fprintf('Average time per iteration: %f s\n', toc/(param_length^3));
 
-figure(2)
+fig = figure();
+for j = 1:4
+    subplot(2,2,j);
+    plot(params(param_index,:), charac(j,:));
+    xlim([params(param_index,1) params(param_index,end)]);
+    ylabel(charac_names(j));
+end
+fig_axes = axes(fig, 'visible', 'off');
+fig_axes.XLabel.Visible = 'on';
+xlabel(fig_axes, param_names(param_index), 'Interpreter', 'Latex');
+sgtitle('Pulse Characteristics');
 
-% plot(beta_val, freq)
-% title('$\beta$ vs. Freq with $\eta$=0.0389 and $IP3$=0.4778', 'Interpreter', 'Latex')
-% xlabel('$\beta$', 'Interpreter', 'Latex')
-% ylabel('Freq. (cpm)')
-
-% plot(eta_val, freq)
-% title('$\eta$ vs. Freq with $\beta$=0.000975 and $IP3$=0.4778', 'Interpreter', 'Latex')
-% xlabel('$\eta$', 'Interpreter', 'Latex')
-% ylabel('Freq. (cpm)')
-
-mesh(beta, eta, surface);
+%mesh(beta, eta, surface);
