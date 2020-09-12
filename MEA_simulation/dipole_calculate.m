@@ -9,7 +9,7 @@ clc;
 %% Add working directories
 addpath('output')                                    % contains output
 %addpath('ipgrgp')                                    % contains ipgrgp
-addpath('mfiles')                                     % contains mfiles
+addpath('mfile')                                     % contains mfiles
 
 % resolution
 nx = 8;
@@ -61,8 +61,6 @@ xlabel('Time (s)')
 set(gca,'YTickLabel',[])   
 
 set(gcf,'PaperPositionMode','auto')
-saveas(gcf, 'dipole_calculate_fig.png')
-saveas(gcf, 'dipole_calculate_fig.fig')
 % break
 %print -deps -r600 1d_model
 % print -dpng -r600 2d

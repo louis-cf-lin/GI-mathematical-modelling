@@ -848,3 +848,33 @@ In the final report, define:
 - element
 - node
 - solution points
+
+## Week 6
+
+MSP
+
+## Midsem
+
+### Monday
+
+- Justify why you picked those parameters and why you targeted those values
+- Justifications for all decisions made
+- Start writing up cell model section
+- Last week to try everything new
+
+### Saturday
+
+To copy local folder to remote server, use:
+
+```{powershell}
+C:\Users\Louii\Documents\GI-mathematical-modelling> scp -r . clin750@hpc5.bioeng.auckland.ac.nz:/people/clin750
+```
+
+or specifically for `example_2d.com`:
+
+```{powershell}
+C:\Users\Louii\Documents> scp -r MEA_simulation/example_2d.com clin750@hpc5.bioend.auckland.ac.nz/people/clin750/MEA_simulation
+```
+
+There is a `.bat` file called `sync_example_2d.bat` in the main folder that now automatically copies the local version of `example_2d.com` the server.
+
