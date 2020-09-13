@@ -288,7 +288,7 @@ screen -XS 1234 quit
 - Split terminal horizontally: `ctrl+a` `S`
 - Close a pane: `ctrl+a` `X`
 
-**Run CMISS***
+**Run CMISS**
 
 ```bash
 cm file.com
