@@ -1,4 +1,4 @@
-clear all;
+ clear all;
 
 nx = 8;
 ny = 8;

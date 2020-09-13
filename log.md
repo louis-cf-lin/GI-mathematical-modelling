@@ -22,6 +22,9 @@
 - [Week 3](#week-3-1)
 - [Week 4](#week-4-1)
 - [Week 5](#week-5-1)
+- [Week 6](#week-6-1)
+- [Midsem](#midsem)
+- [Monday](#monday)
 
 ## Week 1
 
@@ -800,17 +803,13 @@ From memory: `generate_list.m` reads the values in from `init.m` and uses `2d_sl
 - `example_2d.com`
   - We want to change parameters across the array
   - `fem define cell;r;2d_slice` reads in from `2d_slice.ipmatc`
+  - `fem define mate;r;mfiles/2d_slice_temp2 cell` change `r` to `p` (read to prompt)
+    - Collocation name = solution name
+    - Enter key will go to next line (with default) at prompt
 
 - `2d_slice.ipcell`
   - Don't vary $Cor$ spatially
   - Change $Cor$ initial value to 4 (constant across all solution points)
-
-  - `fem define mate;r;mfiles/2d_slice_temp2 cell` change `r` to `p` (read to prompt)
-
-
-- Collocation name = solution name
-
-- Enter key will go to next line (with default) at prompt
 
 - Piecewise linear by node for varying parameters; this does linear interpolation between node points. Will then prompt for all 60 nodes.
 - Probably not more than 100 solution points per element
@@ -876,5 +875,46 @@ or specifically for `example_2d.com`:
 C:\Users\Louii\Documents> scp -r MEA_simulation/example_2d.com clin750@hpc5.bioend.auckland.ac.nz/people/clin750/MEA_simulation
 ```
 
-There is a `.bat` file called `sync_example_2d.bat` in the main folder that now automatically copies the local version of `example_2d.com` the server.
+There is a `.bat` file called `sync.bat` in the main folder that now automatically copies the local version of `example_2d.com` and `2d_slice.ipcell` the server.
 
+Had some issues with `cm`
+
+![alt text](./Outputs/cm-error.png)
+
+### Sunday
+
+Resolved the above issue by creating a fresh copy of `MEA_simulation` from Google Drive. MATLAB files created for this project moved into a new folder `MATLAB`.
+
+Made a few modifications to `dipole_calculate.m`:
+
+- `addpath('mfiles')` instead of `addpath('mfile')`
+- `saveas(gcf, 'dipole_calculate_fig.png')` to save figure in current directory
+- `exit` doesn't work, instead using `matlab -r "dipole_calculate; exit"` in `run_dipole_calculate.txt`
+
+`sync.bat` now calls `run_dipole_calculate.txt` which runs `example_2d.com`, then `dipole_calculate.m` in command line MATLAB on the server.
+
+The `\wait` before `putty.exe` waits for that line to execute before the rest is run.
+
+Now `dipole_calculate_fig.png` is copied from remote to local after being generated.
+
+
+## Monday
+
+Questions
+
+- In `2d_slice.ipcell`, what are the values in square brackets, e.g. do the values in the brackets have to match the following value?
+
+```{}
+Constant Variable Cor:
+  Specific membrane capacitance (Cm) [N]? N
+  Surface to volume ratio (Am) [N]? N
+  Total electrical stimulus current [N]? N
+  Initial value [4]: 4
+  Spatially varying [N]? N
+```
+
+- What is the difference between `.ipcell` and `.ipmatc`? What do they do?
+- When/why should I run `generate_list.m`? E.g. is it used to set parameters for the 2D model and so should I run it at the start of every simulation?
+- When should I use `p` (prompt) and when should i use `r` (read)? I suspect `p` to reset $Cor$ since it appears it's currently varying in `2d_slice.ipmatc`, and then after that use `r`. But should I ever switch back to `p` after that?
+- Should I be importing/exporting anything else in my workflow? E.g. the `mfiles` folder?
+- What is one specific task I can do?
