@@ -43,7 +43,7 @@ fem define cell;r;2d_slice
 
 # Define material and cell properties
 fem define mate;r;2d_slice
-fem define mate;p;mfiles/2d_slice cell
+fem define mate;r;mfiles/2d_slice cell
 
 # Define iptime, initial conditions
 #fem define time;r;2d_slice
@@ -78,7 +78,7 @@ if ($HISTORY)
 #$Tstart = 600000;
 
 $Tstart = 0;
-$Tend = 20100;
+$Tend = 2010;
 
 #$Tstart = 200000;
 #$Tend = 220000;

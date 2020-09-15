@@ -1,46 +1,45 @@
 # Louis: Project Log <!-- omit in toc -->
 
-- [Week 1](#week-1)
-- [Week 2](#week-2)
-- [Week 3](#week-3)
+- [Sem 1 Week 1](#sem-1-week-1)
+- [Sem 1 Week 2](#sem-1-week-2)
+- [Sem 1 Week 3](#sem-1-week-3)
 - [No Lecture Week](#no-lecture-week)
-- [Week 4](#week-4)
-- [Week 5](#week-5)
-- [Mid-semester break](#mid-semester-break)
-- [Week 6](#week-6)
-- [Week 7](#week-7)
-- [Week 8](#week-8)
-- [Week 9](#week-9)
-- [Week 10](#week-10)
-- [Week 11](#week-11)
-- [Week 12](#week-12)
+- [Sem 1 Week 4](#sem-1-week-4)
+- [Sem 1 Week 5](#sem-1-week-5)
+- [Sem 1 Midsem](#sem-1-midsem)
+- [Sem 1 Week 6](#sem-1-week-6)
+- [Sem 1 Week 7](#sem-1-week-7)
+- [Sem 1 Week 8](#sem-1-week-8)
+- [Sem 1 Week 9](#sem-1-week-9)
+- [Sem 1 Week 10](#sem-1-week-10)
+- [Sem 1 Week 11](#sem-1-week-11)
+- [Sem 1 Week 12](#sem-1-week-12)
 - [Holidays Week 1](#holidays-week-1)
 - [Holidays Week 2](#holidays-week-2)
 - [Holidays Week 3](#holidays-week-3)
-- [Week 1](#week-1-1)
-- [Week 2](#week-2-1)
-- [Week 3](#week-3-1)
-- [Week 4](#week-4-1)
-- [Week 5](#week-5-1)
-- [Week 6](#week-6-1)
-- [Midsem](#midsem)
-- [Monday](#monday)
+- [Sem 2 Week 1](#sem-2-week-1)
+- [Sem 2 Week 2](#sem-2-week-2)
+- [Sem 2 Week 3](#sem-2-week-3)
+- [Sem 2 Week 4](#sem-2-week-4)
+- [Sem 2 Week 5](#sem-2-week-5)
+- [Sem 2 Week 6](#sem-2-week-6)
+- [Sem 2 Midsem](#sem-2-midsem)
 
-## Week 1
+## Sem 1 Week 1
 
-### Friday March 6
+### Sem 1 Week 1 Friday
 
 First meeting with Peng and Andreas. Introduction to the project.
 
-## Week 2
+## Sem 1 Week 2
 
-### Thursday March 12
+### Sem 1 Week 2 Thursday
 
 Started with Markdown as a log using [Markdown and Visual Studio Code](https://code.visualstudio.com/docs/languages/markdown?fbclid=IwAR1Y7I6vyp4QvUq57frUk-NKwY-bZRNwcU2Cn_B8eS3ybC0qT6pQQnl1fFk) as a guide. Installed `markdownlint`, `Markdown TOC`, `Markdown Shortcuts`, and `Markdown Preview Enhanced`. Potential extensions to consider are `Markdown Theme Kit`, `Markdown Preview Github Styling`.
 
 `Ctrl + K` `V` to open preview.
 
-### Friday Macrh 13
+### Sem 1 Week 2 Friday
 
 Installed `Markdown All in One` and `Markdown Preview Github Styling`, and uninstalled `Markdown TOC` and `Markdown Shortcuts`.
 
@@ -48,19 +47,19 @@ Meeting with Peng (technical info).
 
 *Improving the Traditional Information Management in Natural Sciences* &mdash; discusses using timestamps as a way of managing data. I think in the case of our project, this isn't too relevant, as we are not collecting any data ourselves and practicing standard version control is sufficient.
 
-## Week 3
+## Sem 1 Week 3
 
-### Wednesday March 18
+### Sem 1 Week 3 Wednesday
 
 To omit entries from the table of contents, include `<!-- omit in toc -->` at the end of the line. To create a TOC, `Ctrl + P` and type `> Markdown All in One: Create Table of Contents`.
 
 Completed and summarised all *Best Practices* readings. Read chapter 1 of *Hands-On ML*.
 
-### Thursday March 19
+### Sem 1 Week 3 March
 
-**Virtual environment in Python**
+#### Virtual environment in Python
 
-1. Install Anaconda [here](https://www.anaconda.com/distribution/#download-section) 
+1. Install Anaconda [here](https://www.anaconda.com/distribution/#download-section)
 2. Add the following variables to PATH:
    - C:\Users\Louiis\Anaconda3\Scripts
    - C:\Users\Louii\Anaconda3
@@ -73,7 +72,7 @@ Completed and summarised all *Best Practices* readings. Read chapter 1 of *Hands
 5. Type `virtualenv env` to create a virtual environment called `env`
 6. Type `env\Scripts\activate` to activate the environment
 
-**Updates**
+#### Updates
 
 - `conda update conda`
 - `conda update anaconda`
@@ -86,9 +85,9 @@ Completed chapter 2 of *Hands-On ML*. Quite a good chapter, goes through an enti
 
 [No lecture week]
 
-## Week 4
+## Sem 1 Week 4
 
-### Friday April 4
+### Sem 1 Week 4 Friday
 
 To connect to SSH through the University network, connect to Forticlient VPN first (instructions found [here](https://cdn.auckland.ac.nz/assets/auckland/students/academic-information/postgraduate-students/Postgraduate%20support%20and%20services/vpn/how-to-guide-for-forticlient-vpn.pdf)). Also, requires a 2FA code associated with university account, have set up.
 
@@ -97,31 +96,31 @@ Getting an error:
 
 **RESOLVED:** IT portal request for VPN opened (thanks to Peng); expected delivery date 6th April.
 
-## Week 5
+## Sem 1 Week 5
 
-### Monday April 7
+### Sem 1 Week 5 Monday
 
 In contact with IT to resolve VPN issues &ndash; no avail, I'd already tried everything suggested.
 
-### Tuesday April 8
+### Sem 1 Week 5 Tuesday
 
 Contacted IT via phone, tried installing Cisco and other settings &ndash; no luck. Advised to use FlexIT on browsers; installed and successfully launched Putty. Awaiting ssh server address and port number from Peng to connect. Also requested permission for VPN access for undergrad (my original request).
 
-## Mid-semester break
+## Sem 1 Midsem
 
-### Friday April 17
+### Sem 1 Midsem First Friday
 
 First time running CellML. [List of tutorials](https://www.cellml.org/getting-started/tutorials) to get started. In particular, [Introduction to modelling with CellML using COR](https://www.cellml.org/getting-started/tutorials/COR-tutorial) is helpful. Part I is on units and variables.
 
-### Monday April 20
+### Sem 1 Midsem Second Monday
 
 Notes from literature review video written in `progress.md`.
 
-### Tuesday 21 April
+### Sem 1 Midsem Second Tuesday
 
 VPN successfully logged in; IT ticket closed.
 
-### Thursday 23 April
+### Sem 1 Midsem Second Thursday
 
 To log into ssh use
 
@@ -131,50 +130,50 @@ cd ../hpc/clin750
 
 Began and completed reading through *MEA 2019*.
 
-### Friday 24 April
+### Sem 1 Midsem Second Friday
 
 Started literature review planning.
 
-### Saturday 25 April
+### Sem 1 Midsem Second Saturday
 
 Started first draft of literature review.
 
-### Sunday 26 April
+### Sem 1 Midsem Second Sunday
 
 Continue working on literature review draft.
 
-## Week 6
+## Sem 1 Week 6
 
-### Monday 27 April
+### Sem 1 Week 6 Monday
 
 This project continues the work from **A Simplified Biophysical Cell Model For Gastric Slow Wave Entrainment Simulation**. I should have planned and structured my lit review by following the Introduction section.
 
 Finished first draft of lit review.
 
-### Thursday 30 April
+### Sem 1 Week 6 Thursday
 
 Received feedback from Peng.
 
-### Friday 1 May
+### Sem 1 Week 6 Friday
 
 Sanders and Ward, high quality, can adapt figures.
 
-### Saturday 2 May
+### Sem 1 Week 6 Saturday
 
 Started typesetting on LaTex and editting second draft.
 
-### Sunday 3 May
+### Sem 1 Week 6 Sunday
 
 Progress on transferring to LaTex.
 
-### Tuesday 5 May
+### Sem 1 Week 6 Tuesday
 
 Added content to Project Scope/Methodology. (No additional feedback/comments from supervisors).
 Final literature review submitted.
 
-## Week 7
+## Sem 1 Week 7
 
-### Friday 8 May
+### Sem 1 Week 7 Friday
 
 Meeting notes from Peng:
 
@@ -190,32 +189,32 @@ Meeting notes from Peng:
 - `.ipcell` extension contain parameters values and initial conditions
 - HPC has large memory and has CMISS installed
 
-## Week 8
+## Sem 1 Week 8
 
-### Thursday 14 May
+### Sem 1 Week 8 Thursday
 
-**Transfer a file from local machine to remote server**
+#### Transfer a file from local machine to remote server
 
 ```bash
 # from current cmd directory
 scp filename clin750@hpc5.bioeng.auckland.ac.nz:/hpc/clin750
 ```
 
-**Transfer a directory from local machine to remote server**
+#### Transfer a directory from local machine to remote server
 
 ```bash
 # this will duplicate the directory folder itself
 scp -r directoryname clin750@hpc5.bioeng.auckland.ac.nz:/hpc/clin750
 ```
 
-**Transfer a file from remote server to local machine**
+#### Transfer a file from remote server to local machine
 
 ```bash
 # destination includes file name, e.g. Desktop/test.txt
 scp clin750@hpc5.bioeng.auckland.ac.nz:/hpc/clin750/filename destination
 ```
 
-**Manipulating files in remote server**
+#### Manipulating files in remote server
 
 ```bash
 # change directory
@@ -256,7 +255,7 @@ rm -rf test_folder
 
 `screen` command in Linux provides the ability to launch and use multiple shell sessions from a single ssh session. When a process is started with ‘screen’, the process can be detached from session & then can reattach the session at a later time. When the session is detached, the process that was originally started from the screen is still running and managed by the screen itself. The process can then re-attach the session at a later time, and the terminals are still there, the way it was left.
 
-```bash
+```{bash}
 # create a new screen
 screen
 
@@ -277,7 +276,7 @@ screen -r 1234
 screen -XS 1234 quit
 ```
 
-**Windows within a screen**
+#### Windows within a screen
 
 - Create a new window: `ctrl+a` `c`
 - List all windows: `ctrl+a` `w` or `ctrl+a` `"`
@@ -291,13 +290,13 @@ screen -XS 1234 quit
 - Split terminal horizontally: `ctrl+a` `S`
 - Close a pane: `ctrl+a` `X`
 
-**Run CMISS**
+#### Run CMISS
 
 ```bash
 cm file.com
 ```
 
-### Friday 15 May
+### Sem 1 Week 8 Friday
 
 **Meeting notes:**
 
@@ -307,15 +306,15 @@ cm file.com
 
 Goal for next week: a figure, some output.
 
-## Week 9
+## Sem 1 Week 9
 
-### Thursday 21 May
+### Sem 1 Week 9 Thursday
 
 Learnt about *batch* files. Switched to PuTTY instead of Windows OpenSSH Client as there's more technical support for writing PuTTY batch files. Wrote one to automate logging in with password.
 
 You can check prompt using `echo $PS1` or change prompt using the `PS1=""` command ([more info](https://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html)).
 
-### Friday 22 May
+### Sem 1 Week 9 Friday
 
 Possible solutions:
 
@@ -333,21 +332,21 @@ CellML (imtiaz_2002d_noTstart_COR) -> Tools -> CellML export to user defined -> 
 
 **Problem resolved!** Tiong has fixed the issue and now the prompt is `[clin750@]` in OpenSSH.
 
-## Week 10
+## Sem 1 Week 10
 
-### Thursday 28 May
+### Sem 1 Week 10 Thursday
 
 There is a section symbol § - may be useful to use.
 
-## Week 11
+## Sem 1 Week 11
 
-### Thursday 4 April
+### Sem 1 Week 11 Thursday
 
 The `/bin/bash` at the end of the command file is necessary to keep the window open.
 
 Switched to WinSCP for GUI and scripting functionality.
 
-### Friday 5 April
+### Sem 1 Week 11 Friday
 
 - What is $Cor\cdot{()}$?
 
@@ -370,9 +369,9 @@ Switched to WinSCP for GUI and scripting functionality.
 - Diffusing voltage, COR model provides a solution at one point in the cell; the 2D model uses a 'voltage governing equation' to form a diffusion gradient across points
 - In a healthy human stomach, activities occur at 3cpm. The same activity in intestines happen at 12-30 cpm depending on area of intestine and species.
 
-## Week 12
+## Sem 1 Week 12
 
-### Friday 12 June
+### Sem 1 Week 12 Friday
 
 - Which output are we most interested in? $V_m$?
 
@@ -455,7 +454,6 @@ What does each row of data mean? Do they represent one electrode each?
 What unit/measurement is amplitude? Is velocity relevant? What is percentage?
 > Amplitude is of voltage, but relative to extracellular voltage, making it a difficult characteristic to match. A percentage/relative difference or change might be more feasible but may still not match well. Velocity is wave propagation velocity and simulated in CMISS. It's provides another characteristic that can be matched in the tissue model. Percentage is the proportion of time activities are occuring in the same general direction.
 
-
 With $Cor$=4 and $\eta$=0.0389:
 
 - $\beta$ = 0.0004: 16cpm.
@@ -497,15 +495,15 @@ Frequency looks like a right-skewed curve when plotted against $\eta$.
 
 We don't have other characteristics of experimental data so how do we match e.g. upstroke, width etc.?
 
-## Week 1
+## Sem 2 Week 1
 
-### Monday
+### Sem 2 Week 1 Monday
 
 GitHub repository, VPN, and SSH setup on tablet.
 
 Edited batch command file: successfully automated `dipole_calculate.m`.
 
-### Tuesday
+### Sem 2 Week 1 Tuesday
 
 Streamlined the code for readibility and easier parameterisation. Can now output multiple plots of voltage over time for different parameter values. Plots below are of 20 uniformly distributed parameter values for one variable while keeping the other two constant at default value. Frequencies are taken at steady state (i.e. after 10 minutes (600,000s)) of simulation for a period of 60 seconds (600,000s to 660,000s).
 
@@ -530,7 +528,7 @@ Observe a cliff-type relationship between $\eta$ and frequency with a right-skew
 
 Frequency does not change as $IP3$ is varied.
 
-### Thursday
+### Sem 2 Week 1 Thursday
 
 Meeting agenda:
 
@@ -543,7 +541,7 @@ Meeting agenda:
 - Future meeting times
 - Expectations
 
-**Meetings notes from Peng:**
+#### Meetings notes from Peng
 
 - $IP3$ is a variable and not a parameter, i.e. it has a value but remains constant. So it is reassuring to see that the model is stable regardless of the value itself
 - Upstroke is the elapsed time between resting state (e.g. voltage) and max amplitude. However, it can be difficult to determine the starting point in time as the resting voltage could increase gradually before the sudden uptick. Therefore, it is common to measure upstroke as the time between half amplitude and max amplitude, as both resting state and max amplitude are known. Can also measure from 1/3 amplitude.
@@ -555,16 +553,16 @@ Meeting agenda:
 - Expected faster progression onto the 2D model. The work on the 1D model so far has been good, and is one of the core parts of this project. But the interesting portion is the 2D model and doing some perturbation analysis and other work.
 - One more thing that should be done with the 1D model is analysing the effects of ion conductance. Specifically, reducing the conductance variables and plotting its effect against several characteristics.
 
-### Friday
+### Sem 2 Week 1 Friday
 
 Fine resolution zooming to find range for $\eta$:
 
 ![alt text](./Figures/eta-zoom-1.png)
 ![alt text](./Figures/eta-zoom-2.png)
 
-## Week 2
+## Sem 2 Week 2
 
-### Monday
+### Sem 2 Week 2 Monday
 
 **Meeting notes:**
 
@@ -572,7 +570,7 @@ Fine resolution zooming to find range for $\eta$:
 - Reinitialise from steady state
 - Change conductance variables
 
-### Sunday
+### Sem 2 Week 2 Sunday
 
 Started and completed mid-year presentation.
 
@@ -584,9 +582,9 @@ Code now prints average run time per iteration to get an idea of how long to run
 
 Left simulation for 100 values of eta and beta each to run overnight.
 
-## Week 3
+## Sem 2 Week 3
 
-### Monday
+### Sem 2 Week 3 Monday
 
 ![alt text](./Figures/beta%20vs%20eta%20mesh.png)
 $\eta$ on left axis, $\beta$ on right axis. Surface shows frequency. Average time per iteration: 1.4s.
@@ -603,7 +601,7 @@ Default values:
 ![alt text](./Figures/gbk-vs-freq.png)
 ![alt text](./Figures/gca-vs-freq.png)
 
-**Meeting notes**
+**Meeting notes:**
 
 - Regarding presentation:
   - Include number of data points, features, run-time; shows significant amount of work relating to data science
@@ -616,11 +614,11 @@ Default values:
 - Research how to properly calibrate a model. An idea was to keep $\eta$ constant and vary $\beta$ to match becaues $\eta$ has a non-linear relationship with frequency - not well behaved
 - Find correct $\eta$ and $\beta$ first, then change $I$ variables to simulate drug effects
 
-### Wednesday
+### Sem 2 Week 3 Wednesday
 
 Started working on mid-year report.
 
-### Thursday
+### Sem 2 Week 3 Thursday
 
 Continued working on mid-year report.
 
@@ -631,11 +629,11 @@ Some thoughts:
 - Surface plot needs axes
 - Figure formatting/layout
 
-### Friday
+### Sem 2 Week 3 Friday
 
 Mid-year report completed.
 
-### Sunday
+### Sem 2 Week 3 Sunday
 
 `main_script.m` renamed to `explore_model.m`, now only handles exploring $\eta$ and $\beta$. Created new script `calibrate_model.m` for calibrating $\eta$ and $\beta$. Model script takes new variable `tspan` which is the period of time to simulate.
 
@@ -645,19 +643,19 @@ Average of all baseline frequencies is 18. (Deprecated)
 
 ---
 
-**fminsearch results**
+#### fminsearch results
 
 ![alt text](./Figures/fminsearch.png)
 ![alt text](./Outputs/fminsearch.png)
 
-**fminunc results**
+#### fminunc results
 
 ![alt text](./Figures/fminunc.png)
 ![alt text](./Outputs/fminunc.png)
 
 `fminunc` (which requires Optimisation Toolbox) is much faster than `fminsearch`. Results are the same: use default parameters and $Cor$ = 4. In hindsight, could have just used this from the beginning, but was necessary to understand the problem and imported code.
 
-Some suggestions as to why fminunc has much fewer iterations: https://www.mathworks.com/matlabcentral/answers/90374-fminsearch-finds-local-minimum-when-fminunc-does-not
+Some suggestions as to why fminunc has much fewer iterations: <https://www.mathworks.com/matlabcentral/answers/90374-fminsearch-finds-local-minimum-when-fminunc-does-not>
 
 Some other alternatives are `ga` (Global Optimisation Toolbox) and `fmincon`. But `ga` is not the best here because we know the objective surface/landscape? (look up what it's called), so we are not making use of domain knowledge. `fmincon` requires formulating the problem as a system of constraints, which is not worth the time and effort.
 
@@ -665,7 +663,7 @@ Some other alternatives are `ga` (Global Optimisation Toolbox) and `fmincon`. Bu
 
 ---
 
-**Characteristics**
+#### Characteristics
 
 Using the `pulsewidth`, `risetime`, and `falltime` functions from Signal Processing Toolbox, different characteristics can be found. For the final report, **add a long plot of many pulses then compile all together** (like a comic book). This shows that the characteristics are averaged.
 
@@ -693,17 +691,17 @@ Idea - in the final report, define the following terms:
 
 To do next: perturbation analysis on current conductances to see effects on characteristics, i.e. frequency, upstroke, downstroke, width.
 
-## Week 4
+## Sem 2 Week 4
 
-### Monday
+### Sem 2 Week 4 Monday
 
-**Meeting notes**
+**Meeting notes:**
 
 - Non-integer frequency data are from intervals, i.e. incomplete waves
 - We can justify the perturbation analysis by saying that by slightly altering some parameters, we cover the full range of experimental data, i.e. variations due to natural effects, in case experimental data is a little off
 - With simulated data, we can calculate *exactly* what the frequency is -- find a MATLAB function that can count non-integer frequencies
 
-### Sunday
+### Sem 2 Week 4 Sunday
 
 Added `last_peak` to the model script. It now prints the time of the last peak; this allows for calculating non-integer frequencies.
 
@@ -757,7 +755,7 @@ These are the pulse characteristics of the baseline model.
 
 ---
 
-**Effects of current conductances**
+#### Effects of current conductances
 
 New code: `current_conductances.m`. Outputs:
 
@@ -775,15 +773,13 @@ $G_{BK}$ has been altered from 0.5 to 2.4 because when it is 0, there are no pul
 
 Ran the following code  
 
-```
-
+```{}
 cm example_2d.com
-
 ```
 
-## Week 5
+## Sem 2 Week 5
 
-### Monday
+### Sem 2 Week 5 Monday
 
 **Meeting notes:**
 
@@ -794,7 +790,7 @@ cm example_2d.com
 - Idea: collab with Kart to see which data points he has kept or discarded
 - CMGUI?
 
-### Thursday
+### Sem 2 Week 5 Thursday
 
 From memory: `generate_list.m` reads the values in from `init.m` and uses `2d_slice_temp.ipmatc` as a template and writes to `2d_slice.ipmatc`.
 
@@ -848,20 +844,20 @@ In the final report, define:
 - node
 - solution points
 
-## Week 6
+## Sem 2 Week 6
 
 MSP
 
-## Midsem
+## Sem 2 Midsem
 
-### Monday
+### Sem 2 Midsem First Monday
 
 - Justify why you picked those parameters and why you targeted those values
 - Justifications for all decisions made
 - Start writing up cell model section
 - Last week to try everything new
 
-### Saturday
+### Sem 2 Midsem First Saturday
 
 To copy local folder to remote server, use:
 
@@ -881,7 +877,7 @@ Had some issues with `cm`
 
 ![alt text](./Outputs/cm-error.png)
 
-### Sunday
+### Sem 2 Midsem First Sunday
 
 Resolved the above issue by creating a fresh copy of `MEA_simulation` from Google Drive. MATLAB files created for this project moved into a new folder `MATLAB`.
 
@@ -897,10 +893,13 @@ The `\wait` before `putty.exe` waits for that line to execute before the rest is
 
 Now `dipole_calculate_fig.png` is copied from remote to local after being generated.
 
+### Sem 2 Midsem Second Monday
 
-## Monday
+No meeting notes. Scheduled meeting with Peng tomorrow.
 
-Questions
+### Sem 2 Midsem Second Tuesday
+
+#### Questions for Peng
 
 - In `2d_slice.ipcell`, what are the values in square brackets, e.g. do the values in the brackets have to match the following value?
 
@@ -913,8 +912,47 @@ Constant Variable Cor:
   Spatially varying [N]? N
 ```
 
+> Square brackets are default values (hitting Enter on prompt will use these values)
+
 - What is the difference between `.ipcell` and `.ipmatc`? What do they do?
+
+> `.ipcell` contains parameters, initial values, and whether variables vary spatially; this is read into CMISS. `.ipmatc` is the values themselves, i.e. declaring the initial values.
+
 - When/why should I run `generate_list.m`? E.g. is it used to set parameters for the 2D model and so should I run it at the start of every simulation?
+
+> It's used to programmatically write `.ipmatc` files instead of using prompt in `example_2d.com` to generate it. Use it when wanting to change the initial variable values. If changing the **varying variable** or **how a variable varies**, use `.ipcell`.
+
 - When should I use `p` (prompt) and when should i use `r` (read)? I suspect `p` to reset $Cor$ since it appears it's currently varying in `2d_slice.ipmatc`, and then after that use `r`. But should I ever switch back to `p` after that?
+
+> `p` assumes `.ipmatc` file doesn't exist. So when using `p`, `.ipcell` is read in to prompt values, and a `.ipmatc` file is generated. Suggest using `2d_slice_temp` or another file naming system to store different `.ipmatc` files; end up with a folder of `.ipmatc` files. If using `r`, then a `.ipmatc` file is read in.
+
 - Should I be importing/exporting anything else in my workflow? E.g. the `mfiles` folder?
-- What is one specific task I can do?
+
+> Import whatever MATLAB figures/plots are generated, and `stomach.iphist`
+
+- What is one specific task I can do to get started?
+
+> Start by changing $\eta$ linearly, just have $\eta$ be a different value for the top row
+
+- Changing to N will default to default value so no prompt
+- For state variables, prefer `(2) piecewise linear`
+- `(3)` to do specific grid points
+- Linear basis type number = interpolating function, and depends on how you setup your model. Default is `1`, just spam Enter
+- Then use the generated `.ipmatc` file to run future simulations by changing to `r`
+- `dipole_calculate.m` outputs a `.mat` file called `test_result` with the solutions at 60 points
+- `scp` just the solution file back to local, i.e. `stomach.iphist`. Just be careful where `stomach.iphist` is stored, whether in main folder or in `output` folder
+- `stomach.iphist` contains solutions for all ODE solutions (state variables) at all points (nodes) at each time step
+- Use `dipole_calculate.m` to read in `stomach.iphist` and generate plots
+  - Traces are single solutions over time for each node
+  - Can animate heat maps
+- `Vm` in `dipole_calculate.m` is a multi-dimensional array of $time \times node \times variable$.
+- Further down the line, need a metric to quantify the 2D spatiotemporal effects of variables. E.g.
+  - Average phase lag/difference
+  - Directionality
+  - Spatial gradient
+  - Curl
+  - Any kind of spatial or temporal differences/gradients
+- Run CMISS for at least 100s to reach steady state
+- Output for a duration of 30s is probably sufficient; 60s is more than enough
+- Recommended `dt` is 1 to 10ms
+  
