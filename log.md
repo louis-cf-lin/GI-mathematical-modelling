@@ -955,4 +955,88 @@ Constant Variable Cor:
 - Run CMISS for at least 100s to reach steady state
 - Output for a duration of 30s is probably sufficient; 60s is more than enough
 - Recommended `dt` is 1 to 10ms
-  
+
+#### Workflow
+
+1. Modify `example_2d.com` - set `.ipmatc` file name, e.g. `ipmatc-01.ipmatc` and leave on prompt
+2. Modify `2d_slice.ipcell` to set which variable(s)/constant(s) to vary
+3. Log the changes in `log.md`
+4. Run `sync.bat` to transfer above files to cluster and run CMISS; `stomach.iphist` is returned
+5. Modify `name` in `dipole_animate.m` and run to generate `.AVI` of output
+
+```{matlab}
+% nt must match ($Tend - $Tstart)/10 + 1 from example_2d.com
+nt = 202
+
+% reshape reads in like this
+array = 1:64
+reshape(array, [8 8])
+1     9    17    25    33    41    49    57
+2    10    18    26    34    42    50    58
+3    11    19    27    35    43    51    59
+4    12    20    28    36    44    52    60
+5    13    21    29    37    45    53    61
+6    14    22    30    38    46    54    62
+7    15    23    31    39    47    55    63
+8    16    24    32    40    48    56    64
+% transpose to get correct orientation
+reshape(array, [8 8]).'
+ 1     2     3     4     5     6     7     8
+ 9    10    11    12    13    14    15    16
+17    18    19    20    21    22    23    24
+25    26    27    28    29    30    31    32
+33    34    35    36    37    38    39    40
+41    42    43    44    45    46    47    48
+49    50    51    52    53    54    55    56
+57    58    59    60    61    62    63    64
+
+% to hide cell labels
+'CellLabelColor', 'none'
+
+% set constant limits for comparison
+'ColorLimits', [-72 -20]
+
+% default AVI
+myWriter = VideoWriter('animation');
+% MP4
+myWriter = VideoWriter('animation', 'MPEG-4');
+```
+
+|   Index   | Details | Notes |
+|-----------|---------|-------|
+| 01 | No spatially varying constants. | behaviour as expected |
+| 02 | eta; 2; 1; 0.04 node 1 to 6, 0.0389 remainder. (beta 0.000975) | not sure why effect is staggered across top two rows, expected just top row |
+| 03 | eta; 2; 1; 0.04 all. (beta 0.000975) | not very useful |
+| 04 | eta not changing (0.39264) beta not changing (0.00099) | baseline with calibrated params |
+| 05 | eta; 2; 1; 0.04 node 1 to 6, 0.03 node 55 to 60, 0.039264 remainder | dramatic gradient propagation, bottom row appears to decouple completely |
+| 06 | beta; 2; 1; 0.0009 node 1 to 6, 0.00099 remainder | similar effect to changing top row of eta |
+| 07 | beta; 2; 1; 0.0005 node 1 to 6, 0.00099 remainder | entrainment in a short span of time |
+| 08 | beta; 2; 1; 0.0005 node 1 to 6, 0.0015 node 55 to 60, 0.00099 remainder | nice gradient (overwrote with 09) |
+| 09 | beta; 2; 1; 0.0005 node 26, 27, 34, 35, 0.00099 remainder | expected center, one column off to the right, entrained close to end (is 08) |
+| 10 | beta; 2; 1; 0.0005 node 25, 26, 33, 34, 0.00099 remainder | centered |
+| 11 | beta; 2; 1; 0.0005 node 1, 6, 55, 60, 0.00099 remainder | behaviour not expected |
+| 12 | beta; 2; 1; 0.0005 node 1, 5, 54, 59, 0.00099 remainder | still not as expected, suspect wrong allocation system |
+| 13 | beta; 2; 1; 0.0005 node 3, 0.00099 remainder | no idea what's going on, multiple decoupled nodes despite only changing node 3 |
+| 14 | eta; 2; 1; 0.03 node 3, 0.039264 remainder | slower propagation than beta, easier to see gradient, but still not expected behaviour |
+| 15 | eta; 2; 1; 0.03 node 1 | initially propagates only horizontally, seems strange |
+| 16 | eta; 2; 1; 0.03 node 60 | propagation seems more plausible, but spontaneous activity occurring from bottom-left corner |
+
+Realised plotting nodes may not be representative/accurate. MATLAB code modified to plot elements, where each element is the average of 4 corner nodes. Frame rate increased to 60 to decrease video length.
+
+| Index | Details | Notes |
+|-------|---------|-------|
+| 17 | eta; 0.03 node 1 to 4 | behaviour as expected, propagation from top-left, still spontaneous activity in top-right |
+| 18 | eta; 0.03 node 4 | propagation appears to begin in the corner |
+| 19 | eta; 0.03 node 3 | activity is strongest in bottom-right corner of element 1 |
+
+This confirms numbering is clockwise about an element starting from the top-left corner.
+
+| Index | Details | Notes |
+|-------|---------|-------|
+| 20 | eta; 0.03 node 13 |  |
+| 21 |  |  |
+| 22 |  |  |
+| 23 |  |  |
+| 24 |  |  |
+| 25 |  |  |
+| 26 |  |  |

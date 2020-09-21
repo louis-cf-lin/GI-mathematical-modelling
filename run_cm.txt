@@ -1,0 +1,2 @@
+cd MEA_simulation
+cm example_2d.com
