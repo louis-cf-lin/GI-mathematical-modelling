@@ -1,29 +1,97 @@
 # Louis: Project Log <!-- omit in toc -->
 
 - [Sem 1 Week 1](#sem-1-week-1)
+  - [Sem 1 Week 1 Friday](#sem-1-week-1-friday)
 - [Sem 1 Week 2](#sem-1-week-2)
+  - [Sem 1 Week 2 Thursday](#sem-1-week-2-thursday)
+  - [Sem 1 Week 2 Friday](#sem-1-week-2-friday)
 - [Sem 1 Week 3](#sem-1-week-3)
+  - [Sem 1 Week 3 Wednesday](#sem-1-week-3-wednesday)
+  - [Sem 1 Week 3 March](#sem-1-week-3-march)
+    - [Virtual environment in Python](#virtual-environment-in-python)
+    - [Updates](#updates)
 - [No Lecture Week](#no-lecture-week)
 - [Sem 1 Week 4](#sem-1-week-4)
+  - [Sem 1 Week 4 Friday](#sem-1-week-4-friday)
 - [Sem 1 Week 5](#sem-1-week-5)
+  - [Sem 1 Week 5 Monday](#sem-1-week-5-monday)
+  - [Sem 1 Week 5 Tuesday](#sem-1-week-5-tuesday)
 - [Sem 1 Midsem](#sem-1-midsem)
+  - [Sem 1 Midsem First Friday](#sem-1-midsem-first-friday)
+  - [Sem 1 Midsem Second Monday](#sem-1-midsem-second-monday)
+  - [Sem 1 Midsem Second Tuesday](#sem-1-midsem-second-tuesday)
+  - [Sem 1 Midsem Second Thursday](#sem-1-midsem-second-thursday)
+  - [Sem 1 Midsem Second Friday](#sem-1-midsem-second-friday)
+  - [Sem 1 Midsem Second Saturday](#sem-1-midsem-second-saturday)
+  - [Sem 1 Midsem Second Sunday](#sem-1-midsem-second-sunday)
 - [Sem 1 Week 6](#sem-1-week-6)
+  - [Sem 1 Week 6 Monday](#sem-1-week-6-monday)
+  - [Sem 1 Week 6 Thursday](#sem-1-week-6-thursday)
+  - [Sem 1 Week 6 Friday](#sem-1-week-6-friday)
+  - [Sem 1 Week 6 Saturday](#sem-1-week-6-saturday)
+  - [Sem 1 Week 6 Sunday](#sem-1-week-6-sunday)
+  - [Sem 1 Week 6 Tuesday](#sem-1-week-6-tuesday)
 - [Sem 1 Week 7](#sem-1-week-7)
+  - [Sem 1 Week 7 Friday](#sem-1-week-7-friday)
 - [Sem 1 Week 8](#sem-1-week-8)
+  - [Sem 1 Week 8 Thursday](#sem-1-week-8-thursday)
+    - [Transfer a file from local machine to remote server](#transfer-a-file-from-local-machine-to-remote-server)
+    - [Transfer a directory from local machine to remote server](#transfer-a-directory-from-local-machine-to-remote-server)
+    - [Transfer a file from remote server to local machine](#transfer-a-file-from-remote-server-to-local-machine)
+    - [Manipulating files in remote server](#manipulating-files-in-remote-server)
+    - [Windows within a screen](#windows-within-a-screen)
+    - [Run CMISS](#run-cmiss)
+  - [Sem 1 Week 8 Friday](#sem-1-week-8-friday)
 - [Sem 1 Week 9](#sem-1-week-9)
+  - [Sem 1 Week 9 Thursday](#sem-1-week-9-thursday)
+  - [Sem 1 Week 9 Friday](#sem-1-week-9-friday)
 - [Sem 1 Week 10](#sem-1-week-10)
+  - [Sem 1 Week 10 Thursday](#sem-1-week-10-thursday)
 - [Sem 1 Week 11](#sem-1-week-11)
+  - [Sem 1 Week 11 Thursday](#sem-1-week-11-thursday)
+  - [Sem 1 Week 11 Friday](#sem-1-week-11-friday)
 - [Sem 1 Week 12](#sem-1-week-12)
+  - [Sem 1 Week 12 Friday](#sem-1-week-12-friday)
 - [Holidays Week 1](#holidays-week-1)
 - [Holidays Week 2](#holidays-week-2)
 - [Holidays Week 3](#holidays-week-3)
 - [Sem 2 Week 1](#sem-2-week-1)
+  - [Sem 2 Week 1 Monday](#sem-2-week-1-monday)
+  - [Sem 2 Week 1 Tuesday](#sem-2-week-1-tuesday)
+  - [Sem 2 Week 1 Thursday](#sem-2-week-1-thursday)
+    - [Meetings notes from Peng](#meetings-notes-from-peng)
+  - [Sem 2 Week 1 Friday](#sem-2-week-1-friday)
 - [Sem 2 Week 2](#sem-2-week-2)
+  - [Sem 2 Week 2 Monday](#sem-2-week-2-monday)
+  - [Sem 2 Week 2 Sunday](#sem-2-week-2-sunday)
 - [Sem 2 Week 3](#sem-2-week-3)
+  - [Sem 2 Week 3 Monday](#sem-2-week-3-monday)
+  - [Sem 2 Week 3 Wednesday](#sem-2-week-3-wednesday)
+  - [Sem 2 Week 3 Thursday](#sem-2-week-3-thursday)
+  - [Sem 2 Week 3 Friday](#sem-2-week-3-friday)
+  - [Sem 2 Week 3 Sunday](#sem-2-week-3-sunday)
+    - [fminsearch results](#fminsearch-results)
+    - [fminunc results](#fminunc-results)
+    - [Characteristics](#characteristics)
 - [Sem 2 Week 4](#sem-2-week-4)
+  - [Sem 2 Week 4 Monday](#sem-2-week-4-monday)
+  - [Sem 2 Week 4 Sunday](#sem-2-week-4-sunday)
+    - [Effects of current conductances](#effects-of-current-conductances)
 - [Sem 2 Week 5](#sem-2-week-5)
+  - [Sem 2 Week 5 Monday](#sem-2-week-5-monday)
+  - [Sem 2 Week 5 Thursday](#sem-2-week-5-thursday)
 - [Sem 2 Week 6](#sem-2-week-6)
 - [Sem 2 Midsem](#sem-2-midsem)
+  - [Sem 2 Midsem First Monday](#sem-2-midsem-first-monday)
+  - [Sem 2 Midsem First Saturday](#sem-2-midsem-first-saturday)
+  - [Sem 2 Midsem First Sunday](#sem-2-midsem-first-sunday)
+  - [Sem 2 Midsem Second Monday](#sem-2-midsem-second-monday)
+  - [Sem 2 Midsem Second Tuesday](#sem-2-midsem-second-tuesday)
+    - [Questions for Peng](#questions-for-peng)
+- [Sem 2 Week 7](#sem-2-week-7)
+  - [Sem 2 Week 7 Monday](#sem-2-week-7-monday)
+    - [Workflow](#workflow)
+  - [Sem 2 Week 7 Tuesday](#sem-2-week-7-tuesday)
 
 ## Sem 1 Week 1
 
@@ -956,6 +1024,10 @@ Constant Variable Cor:
 - Output for a duration of 30s is probably sufficient; 60s is more than enough
 - Recommended `dt` is 1 to 10ms
 
+## Sem 2 Week 7
+
+### Sem 2 Week 7 Monday
+
 #### Workflow
 
 1. Modify `example_2d.com` - set `.ipmatc` file name, e.g. `ipmatc-01.ipmatc` and leave on prompt
@@ -1002,41 +1074,50 @@ myWriter = VideoWriter('animation');
 myWriter = VideoWriter('animation', 'MPEG-4');
 ```
 
-|   Index   | Details | Notes |
-|-----------|---------|-------|
-| 01 | No spatially varying constants. | behaviour as expected |
-| 02 | eta; 2; 1; 0.04 node 1 to 6, 0.0389 remainder. (beta 0.000975) | not sure why effect is staggered across top two rows, expected just top row |
-| 03 | eta; 2; 1; 0.04 all. (beta 0.000975) | not very useful |
-| 04 | eta not changing (0.39264) beta not changing (0.00099) | baseline with calibrated params |
-| 05 | eta; 2; 1; 0.04 node 1 to 6, 0.03 node 55 to 60, 0.039264 remainder | dramatic gradient propagation, bottom row appears to decouple completely |
-| 06 | beta; 2; 1; 0.0009 node 1 to 6, 0.00099 remainder | similar effect to changing top row of eta |
-| 07 | beta; 2; 1; 0.0005 node 1 to 6, 0.00099 remainder | entrainment in a short span of time |
-| 08 | beta; 2; 1; 0.0005 node 1 to 6, 0.0015 node 55 to 60, 0.00099 remainder | nice gradient (overwrote with 09) |
-| 09 | beta; 2; 1; 0.0005 node 26, 27, 34, 35, 0.00099 remainder | expected center, one column off to the right, entrained close to end (is 08) |
-| 10 | beta; 2; 1; 0.0005 node 25, 26, 33, 34, 0.00099 remainder | centered |
-| 11 | beta; 2; 1; 0.0005 node 1, 6, 55, 60, 0.00099 remainder | behaviour not expected |
-| 12 | beta; 2; 1; 0.0005 node 1, 5, 54, 59, 0.00099 remainder | still not as expected, suspect wrong allocation system |
-| 13 | beta; 2; 1; 0.0005 node 3, 0.00099 remainder | no idea what's going on, multiple decoupled nodes despite only changing node 3 |
-| 14 | eta; 2; 1; 0.03 node 3, 0.039264 remainder | slower propagation than beta, easier to see gradient, but still not expected behaviour |
-| 15 | eta; 2; 1; 0.03 node 1 | initially propagates only horizontally, seems strange |
-| 16 | eta; 2; 1; 0.03 node 60 | propagation seems more plausible, but spontaneous activity occurring from bottom-left corner |
+| Index | Details                                                                 | Notes                                                                                        |
+| ----- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| 01    | No spatially varying constants.                                         | behaviour as expected                                                                        |
+| 02    | eta; 2; 1; 0.04 node 1 to 6, 0.0389 remainder. (beta 0.000975)          | not sure why effect is staggered across top two rows, expected just top row                  |
+| 03    | eta; 2; 1; 0.04 all. (beta 0.000975)                                    | not very useful                                                                              |
+| 04    | eta not changing (0.39264) beta not changing (0.00099)                  | baseline with calibrated params                                                              |
+| 05    | eta; 2; 1; 0.04 node 1 to 6, 0.03 node 55 to 60, 0.039264 remainder     | dramatic gradient propagation, bottom row appears to decouple completely                     |
+| 06    | beta; 2; 1; 0.0009 node 1 to 6, 0.00099 remainder                       | similar effect to changing top row of eta                                                    |
+| 07    | beta; 2; 1; 0.0005 node 1 to 6, 0.00099 remainder                       | entrainment in a short span of time                                                          |
+| 08    | beta; 2; 1; 0.0005 node 1 to 6, 0.0015 node 55 to 60, 0.00099 remainder | nice gradient (overwrote with 09)                                                            |
+| 09    | beta; 2; 1; 0.0005 node 26, 27, 34, 35, 0.00099 remainder               | expected center, one column off to the right, entrained close to end (is 08)                 |
+| 10    | beta; 2; 1; 0.0005 node 25, 26, 33, 34, 0.00099 remainder               | centered                                                                                     |
+| 11    | beta; 2; 1; 0.0005 node 1, 6, 55, 60, 0.00099 remainder                 | behaviour not expected                                                                       |
+| 12    | beta; 2; 1; 0.0005 node 1, 5, 54, 59, 0.00099 remainder                 | still not as expected, suspect wrong allocation system                                       |
+| 13    | beta; 2; 1; 0.0005 node 3, 0.00099 remainder                            | no idea what's going on, multiple decoupled nodes despite only changing node 3               |
+| 14    | eta; 2; 1; 0.03 node 3, 0.039264 remainder                              | slower propagation than beta, easier to see gradient, but still not expected behaviour       |
+| 15    | eta; 2; 1; 0.03 node 1                                                  | initially propagates only horizontally, seems strange                                        |
+| 16    | eta; 2; 1; 0.03 node 60                                                 | propagation seems more plausible, but spontaneous activity occurring from bottom-left corner |
 
 Realised plotting nodes may not be representative/accurate. MATLAB code modified to plot elements, where each element is the average of 4 corner nodes. Frame rate increased to 60 to decrease video length.
 
-| Index | Details | Notes |
-|-------|---------|-------|
-| 17 | eta; 0.03 node 1 to 4 | behaviour as expected, propagation from top-left, still spontaneous activity in top-right |
-| 18 | eta; 0.03 node 4 | propagation appears to begin in the corner |
-| 19 | eta; 0.03 node 3 | activity is strongest in bottom-right corner of element 1 |
+| Index | Details               | Notes                                                                                     |
+| ----- | --------------------- | ----------------------------------------------------------------------------------------- |
+| 17    | eta; 0.03 node 1 to 4 | behaviour as expected, propagation from top-left, still spontaneous activity in top-right |
+| 18    | eta; 0.03 node 4      | propagation appears to begin in the corner                                                |
+| 19    | eta; 0.03 node 3      | activity is strongest in bottom-right corner of element 1                                 |
 
 This confirms numbering is clockwise about an element starting from the top-left corner.
 
-| Index | Details | Notes |
-|-------|---------|-------|
-| 20 | eta; 0.03 node 13 |  |
-| 21 |  |  |
-| 22 |  |  |
-| 23 |  |  |
-| 24 |  |  |
-| 25 |  |  |
-| 26 |  |  |
+| Index | Details           | Notes |
+| ----- | ----------------- | ----- |
+| 20    | eta; 0.03 node 13 |       |
+
+### Sem 2 Week 7 Tuesday
+
+**Meeting notes with Peng:**
+
+- Weird behaviours may be due to not running to steady-state
+  - `#` in `example_2d.com` indicates a comment
+  - If simulations take too long, consider running to steady state and feeding the output as input for future simulations
+  - This will require writing `stomach.iphist` into a `.ipmatc` file
+- Make wave go in one direction only, e.g. top to bottom, or left to right, but just pick one
+- Plot heatmap as frequency
+- See photos
+- Only change $\eta$, can justify by saying they have similar effects, and no physiological representation, and we are only looking to reproduce behaviour so have arbitrarily picked just one
+  - Recommend changing `.ipcell` once at the start, setting all variables that are of interest (i.e. $\eta$, current conductance channels)
+  - Programmatically edit `.ipmatc` using `generate_list.m`
