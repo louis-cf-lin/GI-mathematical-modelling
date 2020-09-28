@@ -1121,3 +1121,39 @@ This confirms numbering is clockwise about an element starting from the top-left
 - Only change $\eta$, can justify by saying they have similar effects, and no physiological representation, and we are only looking to reproduce behaviour so have arbitrarily picked just one
   - Recommend changing `.ipcell` once at the start, setting all variables that are of interest (i.e. $\eta$, current conductance channels)
   - Programmatically edit `.ipmatc` using `generate_list.m`
+
+### Sem 2 Week 7 Sunday
+
+Ran simulation for 100 seconds, then outputed simulation for 30 seconds. Trying to figure out how to calculate frequency on a sample-by-sample basis. Multiple ideas:
+
+- Use `findpeaks` to count number of cycles
+  - A problem with this is the resolution will ever only be integer
+  - To measure in cpm, will need at least one minute of prior data
+  - Alternatively, count peaks in last 30 seconds and extend to per minute
+  - Use time between peaks to calculate interval, then the inverse is frequency
+- Use `pulseperiod` to get width/interval between half-amp
+- Also the idea of taking averages
+  - Averages give more accurate frequencies
+  - But more samples = further back in time = longer simulation times
+  - Also means all the samples will have very similar frequencies
+
+**Meeting notes:**
+
+- Look at intervals/width/period (for freq)
+- Perform FFT transform on simulated data
+- Peak of FFT = frequency
+- Perform CWT transform for change in frequency over time
+  - Time resolution is high but might take a while
+- At this point, just want a nice wave from top to bottom at a reasonable gradient over 30 seconds
+- Instead of only changing the top row, alter the entire array to give it a smoother gradient
+- Gradient shouldn't be too dramatic, change up to 2cpm across the array
+- Frequency is the quantifier, but using $V_m$ for visualisations is much more intuitive and easier to see and understand the pattern and distribution
+- The array is 1.4mm across (200 microns per square for 7 squares)
+- Plots:
+  - Corner NaN can be white
+  - No axis labels (i.e. 1,2,3...)
+  - No values on grid
+  - Colour map use jet (standard rainbow)
+  - 1:1 aspect ratio, square grids
+  - Units for colour scale and title
+  - An example of a really nice plot to make in main folder (plot of trace from a single column of electrodes)

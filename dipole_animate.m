@@ -9,10 +9,11 @@ clc;
 % resolution
 nx = 8;
 ny = 8;
-nt = 202; % MUST BE CHANGED
+nt = 3001; % period / dt + 1
 
 % read outputs
 addpath('MEA_simulation')
+addpath('MEA_simulation/output')
 filename = 'stomach.iphist';
 Vm = iphistread(filename, 60, 1, nt);
 
@@ -21,8 +22,9 @@ Vm = iphistread(filename, 60, 1, nt);
 % cold = min(min(Vm(:,:,1)));
 % hot = max(max(Vm(:,:,1)));
 
+trace = zeros((nx-1),(ny-1),nt);
 bitmap = zeros((nx-1),(ny-1));
-name = 'ipmatc-20';
+name = 'eta';
 figh = figure;
 
 for k = 1:size(Vm,1)
@@ -38,12 +40,19 @@ for k = 1:size(Vm,1)
     % element is average of four corner nodes
     for i = 1:(nx-1)
         for j = 1:(ny-1)
-            bitmap(i,j) = (yep(i,j) + yep(i,j+1) + yep(i+1,j) + yep(i+1,j+1))/4;
+            trace(i,j,k) = (yep(i,j) + yep(i,j+1) + yep(i+1,j) + yep(i+1,j+1))/4;
+%             if k > 600 && ~isnan(trace(i,j,k))
+%                 pp = pulseperiod(squeeze(trace(i,j,k-600:k)));
+%             end
+            if k > 600 && ~isnan(trace(i,j,k))
+                pp = pulseperiod(squeeze(trace(i,j,k-600:k)), 'Tolerance', 10);
+                bitmap(i,j) = 1/pp(end) * 6000;
+            end
         end
     end
     
     % plot heat map
-    heatmap(bitmap, 'Colormap', cool, 'ColorLimits', [-72 -20]);
+    heatmap(bitmap, 'Colormap', cool, 'ColorLimits', [23 28]);
     title([name, ' t = ', num2str(k)]);
     
     % capture frame
@@ -52,10 +61,10 @@ end
 
 % write to video
 myWriter = VideoWriter(['avi\',name]);
-myWriter.FrameRate = 60;
+myWriter.FrameRate = 20;
 open(myWriter);
 writeVideo(myWriter, movieVector);
 close(myWriter);
 
-close
+% close
 disp('done')
