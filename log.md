@@ -1157,3 +1157,9 @@ Ran simulation for 100 seconds, then outputed simulation for 30 seconds. Trying 
   - 1:1 aspect ratio, square grids
   - Units for colour scale and title
   - An example of a really nice plot to make in main folder (plot of trace from a single column of electrodes)
+
+## Sem 2 Week 10
+
+## Sem 2 Week 10 Wednesday
+
+asdfsd
