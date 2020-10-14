@@ -1162,4 +1162,23 @@ Ran simulation for 100 seconds, then outputed simulation for 30 seconds. Trying 
 
 ## Sem 2 Week 10 Wednesday
 
-asdfsd
+Made corners white, but label still shown under colour bar and no option to hide. Have chosen to completely remove colour bar and will reproduce later.
+
+Removed tick labels.
+
+Colour map `jet`.
+
+Sqaure grids, roundabout way of doing it. No title. Will reproduce later.
+
+All run to steady state 100s and simulated for 30s.
+
+| Video | Notes ($\eta$) |
+| ----- | ------- |
+| `grad-1` | Increment 0.0001 per row starting at 0.039264. |
+| `bloom-1` | Center (26, 27, 34, 35) 0.04, remainder 0.039264. |
+
+Running to steady state 10s and simulated for 10s for diagnosis.
+
+| Video | Notes ($\eta$) |
+| ----- | ------- |
+| `bloom-2` | Center (25, 26, 33, 34) 0.04, remainder 0.039264. |

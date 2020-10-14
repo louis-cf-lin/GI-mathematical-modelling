@@ -9,7 +9,7 @@ clc;
 % resolution
 nx = 8;
 ny = 8;
-nt = 3001; % period / dt + 1
+nt = 1001; % period / dt + 1
 
 % read outputs
 addpath('MEA_simulation')
@@ -29,7 +29,7 @@ figh = figure('MenuBar', 'none', ...
        'ToolBar', 'none');
 axis off;
 box off;
-
+set(gcf, 'Position',  [0, 0, 500, 500])
 
 for k = 1:size(Vm,1)
     % clear current figure
