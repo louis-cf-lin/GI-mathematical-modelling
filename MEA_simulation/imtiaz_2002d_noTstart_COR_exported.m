@@ -40,7 +40,7 @@ function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, freq] = sol
         freq = 0;
     else
         last_peak = VOI(locs(end));
-        freq = (peaks - 1)/((last_peak-600000)/60000);
+        freq = (peaks - 1)/((last_peak - 600000)/60000);
     end
     
     fprintf('beta = %f, eta = %f, G_Na = %f, G_BK = %f, G_Ca = %f: %f cpm \n', beta, eta, G_Na, G_BK, G_Ca, freq);

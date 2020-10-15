@@ -59,7 +59,6 @@
   - [Sem 2 Week 1 Monday](#sem-2-week-1-monday)
   - [Sem 2 Week 1 Tuesday](#sem-2-week-1-tuesday)
   - [Sem 2 Week 1 Thursday](#sem-2-week-1-thursday)
-    - [Meetings notes from Peng](#meetings-notes-from-peng)
   - [Sem 2 Week 1 Friday](#sem-2-week-1-friday)
 - [Sem 2 Week 2](#sem-2-week-2)
   - [Sem 2 Week 2 Monday](#sem-2-week-2-monday)
@@ -92,6 +91,10 @@
   - [Sem 2 Week 7 Monday](#sem-2-week-7-monday)
     - [Workflow](#workflow)
   - [Sem 2 Week 7 Tuesday](#sem-2-week-7-tuesday)
+  - [Sem 2 Week 7 Sunday](#sem-2-week-7-sunday)
+- [Sem 2 Week 10](#sem-2-week-10)
+  - [Sem 2 Week 10 Wednesday](#sem-2-week-10-wednesday)
+  - [Sem 2 Week 10 Thursday](#sem-2-week-10-thursday)
 
 ## Sem 1 Week 1
 
@@ -609,7 +612,7 @@ Meeting agenda:
 - Future meeting times
 - Expectations
 
-#### Meetings notes from Peng
+**Meetings notes from Peng:**
 
 - $IP3$ is a variable and not a parameter, i.e. it has a value but remains constant. So it is reassuring to see that the model is stable regardless of the value itself
 - Upstroke is the elapsed time between resting state (e.g. voltage) and max amplitude. However, it can be difficult to determine the starting point in time as the resting voltage could increase gradually before the sudden uptick. Therefore, it is common to measure upstroke as the time between half amplitude and max amplitude, as both resting state and max amplitude are known. Can also measure from 1/3 amplitude.
@@ -1156,11 +1159,11 @@ Ran simulation for 100 seconds, then outputed simulation for 30 seconds. Trying 
   - Colour map use jet (standard rainbow)
   - 1:1 aspect ratio, square grids
   - Units for colour scale and title
-  - An example of a really nice plot to make in main folder (plot of trace from a single column of electrodes)
+  - An example of a really nice plot to make in main folder (plot of trace from a single column of electrodes
 
 ## Sem 2 Week 10
 
-## Sem 2 Week 10 Wednesday
+### Sem 2 Week 10 Wednesday
 
 Made corners white, but label still shown under colour bar and no option to hide. Have chosen to completely remove colour bar and will reproduce later.
 
@@ -1170,15 +1173,49 @@ Colour map `jet`.
 
 Sqaure grids, roundabout way of doing it. No title. Will reproduce later.
 
-All run to steady state 100s and simulated for 30s.
+All run to steady state 100s and simulated for 30s, changing $\eta$.
 
-| Video | Notes ($\eta$) |
+| Video | Notes |
 | ----- | ------- |
 | `grad-1` | Increment 0.0001 per row starting at 0.039264. |
 | `bloom-1` | Center (26, 27, 34, 35) 0.04, remainder 0.039264. |
 
 Running to steady state 10s and simulated for 10s for diagnosis.
 
-| Video | Notes ($\eta$) |
+| Video | Notes |
 | ----- | ------- |
-| `bloom-2` | Center (25, 26, 33, 34) 0.04, remainder 0.039264. |
+| `bloom-2` | Center (26, 27, 34, 35) 0.04, remainder 0.039264. |
+| `bloom-3` | Off-center (25, 26, 33, 34) 0.04, remainder 0.039264. |
+
+Off center?
+
+Units in example_2d.com in seconds
+
+### Sem 2 Week 10 Thursday
+
+**Meeting notes:**
+
+- Focus more on implementation rather than interpretation
+- Off-set may be due to how nodes are defined, Peng will have a look at CMGUI to see if it matches
+- Keep the background within 5 minutes
+- How the two projects merge: show a suitable picture of array, visuals, clear representation of why the two projects are in the same field
+- Common question: what are the limitations of your project? (simulated data is calibrated against experimental data, as is the case with mathematical modelling, so accuracy of model depends on validity of experimental data)
+- Simulation run time on HPC (CPU hours)
+
+Running to steady state 10s and simulated for 10s for diagnosis.
+
+| Video | Notes |
+| ----- | ------- |
+| `grad-2` | Increment 0.0001 per row starting at 0.039264. |
+| `grad-3` | Increment 0.0001 every eight starting at 0.039264. |
+
+Still trying to debug the output. Peng was able to produce a clean gradient using `grad-2.ipmatc`
+
+![alt text](./whiteboard-notes/2d_clin075.jpg)
+![alt text](./whiteboard-notes/2d_clin075_node.jpg)
+
+Somehow reproduced the faulty one too.
+
+![alt text](./whiteboard-notes/2d_clin075.png)
+
+Haven't been able to reproduce the clean gradient though ...
