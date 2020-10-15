@@ -9,7 +9,7 @@ clc;
 % resolution
 nx = 8;
 ny = 8;
-nt = 1001; % period / dt + 1
+nt = 501; % period / dt + 1
 
 % read outputs
 addpath('MEA_simulation')
@@ -24,6 +24,8 @@ Vm = iphistread(filename, 60, 1, nt);
 
 trace = zeros((nx-1),(ny-1),nt);
 bitmap = zeros((nx-1),(ny-1));
+[X,Y] = meshgrid(1:nx-1, 1:ny-1);
+[X2,Y2] = meshgrid(1:0.01:nx-1, 1:0.01:ny-1);
 name = 'eta';
 figh = figure('MenuBar', 'none', ...
        'ToolBar', 'none', ...
@@ -34,6 +36,7 @@ axes('Parent', figh, ...
     'Color', 'white');
 box off;
 set(gcf, 'Position',  [0, 0, 500, 500])
+
 
 for k = 1:size(Vm,1)
     % clear current figure
@@ -70,12 +73,21 @@ for k = 1:size(Vm,1)
         end
     end
     
+    bitmap(1,1) = 0;
+    bitmap(1,ny-1) = 0;
+    bitmap(nx-1,1) = 0;
+    bitmap(nx-1,ny-1) = 0;
+    
+    outData = interp2(X, Y, bitmap, X2, Y2, 'linear');
+    outData(1:100,1:100) = NaN;
+    outData(1:100,end-99:end) = NaN;
+    outData(end-99:end,1:100) = NaN;
+    outData(end-99:end,end-99:end) = NaN;
+    
     % plot heat map
-    h = heatmap(bitmap, ... 
+    h = heatmap(outData, ... 
         'Colormap', jet, ... 
         'ColorLimits', [-72 -20], ...
-        'XDisplayLabels', {'','','','','','',''}, ...,
-        'YDisplayLabels', {'','','','','','',''}, ...
         'MissingDataLabel', '', ... 
         'MissingDataColor', 'white', ...
         'GridVisible', 'off', ...
@@ -83,6 +95,9 @@ for k = 1:size(Vm,1)
         'Position', [0.1 0.1 0.8 0.8]);
     title(['t = ', num2str(k/100), 's']);
 
+    Ax = gca;
+    Ax.XDisplayLabels = nan(size(Ax.XDisplayData));
+    Ax.YDisplayLabels = nan(size(Ax.YDisplayData));
     
     % capture frame
     movieVector(k) = getframe(figh);
