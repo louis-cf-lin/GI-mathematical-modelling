@@ -14,7 +14,7 @@ addpath('mfiles')                                     % contains mfiles
 % resolution
 nx = 8;
 ny = 8;
-nt = 2000;
+nt = 501;
 
 filename = 'stomach.iphist';
 Vm = iphistread(filename, 60, 1, nt);
@@ -40,6 +40,8 @@ end
 
 
 for i = 1:60
+    % Vm for one node across all time, offset and normalised, then
+    % subtracted by time?
     Vm_plot(:,i) = (Vm(:,i,1)-80)./(-20-80).*-10-i;
 end
 

@@ -95,6 +95,7 @@
 - [Sem 2 Week 10](#sem-2-week-10)
   - [Sem 2 Week 10 Wednesday](#sem-2-week-10-wednesday)
   - [Sem 2 Week 10 Thursday](#sem-2-week-10-thursday)
+  - [Sem 2 Week 10 Friday](#sem-2-week-10-friday)
 
 ## Sem 1 Week 1
 
@@ -1219,3 +1220,8 @@ Somehow reproduced the faulty one too.
 ![alt text](./whiteboard-notes/2d_clin075.png)
 
 Haven't been able to reproduce the clean gradient though ...
+
+Using `interp2()` to make produce smooth heat map (for visualisation only)
+
+### Sem 2 Week 10 Friday
+
