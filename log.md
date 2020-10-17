@@ -1225,3 +1225,44 @@ Using `interp2()` to make produce smooth heat map (for visualisation only)
 
 ### Sem 2 Week 10 Friday
 
+Made a very quick, rudimentary outline of presentation.
+
+Practice presentation with other GI tract/ML projects. Takeaway points:
+
+- Important to establish strong links between two projects
+- Needs to sound like a single cohesive presentation
+- Important to end with conclusions and limitations
+  - Idea: let conclusions be implementation and complement it with insights gained
+- Visuals are very important, must be perfect (units, titles, axes)
+- 20 minute hard limit
+
+Have come up with new ideas to link projects.
+
+Have finally fixed the issue with 2D - as suspected, problem with array arrangement. Turns out to be a completely different arrangement than previously thought:
+
+![alt text](./whiteboard-notes/correct_config.jpg)
+
+Majoy delays due to this error, can now simulate drug effects.
+
+New discovery: $\eta$ does not affect (steady-state) frequency in the 2D model, it only creates a phase shift. This is seen in both the linear gradient and point spread.
+
+Note, in
+
+```{matlab}
+[pks, locs] = findpeaks(squeeze(trace(i,4,:)), 'MinPeakDistance', 10);
+peaks = numel(pks);
+freq = (peaks - 1)/((locs(end) - locs(1))/100)*60;
+disp(freq);
+```
+
+the `MinPeakDistance` is because some signals produce very small spikes close to the actual peak, which are detected as a peak and effectively double counting. So `MinPeakDistance` finds the largest peak in the neighbourhood (i.e. 10ms) and keeps it whilst deleting all others.
+
+| Video | File | Details | Notes |
+| ----- | ---- | ------- | ----- |
+| `low-ca` | `low-ca.ipmatc` | 26, 27, 34, 35 $G_{MCa}$ = 2 |
+| `high-ca` | `high-ca.ipmatc` | 26, 27, 34, 35 $G_{MCa}$ = 8 |
+| `low-na` | `low-na.ipmatc` | 26, 27, 34, 35 $G_{Na}$ = 0 |
+| `high-na` | `high-na.ipmatc` | 26, 27, 34, 35 $G_{Na}$ = 56 |
+
+
+Simulate raw data for Kartikey
