@@ -8,6 +8,7 @@ load(join(name,'.mat'));
 
 nx = size(config,1);
 ny = size(config,2);
+step = 10;
 
 Vm = NaN(nx, ny, size(filt_data,2));
 
@@ -18,6 +19,17 @@ for i = 1:nx
             Vm(i,j,:) = filt_data(config(i,j),:);
         end
     end
+end
+
+for i = 1:8
+    plot(squeeze(Vm(i,4,:)));
+    hold on;
+    
+    % avoid double counting the same peak
+    [pks, locs] = findpeaks(squeeze(Vm(i,4,:)), 'MinPeakDistance', 10);
+    peaks = numel(pks);
+    freq = (peaks - 1)/((locs(end) - locs(1))/100)*60;
+    disp(freq);
 end
 
 cold = min(min(filt_data));
@@ -34,36 +46,34 @@ axes('Parent', figh, ...
 box off;
 set(gcf, 'Position',  [0, 0, 500, 500])
 
-for k = 1:100:size(filt_data,2)
+for k = 1:step:size(filt_data,2)
     % clear current figure
     clf
-    % extract time step k for state variable Vm
-    yep = Vm(:,:,k);
 
     % element is average of four corner nodes
     for i = 1:(nx-1)
         for j = 1:(ny-1)
-            bitmap(i,j) = (yep(i,j) + yep(i,j+1) + yep(i+1,j) + yep(i+1,j+1))/4;
+            bitmap(i,j) = (Vm(i,j,k) + Vm(i,j+1,k) + Vm(i+1,j,k) + Vm(i+1,j+1,k))/4;
         end
     end
 
     % plot heat map
     h = heatmap(bitmap, ... 
         'Colormap', jet, ... 
-        'ColorLimits', [cold hot], ...
+        'ColorLimits', [-200 200], ...
         'MissingDataLabel', '', ... 
         'MissingDataColor', 'white', ...
         'GridVisible', 'off', ...
         'ColorbarVisible', 'off', ...
         'Position', [0.1 0.1 0.8 0.8]);
-    title(['t = ', num2str(k/100), 's']);
+    title(['t = ', num2str(filt_t(k)/1000), 's']);
 
     Ax = gca;
     Ax.XDisplayLabels = nan(size(Ax.XDisplayData));
     Ax.YDisplayLabels = nan(size(Ax.YDisplayData));
 
     % capture frame
-    movieVector(round(k/100)+1) = getframe(figh);
+    movieVector(round(k/step)+1) = getframe(figh);
 
 end
 

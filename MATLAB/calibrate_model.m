@@ -1,6 +1,8 @@
 clc
 clear
 
+addpath('../MEA_simulation')
+
 %fminsearch_call
 fminunc_call
 %ga_call
@@ -24,12 +26,17 @@ end
 function ga_call
     LB = [0, 0];
     UB = [0.002, 0.023];
-    [best_guess, obj_val] = ga(@calc_obj_value, 2, [],[],[],[], LB, UB);
+    [best_guess, obj_val] = ga(@calc_obj_value, 2);
     display(best_guess)
     display(obj_val)
 end
 
 function obj_value = calc_obj_value(initial_guess)
-    [~,~,~,~,freq] = imtiaz_2002d_noTstart_COR_exported(initial_guess(1), initial_guess(2), 8, 1.2, 4, [600000, 690000], false);
-    obj_value = abs(17.525 - freq);
+    disp(initial_guess)
+    if (isempty(initial_guess(initial_guess < 0)))
+        [~,~,~,~,freq] = imtiaz_2002d_noTstart_COR_exported(initial_guess(1), initial_guess(2), 8, 1.2, 4, [600000, 690000], false);
+        obj_value = abs(17.525 - freq) + abs(0.000975 - initial_guess(1)) + abs(0.0389 - initial_guess(2));
+    else
+        obj_value = Inf;
+    end
 end

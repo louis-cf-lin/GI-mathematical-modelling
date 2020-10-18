@@ -116,24 +116,6 @@ else
         % clear current figure
         clf
 
-    %     if k > 600
-    %         % element is average of four corner nodes
-    %         for i = 1:(nx-1)
-    %             for j = 1:(ny-1)
-    %                 trace(i,j,k) = (yep(i,j) + yep(i,j+1) + yep(i+1,j) + yep(i+1,j+1))/4;
-    %                 if ~isnan(trace(i,j,k))
-    %                     pp = pulseperiod(squeeze(trace(i,j,k-600:k)), 'Tolerance', 10);
-    %                     bitmap(i,j) = 1/pp(end) * 6000;
-    %                 end
-    %             end
-    %         end
-    %         % plot heat map
-    %         heatmap(bitmap, 'Colormap', cool, 'ColorLimits', [23 28]);
-    %         title([name, ' t = ', num2str(k)]);
-    %         % capture frame
-    %         movieVector(k) = getframe(figh);
-    %     end
-
         % plot heat map
         h = heatmap(bitmap(:,:,k), ... 
             'Colormap', jet, ... 
