@@ -43,7 +43,7 @@ fem define cell;r;2d_slice
 
 # Define material and cell properties
 fem define mate;r;2d_slice
-fem define mate;p;mfiles/high-k cell
+fem define mate;r;mfiles/high-k cell
 
 # Define iptime, initial conditions
 #fem define time;r;2d_slice
