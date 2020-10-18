@@ -101,14 +101,14 @@
    Surface to volume ratio (Am) [N]? N
    Total electrical stimulus current [N]? N
    Initial value [0.2800E+02]: 0.28000E+02
-   Spatially varying [N]? Y
+   Spatially varying [N]? N
  
  Constant Variable G_max_BK:
    Specific membrane capacitance (Cm) [N]? N
    Surface to volume ratio (Am) [N]? N
    Total electrical stimulus current [N]? N
    Initial value [0.1200E+01]: 0.12000E+01
-   Spatially varying [N]? N
+   Spatially varying [N]? Y
  
  Constant Variable I_stim:
    Specific membrane capacitance (Cm) [N]? N

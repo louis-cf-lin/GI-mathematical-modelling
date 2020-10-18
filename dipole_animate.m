@@ -23,6 +23,7 @@ data = iphistread(filename, 61, 1, nt);
 Vm = data(:,:,1)';
 
 arranged = NaN(nx, ny, size(Vm,2));
+freq = NaN(size(config,1), size(config,2));
 count = 1;
 for i = 1:nx
     for j = 1:ny
@@ -30,6 +31,9 @@ for i = 1:nx
         else
             arranged(i,j,:) = Vm(config(i,j),:);
             trace(i,j,:) = (arranged(i,j,:)-80)./(-20-80).*-10-count;
+            [pks, locs] = findpeaks(squeeze(Vm(config(i,j),:)), 'MinPeakDistance', 200);
+            peaks = numel(pks);
+            freq(i,j) = (peaks - 1)/((locs(end) - locs(1))/100)*60;
             count = count + 1;
         end
     end
@@ -38,12 +42,6 @@ end
 for i = 1:8
     plot(squeeze(trace(i,4,:)));
     hold on;
-    
-    % avoid double counting the same peak
-    [pks, locs] = findpeaks(squeeze(trace(i,4,:)), 'MinPeakDistance', 10);
-    peaks = numel(pks);
-    freq = (peaks - 1)/((locs(end) - locs(1))/100)*60;
-    disp(freq);
 end
 
 bitmap = zeros((nx-1),(ny-1), size(Vm,2));

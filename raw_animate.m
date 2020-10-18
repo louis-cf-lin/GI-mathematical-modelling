@@ -12,14 +12,27 @@ step = 10;
 
 Vm = NaN(nx, ny, size(filt_data,2));
 
+k = 1;
 for i = 1:nx
     for j = 1:ny
-        if config(i,j) == 0
+        if (i == 1 && j == 1) || (i == 1 && j == 8) || (i == 8 && j == 1) || (i == 8 && j == 8)
         else
-            Vm(i,j,:) = filt_data(config(i,j),:);
+            Vm(i,j,:) = filt_data(k,:);
+            k = k + 1;
         end
     end
 end
+
+% for i = 1:nx
+%     for j = 1:ny
+%         if config(i,j) == 0
+%         else
+%             Vm(i,j,:) = filt_data(config(i,j),:);
+%         end
+%     end
+% end
+
+
 
 for i = 1:8
     plot(squeeze(Vm(i,4,:)));
@@ -30,6 +43,19 @@ for i = 1:8
     peaks = numel(pks);
     freq = (peaks - 1)/((locs(end) - locs(1))/100)*60;
     disp(freq);
+end
+hold off;
+
+for i = 1:nx
+    for j = 1:ny
+        if (i == 1 && j == 1) || (i == 1 && j == 8) || (i == 8 && j == 1) || (i == 8 && j == 8)
+        else
+            [pks, locs] = findpeaks(squeeze(Vm(i,j,:)));
+            peaks = numel(pks);
+            freq = (peaks - 1)/((locs(end) - locs(1))/100)*60;
+            disp(freq);
+        end
+    end
 end
 
 cold = min(min(filt_data));

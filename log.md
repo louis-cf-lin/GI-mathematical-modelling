@@ -1263,6 +1263,5 @@ the `MinPeakDistance` is because some signals produce very small spikes close to
 | `high-ca` | `high-ca.ipmatc` | 26, 27, 34, 35 $G_{MCa}$ = 8 |
 | `low-na` | `low-na.ipmatc` | 26, 27, 34, 35 $G_{Na}$ = 0 |
 | `high-na` | `high-na.ipmatc` | 26, 27, 34, 35 $G_{Na}$ = 56 |
-
-
-Simulate raw data for Kartikey
+| `low-k` | `low-k.ipmatc` | 26, 27, 34, 35 $G_{max BK}$ = 0.2 | Increases frequency to 25.7cpm across entire array. Huge amplitudes on affected region that slowly recover. |
+| `low-k` | `high-k.ipmatc` | 26, 27, 34, 35 $G_{max BK}$ = 0.2 | Slightly increases frequency to 19.1cpm across entire array. Affected region has larger amplitudes. |
