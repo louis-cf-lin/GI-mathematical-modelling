@@ -11,7 +11,7 @@ smooth = 0;
 % resolution
 nx = 8;
 ny = 8;
-nt = 3001; % period / dt + 1
+nt = 301; % period / dt + 1
 
 % read outputs
 addpath('MEA_simulation')
@@ -67,24 +67,11 @@ box off;
 set(gcf, 'Position',  [0, 0, 500, 500])
 
 if smooth == 1
-    for k = 1:size(data,1)
+    for k = 1:size(Vm,2)
         % clear current figure
         clf
-        % extract time step k for state variable Vm
-        yep = data(k,:,1);
-        % set corners as NaN
-        yep = [0 yep(1:nx-2) 0 yep(nx-1:(nx-1)*ny-2) 0 yep((nx-1)*ny-1:nx*ny-4) 0];
-        % collapse vector into array
-        yep = reshape(yep, [nx,ny]).';
 
-        % element is average of four corner nodes
-        for i = 1:(nx-1)
-            for j = 1:(ny-1)
-                bitmap(i,j) = (yep(i,j) + yep(i,j+1) + yep(i+1,j) + yep(i+1,j+1))/4;
-            end
-        end
-
-        outData = interp2(X, Y, bitmap, X2, Y2, 'linear');
+        outData = interp2(X, Y, bitmap(:,:,k), X2, Y2, 'linear');
         outData(1:100,1:100) = NaN;
         outData(1:100,end-99:end) = NaN;
         outData(end-99:end,1:100) = NaN;
@@ -115,7 +102,7 @@ else
         clf
 
         % plot heat map
-        h = heatmap(bitmap(:,:,k), ... 
+        h = heatmap(arranged(:,:,k), ... 
             'Colormap', jet, ... 
             'ColorLimits', [-72 -20], ...
             'MissingDataLabel', '', ... 

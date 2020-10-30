@@ -1,15 +1,19 @@
-clc
-clear
-
 addpath('../MEA_simulation')
 
 %fminsearch_call
-fminunc_call
-%ga_call
+%fminunc_call
+ga_call
+
+global try_beta
+global try_eta
+global store
+store = [];
+try_beta = [];
+try_eta = [];
 
 function fminsearch_call
     initial_guess = [0.000975, 0.0389];
-    options = optimset('Display', 'iter', 'PlotFcns', @optimplotfval);
+    options = optimset('Display', 'iter', 'PlotFcns', @optimplotstepsize);
     tic
     [best_guess, obj_value] = fminsearch(@calc_obj_value, initial_guess, options);
     fprintf('Best guess: beta=%f, eta=%f. Objective value: %f. Time to converge: %fs \n', best_guess(1), best_guess(2), obj_value, toc);
@@ -17,16 +21,18 @@ end
 
 function fminunc_call
     initial_guess = [0.000975, 0.0389];
-    options = optimset('Display', 'iter', 'PlotFcns', @optimplotfval);
+    options = optimset('Algorithm','quasi-newton','Display', 'iter');
     tic
     [best_guess, obj_value] = fminunc(@calc_obj_value, initial_guess, options);
     fprintf('Best guess: beta=%f, eta=%f. Objective value: %f. Time to converge: %fs \n', best_guess(1), best_guess(2), obj_value, toc);
 end
 
 function ga_call
-    LB = [0, 0];
-    UB = [0.002, 0.023];
-    [best_guess, obj_val] = ga(@calc_obj_value, 2);
+    LB = [0.0005, 0.03];
+    UB = [0.001, 0.05];
+    tic
+    [best_guess, obj_val] = ga(@calc_obj_value, 2, [], [], [], [], [0.0009 0.03], [0.001 0.05]);
+    toc
     display(best_guess)
     display(obj_val)
 end

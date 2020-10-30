@@ -170,14 +170,14 @@
    Specific membrane capacitance (Cm) [N]? N
    Surface to volume ratio (Am) [N]? N
    Total electrical stimulus current [N]? N
-   Initial value [0.99E-03]: 0.99E-03
+   Initial value [0.99E-03]: 0.000991
    Spatially varying [N]? N
  
  Constant Variable eta:
    Specific membrane capacitance (Cm) [N]? N
    Surface to volume ratio (Am) [N]? N
    Total electrical stimulus current [N]? N
-   Initial value [0.39264E-01]: 0.39264E-01
+   Initial value [0.39264E-01]: 0.039271
    Spatially varying [N]? Y
  
  Constant Variable k_2:

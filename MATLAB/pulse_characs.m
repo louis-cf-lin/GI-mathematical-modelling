@@ -1,7 +1,12 @@
 clc
 clear
 
-[VOI,STATES,~,~,peaks] = imtiaz_2002d_noTstart_COR_exported(0.00099, 0.039264, 8, 1.2, 4, [600000, 660000], false);
+[VOI,STATES,~,~,peaks] = imtiaz_2002d_noTstart_COR_exported(0.000991, 0.039271, 8, 1.2, 4, [600000, 660000], false);
+
+plot(VOI./1000, STATES(:,1));
+title('Baseline Cell Model Simulated Slow Wave');
+xlabel('Time (s)');
+ylabel('$V_{m}$ (mV)', 'Interpreter', 'Latex');
 
 width_start = 3000;
 width_end = 5000;

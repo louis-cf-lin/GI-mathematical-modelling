@@ -5,12 +5,20 @@ function [VOI, STATES, ALGEBRAIC, CONSTANTS, freq] = imtiaz_2002d_noTstart_COR_e
         [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, freq] = solveModel(beta, eta, G_Na, G_BK, G_Ca, tspan, true);
         %l = legend(LEGEND_STATES);
         %set(l, 'Interpreter', 'Latex');
-        xlabel(X_TITLE);
-        ylabel('$V_{m}$ (mV)', 'Interpreter', 'Latex');
-        title(['($\beta$=',num2str(beta),', $\eta$=',num2str(eta),')'], 'Interpreter', 'Latex');
+        %xlabel(X_TITLE);
+        %ylabel('$V_{m}$ (mV)', 'Interpreter', 'Latex');
+        title(['$\eta$ = ',num2str(eta), ' ms$^{-1}$'], 'Interpreter', 'Latex');
+        %title(['($\beta$=',num2str(beta),', $\eta$=',num2str(eta),')'], 'Interpreter', 'Latex');
     else
         [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, freq] = solveModel(beta, eta, G_Na, G_BK, G_Ca, tspan, false);
     end
+    
+    global try_beta
+    global try_eta
+    global store
+    store = [store, freq];
+    try_beta = [try_beta, beta];
+    try_eta = [try_eta, eta];
 end
 
 
@@ -142,7 +150,7 @@ function [STATES, CONSTANTS] = initConsts(beta, eta, G_Na, G_BK, G_Ca)
     CONSTANTS(:,12) = 4; % q: Hill coefficient
     CONSTANTS(:,13) = 1.4; % k_Ca: Half saturation constant for I_Ca
     STATES(:,5) = 2.46238; % Ca_s: Ca2+ intracellular store
-    STATES(:,6) = 0.4778; % IP_3: inositol trisphosphate
+    STATES(:,6) = 1; % IP_3: inositol trisphosphate; default: 0.4778
     CONSTANTS(:,14) = 0.0002145; % V_0: Ca2+ influx into cytosol
     CONSTANTS(:,15) = 0.00022094; % V_1: Ca2+ influx into cytosol due to IP_3
     CONSTANTS(:,16) = 0.0049; % V_M2: max Ca2+ pump into store
