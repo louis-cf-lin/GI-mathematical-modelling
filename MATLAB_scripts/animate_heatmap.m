@@ -1,23 +1,27 @@
-% Author: Louis Lin
-% This is a Matlab script that reads in processed slow wave data and
-% creates a heatmap animation
+% Script:  animate_heatmap.m
+% Author:  Louis Lin
+% Org:     Auckland Bioengineering Institute
+% Purpose: Reads in raw simulated slow wave (.iphist file) and animate as
+%          heat map
 
-clear;
-close all;
-clc;
+%% init
 
-smooth = 0;
-
-% resolution
-nx = 8;
-ny = 8;
-nt = 301; % period / dt + 1
+clear
+clc
+close all
 
 % read outputs
-addpath('MEA_simulation')
-addpath('MEA_simulation/output')
+addpath('../MEA_simulation')
+addpath('../MEA_simulation/output')
 filename = 'stomach.iphist';
-load('config.mat');
+load('mea_config.mat');
+
+% resolution
+nx = size(config, 1);
+ny = size(config, 2);
+nt = 301; % (period / dt) + 1
+
+smooth = 0;
 
 data = iphistread(filename, 61, 1, nt);
 Vm = data(:,:,1)';

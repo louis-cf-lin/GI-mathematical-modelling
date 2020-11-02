@@ -1,26 +1,26 @@
-function [VOI, STATES, ALGEBRAIC, CONSTANTS, freq] = imtiaz_2002d_noTstart_COR_exported(beta, eta, G_Na, G_BK, G_Ca, tspan, showplot)
+% Script:  simplified_cell_model.m
+% Author:  Louis Lin
+% Org:     Auckland Bioengineering Institute
+% Purpose: Solves the 1D simplified cell model (Du et al., 2013)
 
-    % create plot
+%% main
+
+function [VOI, STATES, ALGEBRAIC, CONSTANTS, freq] = simplified_cell_model(beta, eta, G_Na, G_BK, G_Ca, tspan, showplot)
+
     if showplot
+        figure
         [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, freq] = solveModel(beta, eta, G_Na, G_BK, G_Ca, tspan, true);
         %l = legend(LEGEND_STATES);
         %set(l, 'Interpreter', 'Latex');
-        %xlabel(X_TITLE);
-        %ylabel('$V_{m}$ (mV)', 'Interpreter', 'Latex');
-        title(['$\eta$ = ',num2str(eta), ' ms$^{-1}$'], 'Interpreter', 'Latex');
-        %title(['($\beta$=',num2str(beta),', $\eta$=',num2str(eta),')'], 'Interpreter', 'Latex');
+        xlabel(X_TITLE);
+        ylabel('$V_{m}$ (mV)', 'Interpreter', 'Latex');
+        title(['Baseline Cell Model Simulated Slow Wave ($\beta$ = ',num2str(beta), ' ms$^{-1}$, $\eta$ = ',num2str(eta), ' ms$^{-1}$)'], 'Interpreter', 'Latex');
     else
         [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, freq] = solveModel(beta, eta, G_Na, G_BK, G_Ca, tspan, false);
     end
-    
-    global try_beta
-    global try_eta
-    global store
-    store = [store, freq];
-    try_beta = [try_beta, beta];
-    try_eta = [try_eta, eta];
 end
 
+%% solver
 
 function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, freq] = solveModel(beta, eta, G_Na, G_BK, G_Ca, tspan, showplot)
     % Set ALGEBRAIC 
@@ -55,15 +55,17 @@ function [VOI, STATES, ALGEBRAIC, CONSTANTS, LEGEND_STATES, X_TITLE, freq] = sol
 
     if showplot
         nexttile
-        plot(VOI, STATES(:,1)); % only plotting voltage
+        plot(VOI./1000, STATES(:,1)); % only plotting voltage
     end
 end
+
+%% plot legends
 
 function [LEGEND_STATES, LEGEND_ALGEBRAIC, X_TITLE, LEGEND_CONSTANTS] = createLegends()
     LEGEND_STATES = ''; 
     LEGEND_ALGEBRAIC = ''; 
     LEGEND_CONSTANTS = '';
-    X_TITLE = 'time (ms)';
+    X_TITLE = 'time (s)';
     LEGEND_STATES(:,1) = strpad('$V_{m} (V)$');
     LEGEND_CONSTANTS(:,1) = strpad('$C_{m} (F)$');
     LEGEND_ALGEBRAIC(:,1) = strpad('$I_{Na} (A)$');
@@ -127,6 +129,8 @@ function [LEGEND_STATES, LEGEND_ALGEBRAIC, X_TITLE, LEGEND_CONSTANTS] = createLe
     LEGEND_CONSTANTS = LEGEND_CONSTANTS';
 end
 
+%% constants
+
 function [STATES, CONSTANTS] = initConsts(beta, eta, G_Na, G_BK, G_Ca)
     VOI = 0; 
     CONSTANTS = []; 
@@ -176,6 +180,8 @@ function [STATES, CONSTANTS] = initConsts(beta, eta, G_Na, G_BK, G_Ca)
     if (isempty(STATES)), warning('Initial values for states not set'); end
 end
 
+%% ODEs
+
 function [RATES, ALGEBRAIC] = computeRates(VOI, STATES, CONSTANTS)
     
     % set earlier
@@ -211,7 +217,8 @@ function [RATES, ALGEBRAIC] = computeRates(VOI, STATES, CONSTANTS)
    RATES = RATES';
 end
 
-% Calculate algebraic variables
+%% calculate algebraic variables
+
 function ALGEBRAIC = computeAlgebraic(ALGEBRAIC, CONSTANTS, STATES, VOI)
     statesSize = size(STATES);
     statesColumnCount = statesSize(2);
@@ -234,7 +241,8 @@ function ALGEBRAIC = computeAlgebraic(ALGEBRAIC, CONSTANTS, STATES, VOI)
     ALGEBRAIC(:,7) =  CONSTANTS(:,9).*ALGEBRAIC(:,5).*(STATES(:,1) - CONSTANTS(:,8));
 end
 
-% Pad out or shorten strings to a set length
+%% Pad out or shorten strings to a set length
+
 function strout = strpad(strin)
     req_length = 160;
     insize = size(strin,2);
