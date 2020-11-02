@@ -1,5 +1,14 @@
+% Script:  explore_model.m
+% Author:  Louis Lin
+% Org:     Auckland Bioengineering Institute
+% Purpose: Explore the cell model by generating plots of eta and beta
+%          perturbations
+
+%% init
+
 clc
 clear
+close all
 
 param_names = ["$G_{Na}$", "$G_{BK}$", "$G_{Ca}$"];
 param_index = 2;

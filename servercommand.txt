@@ -1,0 +1,4 @@
+cd MEA_simulation
+ls
+
+/bin/bash

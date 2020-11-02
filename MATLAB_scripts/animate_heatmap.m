@@ -21,13 +21,14 @@ nx = size(config, 1);
 ny = size(config, 2);
 nt = 301; % (period / dt) + 1
 
-smooth = 0;
+smooth = false;
 
+% read and transpose
 data = iphistread(filename, 61, 1, nt);
 Vm = data(:,:,1)';
 
 arranged = NaN(nx, ny, size(Vm,2));
-freq = NaN(size(config,1), size(config,2));
+freq = NaN(nx, ny);
 count = 1;
 for i = 1:nx
     for j = 1:ny
@@ -43,7 +44,8 @@ for i = 1:nx
     end
 end
 
-for i = 1:8
+% plot trace of column 4
+for i = 1:nx
     plot(squeeze(trace(i,4,:)));
     hold on;
 end
@@ -55,11 +57,9 @@ for i = 1:(nx-1)
     end
 end
 
-
-
 [X,Y] = meshgrid(1:nx-1, 1:ny-1);
 [X2,Y2] = meshgrid(1:0.01:nx-1, 1:0.01:ny-1);
-name = 'eta';
+name = 'eta'; % video name
 figh = figure('MenuBar', 'none', ...
        'ToolBar', 'none', ...
        'Color', 'white');
@@ -70,12 +70,14 @@ axes('Parent', figh, ...
 box off;
 set(gcf, 'Position',  [0, 0, 500, 500])
 
-if smooth == 1
+if smooth
     for k = 1:size(Vm,2)
         % clear current figure
         clf
-
+        
+        % smooth data
         outData = interp2(X, Y, bitmap(:,:,k), X2, Y2, 'linear');
+        % insert corner nodes
         outData(1:100,1:100) = NaN;
         outData(1:100,end-99:end) = NaN;
         outData(end-99:end,1:100) = NaN;
@@ -126,13 +128,9 @@ else
     end
 end
 
-
 % write to video
-myWriter = VideoWriter(['avi\',name]);
+myWriter = VideoWriter('../avi/eta');
 myWriter.FrameRate = 20;
 open(myWriter);
 writeVideo(myWriter, movieVector);
 close(myWriter);
-
-% close
-disp('done')

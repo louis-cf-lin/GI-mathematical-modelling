@@ -1,4 +1,4 @@
-# Louis: Project Log <!-- omit in toc -->
+# Project Log <!-- omit in toc -->
 
 - [Sem 1 Week 1](#sem-1-week-1)
   - [Sem 1 Week 1 Friday](#sem-1-week-1-friday)
@@ -133,9 +133,9 @@ Completed and summarised all *Best Practices* readings. Read chapter 1 of *Hands
 
 1. Install Anaconda [here](https://www.anaconda.com/distribution/#download-section)
 2. Add the following variables to PATH:
-   - C:\Users\Louiis\Anaconda3\Scripts
-   - C:\Users\Louii\Anaconda3
-   - C:\Users\Louii\Anaconda3\Library\bin
+   - C:\Users\Username\Anaconda3\Scripts
+   - C:\Users\Username\Anaconda3
+   - C:\Users\Username\Anaconda3\Library\bin
 3. Run Anaconda Prompt as administrator and run:
    - `pip install --upgrade anaconda-navigator`
    - `pip install --upgrade virtualenv`
@@ -197,7 +197,7 @@ VPN successfully logged in; IT ticket closed.
 To log into ssh use
 
 ```powershell
-cd ../hpc/clin750
+cd ../hpc/upi
 ```
 
 Began and completed reading through *MEA 2019*.
@@ -269,21 +269,21 @@ Meeting notes from Peng:
 
 ```bash
 # from current cmd directory
-scp filename clin750@hpc5.bioeng.auckland.ac.nz:/hpc/clin750
+scp filename upi@hpc5.bioeng.auckland.ac.nz:/hpc/upi
 ```
 
 #### Transfer a directory from local machine to remote server
 
 ```bash
 # this will duplicate the directory folder itself
-scp -r directoryname clin750@hpc5.bioeng.auckland.ac.nz:/hpc/clin750
+scp -r directoryname upi@hpc5.bioeng.auckland.ac.nz:/hpc/upi
 ```
 
 #### Transfer a file from remote server to local machine
 
 ```bash
 # destination includes file name, e.g. Desktop/test.txt
-scp clin750@hpc5.bioeng.auckland.ac.nz:/hpc/clin750/filename destination
+scp upi@hpc5.bioeng.auckland.ac.nz:/hpc/upi/filename destination
 ```
 
 #### Manipulating files in remote server
@@ -394,7 +394,7 @@ Possible solutions:
 
 > /hpc/cmiss/bin/x86_64-linux/cm
 
-- Find out why `$HOME` is `people\llin` and not `people\clin750` or something else
+- Find out why `$HOME` is `people\llin` and not `people\upi` or something else
 
 > Possibly; Peng will get Tiong to check
 
@@ -402,7 +402,7 @@ Goal for next week: run the CellML simulation by converting it to MATLAB then  v
 
 CellML (imtiaz_2002d_noTstart_COR) -> Tools -> CellML export to user defined -> OpenCOR -> Formats -> python/matlab -> save as .m -> run file in matlab.
 
-**Problem resolved!** Tiong has fixed the issue and now the prompt is `[clin750@]` in OpenSSH.
+**Problem resolved!** Tiong has fixed the issue and now the prompt is `[upi@]` in OpenSSH.
 
 ## Sem 1 Week 10
 
@@ -934,13 +934,13 @@ MSP
 To copy local folder to remote server, use:
 
 ```{powershell}
-C:\Users\Louii\Documents\GI-mathematical-modelling> scp -r . clin750@hpc5.bioeng.auckland.ac.nz:/people/clin750
+C:\Users\Username\Documents\GI-mathematical-modelling> scp -r . upi@hpc5.bioeng.auckland.ac.nz:/people/upi
 ```
 
 or specifically for `example_2d.com`:
 
 ```{powershell}
-C:\Users\Louii\Documents> scp -r MEA_simulation/example_2d.com clin750@hpc5.bioend.auckland.ac.nz/people/clin750/MEA_simulation
+C:\Users\Username\Documents> scp -r MEA_simulation/example_2d.com upi@hpc5.bioend.auckland.ac.nz/people/upi/MEA_simulation
 ```
 
 There is a `.bat` file called `sync.bat` in the main folder that now automatically copies the local version of `example_2d.com` and `2d_slice.ipcell` the server.

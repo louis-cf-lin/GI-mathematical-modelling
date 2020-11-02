@@ -1,0 +1,3 @@
+cd MEA_simulation
+cm example_2d.com
+matlab -r "dipole_calculate; exit"
