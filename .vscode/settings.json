@@ -1,3 +1,4 @@
 {
-  "python.pythonPath": "C:\\Users\\lollo\\anaconda3\\python.exe"
+  "python.pythonPath": "C:\\Users\\lollo\\anaconda3\\python.exe",
+  "markdown.extension.toc.levels": "2..6"
 }
